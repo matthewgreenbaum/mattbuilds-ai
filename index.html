@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matt Builds AI — Portfolio by Matt Greenbaum</title>
+    <meta name="description" content="AI-powered apps built by Matt Greenbaum, Demand Gen expert. Explore tools for campaign planning, feedback collection, and marketing budget management.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFAF5;
+            color: #2D2A26;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.8rem;
+            color: #1A1A1A;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.02em;
+        }
+
+        .header h1 span {
+            color: #C2703E;
+        }
+
+        .header .subtitle {
+            font-size: 1.15rem;
+            color: #6B6560;
+            margin-bottom: 0.75rem;
+            font-weight: 400;
+        }
+
+        .header .bio {
+            font-size: 0.95rem;
+            color: #8A8580;
+            max-width: 520px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.6;
+        }
+
+        .header .bio a {
+            color: #C2703E;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .header .bio a:hover {
+            text-decoration: underline;
+        }
+
+        /* Divider */
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #C2703E, #D4956A);
+            border-radius: 2px;
+            margin: 0 auto 2.5rem;
+        }
+
+        /* Section label */
+        .section-label {
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #B0A9A2;
+            margin-bottom: 2rem;
+        }
+
+        /* App Cards Grid */
+        .cards {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid #EDE8E3;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-icon.blueprint {
+            background: #E8F0FE;
+        }
+
+        .card-icon.feedback {
+            background: #FFF0E6;
+        }
+
+        .card-icon.budget {
+            background: #E6F5EC;
+        }
+
+        .card h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #1A1A1A;
+        }
+
+        .card .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .tag.live {
+            background: #E6F5EC;
+            color: #2D7A4F;
+        }
+
+        .tag.coming-soon {
+            background: #F0ECE8;
+            color: #8A8580;
+        }
+
+        .card p {
+            font-size: 0.92rem;
+            color: #6B6560;
+            line-height: 1.65;
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .card .tech {
+            font-size: 0.78rem;
+            color: #B0A9A2;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #C2703E;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: 1.5px solid #C2703E;
+            transition: background 0.2s ease, color 0.2s ease;
+            align-self: flex-start;
+        }
+
+        .card-btn:hover {
+            background: #C2703E;
+            color: #FFFFFF;
+        }
+
+        .card-btn.disabled {
+            color: #B0A9A2;
+            border-color: #DDD8D3;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .card-btn .arrow {
+            transition: transform 0.2s ease;
+        }
+
+        .card-btn:hover .arrow {
+            transform: translateX(3px);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #EDE8E3;
+            color: #B0A9A2;
+            font-size: 0.82rem;
+        }
+
+        .footer a {
+            color: #C2703E;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .built-with {
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: #C8C3BE;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .header h1 {
+                font-size: 2.1rem;
+            }
+
+            .header .subtitle {
+                font-size: 1rem;
+            }
+
+            .cards {
+                padding: 0 1.25rem 3rem;
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>matt builds<span>.</span>ai</h1>
+        <p class="subtitle">AI-Powered Tools for Modern Marketers</p>
+        <p class="bio">
+            Built by <strong>Matt Greenbaum</strong> — Demand Gen expert exploring what's possible when marketing strategy meets AI. Every app here was built with
+            <a href="https://www.anthropic.com/claude-code" target="_blank">Claude Code</a>.
+            <br><br>
+            <a href="https://www.linkedin.com/in/mattgreenbaum" target="_blank">LinkedIn &rarr;</a>
+        </p>
+    </header>
+
+    <div class="divider"></div>
+
+    <p class="section-label">The Apps</p>
+
+    <section class="cards">
+
+        <!-- Campaign Blueprint -->
+        <div class="card">
+            <div class="card-icon blueprint">📋</div>
+            <h2>Campaign Blueprint</h2>
+            <span class="tag live">Live</span>
+            <p>An AI-powered campaign planner that turns a brief into a full go-to-market blueprint — channels, messaging, timeline, and budget allocation in seconds.</p>
+            <div class="tech">Claude API &middot; HTML/CSS/JS</div>
+            <a href="/blueprint/" class="card-btn">
+                Try it <span class="arrow">&rarr;</span>
+            </a>
+        </div>
+
+        <!-- FeedbackAtcha -->
+        <div class="card">
+            <div class="card-icon feedback">💬</div>
+            <h2>FeedbackAtcha</h2>
+            <span class="tag live">Live</span>
+            <p>Paste in any piece of content — emails, landing pages, ad copy — and get instant, actionable feedback powered by AI. Like having a senior editor on demand.</p>
+            <div class="tech">Claude API &middot; HTML/CSS/JS</div>
+            <a href="/feedbackatcha/" class="card-btn">
+                Try it <span class="arrow">&rarr;</span>
+            </a>
+        </div>
+
+        <!-- Coming Soon -->
+        <div class="card">
+            <div class="card-icon budget">📊</div>
+            <h2>Budget Allocator</h2>
+            <span class="tag coming-soon">Coming Soon</span>
+            <p>An intelligent marketing budget planner for demand gen teams. Input your goals, channels, and constraints — get an optimized spend allocation instantly.</p>
+            <div class="tech">Claude API &middot; HTML/CSS/JS</div>
+            <span class="card-btn disabled">
+                Coming Soon
+            </span>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Matt Greenbaum &middot; <a href="https://www.linkedin.com/in/mattgreenbaum" target="_blank">LinkedIn</a></p>
+        <p class="built-with">Built with Claude Code by Anthropic</p>
+    </footer>
+
+</body>
+</html>
