@@ -6,10 +6,39 @@
   <title>FeedbackAtcha</title>
   <!-- v6.2 -->
   <script>
-  // ============================================================
-  // PASTE YOUR ANTHROPIC API KEY HERE:
-  const ANTHROPIC_API_KEY = "your-api-key-here";
-  // ============================================================
+  // API key loaded from localStorage — prompted on first visit
+  let ANTHROPIC_API_KEY = localStorage.getItem("mattbuilds_api_key") || "";
+
+  function promptForApiKey() {
+    const overlay = document.createElement("div");
+    overlay.id = "api-key-overlay";
+    overlay.innerHTML = `
+      <div style="position:fixed;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:99999;font-family:'Inter',sans-serif">
+        <div style="background:#fff;border-radius:16px;padding:2.5rem;max-width:440px;width:90%;box-shadow:0 16px 50px rgba(0,0,0,0.15)">
+          <h2 style="font-family:'DM Serif Display',serif;font-size:1.5rem;margin-bottom:0.5rem;color:#1A1A1A">Enter API Key</h2>
+          <p style="color:#6B6B6B;font-size:0.9rem;line-height:1.6;margin-bottom:1.25rem">This app is powered by Claude. Paste an <a href="https://console.anthropic.com/settings/keys" target="_blank" style="color:#6B3FA0;text-decoration:none;font-weight:500">Anthropic API key</a> to get started. Your key is stored locally in your browser and never sent to any server besides Anthropic.</p>
+          <input id="api-key-input" type="password" placeholder="sk-ant-..." style="width:100%;padding:0.75rem 1rem;border:1.5px solid #E0E0E0;border-radius:10px;font-size:0.95rem;font-family:'Inter',sans-serif;outline:none;margin-bottom:1rem" />
+          <button id="api-key-submit" style="width:100%;padding:0.75rem;background:#6B3FA0;color:#fff;border:none;border-radius:10px;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif">Start Using FeedbackAtcha</button>
+        </div>
+      </div>`;
+    document.body.appendChild(overlay);
+    document.getElementById("api-key-input").focus();
+    document.getElementById("api-key-submit").addEventListener("click", function() {
+      const key = document.getElementById("api-key-input").value.trim();
+      if (key) {
+        ANTHROPIC_API_KEY = key;
+        localStorage.setItem("mattbuilds_api_key", key);
+        overlay.remove();
+      }
+    });
+    document.getElementById("api-key-input").addEventListener("keydown", function(e) {
+      if (e.key === "Enter") document.getElementById("api-key-submit").click();
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    if (!ANTHROPIC_API_KEY) promptForApiKey();
+  });
   </script>
   <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
