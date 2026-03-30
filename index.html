@@ -25,9 +25,9 @@
         /* ===== HERO ===== */
         .hero{position:relative;padding:4rem 2rem;min-height:auto;display:flex;align-items:center;justify-content:center;overflow:hidden}
         .hero-verticals{position:absolute;inset:0;z-index:0;pointer-events:none}
-        .hero-verticals line{stroke:rgba(255,255,255,0.06);stroke-width:1}
+        .hero-verticals line{stroke:rgba(255,255,255,0.035);stroke-width:1}
         .hero-blob-wrap{position:relative;z-index:1;width:100%;max-width:960px;margin:0 auto}
-        .hero-blob{position:relative;background:#fff;padding:6rem 5rem 5rem;border-radius:48% 52% 45% 55% / 42% 56% 44% 58%;display:flex;flex-direction:column;align-items:center;text-align:center}
+        .hero-blob{position:relative;background:#fff;padding:6rem 5rem 5rem;border-radius:42% 58% 38% 62% / 48% 36% 64% 52%;display:flex;flex-direction:column;align-items:center;text-align:center}
         .hero-blob h1{font-family:'Figtree',sans-serif;font-size:7rem;font-weight:500;color:#2F1664;letter-spacing:-0.03em;line-height:1;margin-bottom:1.5rem}
         .hero-blob h1 .dot{color:#EAE7EF}
         .hero-blob h2{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:400;color:#5A5069;line-height:1.7;max-width:480px;margin-bottom:2.5rem}
@@ -39,7 +39,7 @@
         .tools{background:#fff;padding:6rem 2rem;position:relative;overflow:hidden}
         .tools-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
         .tools-rings{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0}
-        .tools-rings circle{fill:none;stroke:rgba(47,22,100,0.05)}
+        .tools-rings circle{fill:none;stroke:rgba(47,22,100,0.045)}
         .tools-header{text-align:center;margin-bottom:3.5rem}
         .tools-header h2{font-family:'Figtree',sans-serif;font-size:4rem;font-weight:500;color:#2F1664;margin-bottom:1rem;letter-spacing:-0.03em;line-height:1.1}
         .tools-header p{font-size:1rem;color:#5A5069;line-height:1.7;max-width:520px;margin:0 auto}
@@ -91,17 +91,17 @@
         .about-photo-blob .blob-shape{width:100%;height:100%;background:#2F1664;border-radius:60% 40% 55% 45% / 50% 60% 40% 50%;display:flex;align-items:center;justify-content:center;font-family:'Figtree',sans-serif;font-size:3.5rem;font-weight:800;color:#fff}
         .about-bio{flex:1}
         .about-bio h2{font-family:'Figtree',sans-serif;font-size:2.2rem;font-weight:500;color:#2F1664;margin-bottom:0.4rem;letter-spacing:-0.02em}
-        .about-bio h3{font-family:Helvetica,Arial,sans-serif;font-size:0.95rem;font-weight:600;color:#5A5069;margin-bottom:1.5rem;line-height:1.5}
+        .about-bio h3{font-family:Helvetica,Arial,sans-serif;font-size:0.95rem;font-weight:600;color:#2F1664;margin-bottom:1.5rem;line-height:1.5}
         .about-bio p{font-size:0.95rem;color:#3D2D5C;line-height:1.8}
 
         /* ===== FOOTER ===== */
         .footer{background:#2F1664;padding:5rem 2rem;text-align:center;position:relative;overflow:hidden}
         .footer-verticals{position:absolute;inset:0;z-index:0;pointer-events:none}
-        .footer-verticals line{stroke:rgba(255,255,255,0.06);stroke-width:1}
+        .footer-verticals line{stroke:rgba(255,255,255,0.035);stroke-width:1}
         .footer-content{position:relative;z-index:1}
-        .footer h2{font-family:'Figtree',sans-serif;font-size:2.2rem;font-weight:500;color:#fff;margin-bottom:1rem}
+        .footer h2{font-family:'Figtree',sans-serif;font-size:4rem;font-weight:500;color:#fff;margin-bottom:1rem;letter-spacing:-0.03em}
         .footer p{color:rgba(255,255,255,0.6);font-size:0.95rem;margin-bottom:1.25rem}
-        .footer a.email{color:#fff;text-decoration:none;font-weight:600;font-size:1.05rem}
+        .footer a.email{color:#fff;text-decoration:none;font-weight:400;font-size:1.05rem}
         .footer a.email:hover{opacity:0.8}
         .footer-btn{display:inline-block;margin-top:1rem;padding:0.8rem 2rem;background:#fff;color:#2F1664;text-decoration:none;font-family:'Figtree',sans-serif;font-size:0.9rem;font-weight:700;border-radius:8px;transition:all 0.2s ease}
         .footer-btn:hover{background:#EAE7EF;transform:translateY(-2px)}
@@ -141,14 +141,16 @@
 <!-- ========== SECTION 2: TOOLS / CARDS ========== -->
 <section id="tools" class="tools">
     <!-- Concentric rings -->
-    <svg class="tools-rings" width="900" height="900" viewBox="0 0 900 900">
-        <circle cx="450" cy="450" r="120" stroke-width="1"/>
-        <circle cx="450" cy="450" r="180" stroke-width="1"/>
-        <circle cx="450" cy="450" r="250" stroke-width="1"/>
-        <circle cx="450" cy="450" r="320" stroke-width="1"/>
-        <circle cx="450" cy="450" r="390" stroke-width="1"/>
-        <circle cx="450" cy="450" r="440" stroke-width="0.8"/>
-        <circle cx="450" cy="450" r="450" stroke-width="0.5"/>
+    <svg class="tools-rings" width="1800" height="1800" viewBox="0 0 1800 1800">
+        <circle cx="900" cy="900" r="80" stroke-width="1"/>
+        <circle cx="900" cy="900" r="160" stroke-width="1"/>
+        <circle cx="900" cy="900" r="260" stroke-width="1"/>
+        <circle cx="900" cy="900" r="380" stroke-width="1"/>
+        <circle cx="900" cy="900" r="500" stroke-width="1"/>
+        <circle cx="900" cy="900" r="620" stroke-width="1"/>
+        <circle cx="900" cy="900" r="740" stroke-width="0.8"/>
+        <circle cx="900" cy="900" r="860" stroke-width="0.6"/>
+        <circle cx="900" cy="900" r="900" stroke-width="0.5"/>
     </svg>
     <div class="tools-inner">
         <div class="tools-header reveal">
@@ -226,22 +228,22 @@
 <!-- ========== SECTION 3: ABOUT ========== -->
 <section id="about" class="about">
     <!-- Twinkling stars background -->
-    <svg class="twinkle-star ts1" style="top:8%;left:6%;width:6px;height:6px" viewBox="0 0 6 6"><circle cx="3" cy="3" r="2.5"/></svg>
-    <svg class="twinkle-star ts2" style="top:15%;right:10%;width:4px;height:4px" viewBox="0 0 4 4"><circle cx="2" cy="2" r="1.8"/></svg>
-    <svg class="twinkle-star ts3" style="top:25%;left:12%;width:5px;height:5px" viewBox="0 0 5 5"><circle cx="2.5" cy="2.5" r="2"/></svg>
-    <svg class="twinkle-star ts4" style="top:35%;right:18%;width:3px;height:3px" viewBox="0 0 3 3"><circle cx="1.5" cy="1.5" r="1.3"/></svg>
-    <svg class="twinkle-star ts5" style="top:50%;left:3%;width:4px;height:4px" viewBox="0 0 4 4"><circle cx="2" cy="2" r="1.5"/></svg>
-    <svg class="twinkle-star ts6" style="top:60%;right:5%;width:5px;height:5px" viewBox="0 0 5 5"><circle cx="2.5" cy="2.5" r="2.2"/></svg>
-    <svg class="twinkle-star ts7" style="top:70%;left:15%;width:3px;height:3px" viewBox="0 0 3 3"><circle cx="1.5" cy="1.5" r="1.2"/></svg>
-    <svg class="twinkle-star ts8" style="top:80%;right:14%;width:4px;height:4px" viewBox="0 0 4 4"><circle cx="2" cy="2" r="1.7"/></svg>
-    <svg class="twinkle-star ts1" style="top:12%;left:40%;width:3px;height:3px" viewBox="0 0 3 3"><circle cx="1.5" cy="1.5" r="1.2"/></svg>
-    <svg class="twinkle-star ts3" style="top:45%;right:35%;width:4px;height:4px" viewBox="0 0 4 4"><circle cx="2" cy="2" r="1.5"/></svg>
-    <svg class="twinkle-star ts5" style="top:75%;left:45%;width:3px;height:3px" viewBox="0 0 3 3"><circle cx="1.5" cy="1.5" r="1"/></svg>
-    <svg class="twinkle-star ts7" style="top:20%;right:30%;width:5px;height:5px" viewBox="0 0 5 5"><circle cx="2.5" cy="2.5" r="2"/></svg>
-    <svg class="twinkle-star ts2" style="top:55%;left:25%;width:3px;height:3px" viewBox="0 0 3 3"><circle cx="1.5" cy="1.5" r="1.3"/></svg>
-    <svg class="twinkle-star ts4" style="top:85%;left:35%;width:4px;height:4px" viewBox="0 0 4 4"><circle cx="2" cy="2" r="1.6"/></svg>
-    <svg class="twinkle-star ts6" style="top:10%;left:55%;width:3px;height:3px" viewBox="0 0 3 3"><circle cx="1.5" cy="1.5" r="1.2"/></svg>
-    <svg class="twinkle-star ts8" style="top:40%;left:50%;width:5px;height:5px" viewBox="0 0 5 5"><circle cx="2.5" cy="2.5" r="2"/></svg>
+    <svg class="twinkle-star ts1" style="top:8%;left:6%;width:18px;height:18px" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8"/></svg>
+    <svg class="twinkle-star ts2" style="top:15%;right:10%;width:10px;height:10px" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4.5"/></svg>
+    <svg class="twinkle-star ts3" style="top:25%;left:12%;width:14px;height:14px" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6"/></svg>
+    <svg class="twinkle-star ts4" style="top:35%;right:18%;width:8px;height:8px" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3.5"/></svg>
+    <svg class="twinkle-star ts5" style="top:50%;left:3%;width:12px;height:12px" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5"/></svg>
+    <svg class="twinkle-star ts6" style="top:60%;right:5%;width:16px;height:16px" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7"/></svg>
+    <svg class="twinkle-star ts7" style="top:70%;left:15%;width:7px;height:7px" viewBox="0 0 7 7"><circle cx="3.5" cy="3.5" r="3"/></svg>
+    <svg class="twinkle-star ts8" style="top:80%;right:14%;width:11px;height:11px" viewBox="0 0 11 11"><circle cx="5.5" cy="5.5" r="5"/></svg>
+    <svg class="twinkle-star ts1" style="top:12%;left:40%;width:7px;height:7px" viewBox="0 0 7 7"><circle cx="3.5" cy="3.5" r="3"/></svg>
+    <svg class="twinkle-star ts3" style="top:45%;right:35%;width:13px;height:13px" viewBox="0 0 13 13"><circle cx="6.5" cy="6.5" r="5.5"/></svg>
+    <svg class="twinkle-star ts5" style="top:75%;left:45%;width:9px;height:9px" viewBox="0 0 9 9"><circle cx="4.5" cy="4.5" r="4"/></svg>
+    <svg class="twinkle-star ts7" style="top:20%;right:30%;width:15px;height:15px" viewBox="0 0 15 15"><circle cx="7.5" cy="7.5" r="6.5"/></svg>
+    <svg class="twinkle-star ts2" style="top:55%;left:25%;width:8px;height:8px" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3.5"/></svg>
+    <svg class="twinkle-star ts4" style="top:85%;left:35%;width:12px;height:12px" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5"/></svg>
+    <svg class="twinkle-star ts6" style="top:10%;left:55%;width:6px;height:6px" viewBox="0 0 6 6"><circle cx="3" cy="3" r="2.5"/></svg>
+    <svg class="twinkle-star ts8" style="top:40%;left:50%;width:16px;height:16px" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7"/></svg>
 
     <div class="about-inner">
         <div class="about-photo-side reveal">
@@ -272,7 +274,7 @@
     <div class="footer-content reveal">
         <h2>Get in Touch</h2>
         <p><a href="mailto:matthewgreenbaum@gmail.com" class="email">matthewgreenbaum@gmail.com</a></p>
-        <a href="https://www.linkedin.com/in/mattgreenbaum" target="_blank" class="footer-btn">LinkedIn →</a>
+        <a href="https://www.linkedin.com/in/mattgreenbaum" target="_blank" class="footer-btn">Connect on LinkedIn</a>
     </div>
 </footer>
 
