@@ -25,11 +25,12 @@
         /* ===== HERO ===== */
         .hero{position:relative;padding:4rem 2rem;min-height:auto;display:flex;align-items:center;justify-content:center;overflow:hidden}
         .hero-verticals{position:absolute;inset:0;z-index:0;pointer-events:none}
-        .hero-verticals line{stroke:rgba(255,255,255,0.035);stroke-width:1}
+        .hero-verticals line{stroke:rgba(255,255,255,0.12);stroke-width:1}
         .hero-blob-wrap{position:relative;z-index:1;width:100%;max-width:960px;margin:0 auto}
         .hero-blob{position:relative;background:#fff;padding:6rem 5rem 5rem;border-radius:42% 58% 38% 62% / 48% 36% 64% 52%;display:flex;flex-direction:column;align-items:center;text-align:center}
         .hero-blob h1{font-family:'Figtree',sans-serif;font-size:7rem;font-weight:500;color:#2F1664;letter-spacing:-0.03em;line-height:1;margin-bottom:1.5rem}
-        .hero-blob h1 .dot{color:#EAE7EF}
+        .hero-blob h1 .dot{color:#EAE7EF;animation:dotpulse 3s ease-in-out infinite}
+        @keyframes dotpulse{0%,100%{color:#EAE7EF}50%{color:#fff}}
         .hero-blob h2{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:400;color:#5A5069;line-height:1.7;max-width:480px;margin-bottom:2.5rem}
         .hero-btns{display:flex;gap:1rem}
         .hero-btns a{display:inline-block;padding:0.85rem 2.2rem;background:#2F1664;color:#fff;text-decoration:none;font-family:'Figtree',sans-serif;font-size:0.9rem;font-weight:600;border-radius:8px;transition:background 0.2s ease,transform 0.15s ease}
@@ -100,7 +101,7 @@
         /* ===== FOOTER ===== */
         .footer{background:#2F1664;padding:5rem 2rem;text-align:center;position:relative;overflow:hidden}
         .footer-verticals{position:absolute;inset:0;z-index:0;pointer-events:none}
-        .footer-verticals line{stroke:rgba(255,255,255,0.035);stroke-width:1}
+        .footer-verticals line{stroke:rgba(255,255,255,0.12);stroke-width:1}
         .footer-content{position:relative;z-index:1}
         .footer h2{font-family:'Figtree',sans-serif;font-size:4rem;font-weight:500;color:#fff;margin-bottom:1rem;letter-spacing:-0.03em}
         .footer p{color:rgba(255,255,255,0.6);font-size:0.95rem;margin-bottom:1.25rem}
