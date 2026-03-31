@@ -81,7 +81,7 @@
         @keyframes spintwinkle{0%{opacity:0.1;transform:rotate(0deg)}25%{opacity:0.3}50%{opacity:0.1;transform:rotate(180deg)}75%{opacity:0.3}100%{opacity:0.1;transform:rotate(360deg)}}
         @keyframes lineflash{0%,100%{opacity:1}40%{opacity:0.15}60%{opacity:0.15}}
         @keyframes dotbounce{0%,100%{transform:translateY(0);opacity:0.3}50%{transform:translateY(-4px);opacity:0.7}}
-        @keyframes calcpulse{0%,100%{fill-opacity:0}50%{fill-opacity:0.3}}
+        @keyframes calcpress{0%,100%{transform:scale(1);fill-opacity:0.1}50%{transform:scale(1.35);fill-opacity:0.6}}
         .twinkle-star{position:absolute;pointer-events:none;z-index:0}
         .twinkle-star path,.twinkle-star polygon{fill:#C8C1D4}
         .ts1{animation:twinkle 3s ease-in-out infinite}
@@ -208,13 +208,13 @@
                     <div class="card-icon"><svg viewBox="0 0 64 64" fill="none">
                         <rect x="12" y="8" width="40" height="48" rx="5" stroke="#2F1664" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
                         <rect x="18" y="14" width="28" height="10" rx="2" fill="#EAE7EF" stroke="#2F1664" stroke-width="1.5"/>
-                        <circle cx="22" cy="32" r="3" stroke="#2F1664" stroke-width="1.5" fill="#2F1664" style="animation:calcpulse 3s ease-in-out infinite"/>
-                        <circle cx="32" cy="32" r="3" stroke="#2F1664" stroke-width="1.5" fill="#2F1664" style="animation:calcpulse 3s ease-in-out 0.3s infinite"/>
-                        <circle cx="42" cy="32" r="3" stroke="#2F1664" stroke-width="1.5" fill="#2F1664" style="animation:calcpulse 3s ease-in-out 0.6s infinite"/>
-                        <circle cx="22" cy="42" r="3" stroke="#2F1664" stroke-width="1.5" fill="#2F1664" style="animation:calcpulse 3s ease-in-out 0.9s infinite"/>
-                        <circle cx="32" cy="42" r="3" stroke="#2F1664" stroke-width="1.5" fill="#2F1664" style="animation:calcpulse 3s ease-in-out 1.2s infinite"/>
+                        <circle cx="22" cy="32" r="3" stroke="#2F1664" stroke-width="1.5" fill="#2F1664" style="animation:calcpress 1.8s ease-in-out infinite;transform-origin:22px 32px"/>
+                        <circle cx="32" cy="32" r="3" stroke="#2F1664" stroke-width="1.5" fill="#2F1664" style="animation:calcpress 1.8s ease-in-out 0.25s infinite;transform-origin:32px 32px"/>
+                        <circle cx="42" cy="32" r="3" stroke="#2F1664" stroke-width="1.5" fill="#2F1664" style="animation:calcpress 1.8s ease-in-out 0.5s infinite;transform-origin:42px 32px"/>
+                        <circle cx="22" cy="42" r="3" stroke="#2F1664" stroke-width="1.5" fill="#2F1664" style="animation:calcpress 1.8s ease-in-out 0.75s infinite;transform-origin:22px 42px"/>
+                        <circle cx="32" cy="42" r="3" stroke="#2F1664" stroke-width="1.5" fill="#2F1664" style="animation:calcpress 1.8s ease-in-out 1s infinite;transform-origin:32px 42px"/>
                         <rect x="38" y="39" width="8" height="6" rx="1.5" fill="#2F1664" opacity="0.2" stroke="#2F1664" stroke-width="1.5"/>
-                        <line x1="22" y1="18" x2="35" y2="18" stroke="#2F1664" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                        <line x1="22" y1="18" x2="35" y2="18" stroke="#2F1664" stroke-width="1.5" stroke-linecap="round" style="animation:lineflash 2.4s ease-in-out infinite"/>
                     </svg></div>
                     <h3>Budget Allogator</h3>
 
