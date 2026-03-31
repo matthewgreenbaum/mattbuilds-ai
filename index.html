@@ -104,16 +104,11 @@
         .about-bio p{font-family:Helvetica,Arial,sans-serif;font-size:1rem;color:#5A5069;line-height:1.7}
 
         /* ===== FOOTER ===== */
-        .footer{background:#2F1664;padding:5rem 2rem;text-align:center;position:relative;overflow:hidden}
-        .footer-verticals{position:absolute;inset:0;z-index:0;pointer-events:none}
-        .footer-verticals line{stroke:rgba(255,255,255,0.12);stroke-width:1}
-        .footer-content{position:relative;z-index:1}
-        .footer h2{font-family:'Figtree',sans-serif;font-size:4rem;font-weight:500;color:#fff;margin-bottom:1rem;letter-spacing:-0.03em}
-        .footer p{color:rgba(255,255,255,0.6);font-size:0.95rem;margin-bottom:1.25rem}
-        .footer a.email{color:#fff;text-decoration:none;font-weight:400;font-size:1.05rem}
-        .footer a.email:hover{opacity:0.8}
-        .footer-btn{display:inline-block;margin-top:1rem;padding:0.6rem 1.2rem;background:#fff;color:#2F1664;text-decoration:none;font-family:'Figtree',sans-serif;font-size:0.85rem;font-weight:700;border-radius:8px;transition:all 0.2s ease}
-        .footer-btn:hover{background:#EAE7EF;transform:translateY(-2px)}
+        .about-contact{display:flex;flex-direction:column;gap:0.75rem;margin-top:1.5rem}
+        .about-contact-link{display:inline-flex;align-items:center;gap:0.5rem;font-family:Helvetica,Arial,sans-serif;font-size:0.95rem;color:#2F1664;text-decoration:none;transition:opacity 0.2s ease}
+        .about-contact-link:hover{opacity:0.6}
+        .footer-slim{background:#2F1664;padding:1.5rem 2rem;text-align:center}
+        .footer-slim p{font-family:Helvetica,Arial,sans-serif;font-size:0.8rem;color:rgba(255,255,255,0.4);margin:0}
 
         /* ===== RESPONSIVE ===== */
         @media(max-width:900px){.cards{grid-template-columns:1fr;max-width:400px;margin:0 auto}.about-inner{flex-direction:column;text-align:center}}
@@ -141,7 +136,7 @@
             <h2>I've spent the past decade-plus in demand gen and know how quality work gets slowed down by the process around it. So I started learning to build with AI and create tools that help marketers do the work faster and better.</h2>
             <div class="hero-btns">
                 <a href="#tools">Projects</a>
-                <a href="#contact">Get in Touch</a>
+                <a href="#about">Get in Touch</a>
             </div>
         </div>
     </div>
@@ -269,27 +264,17 @@
             <h2>Matt Greenbaum</h2>
             <h3>Demand Gen &amp; Integrated Marketing Expert <span style="font-size:1.4em;font-weight:300;vertical-align:-0.05em">|</span> ex-Large Reputable Companies</h3>
             <p>I'm a demand gen leader who's spent 12+ years turning ambiguity into pipeline at companies like Google, Iterable, and Yelp. I craft the strategies, build the campaigns, and own the outcomes. Now I'm figuring out what's next and sharing the work as I go.</p>
+            <div class="about-contact">
+                <a href="mailto:matthewgreenbaum@gmail.com" class="about-contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="#2F1664" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4 12 13 2 4"/></svg>matthewgreenbaum@gmail.com</a>
+                <a href="https://www.linkedin.com/in/mattgreenbaum" target="_blank" class="about-contact-link"><svg viewBox="0 0 24 24" fill="#2F1664" width="20" height="20"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>LinkedIn</a>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- ========== SECTION 4: FOOTER / CONTACT ========== -->
-<footer id="contact" class="footer">
-    <svg class="footer-verticals" viewBox="0 0 1200 400" preserveAspectRatio="none">
-        <line x1="75" y1="0" x2="75" y2="400"/>
-        <line x1="225" y1="0" x2="225" y2="400"/>
-        <line x1="375" y1="0" x2="375" y2="400"/>
-        <line x1="525" y1="0" x2="525" y2="400"/>
-        <line x1="675" y1="0" x2="675" y2="400"/>
-        <line x1="825" y1="0" x2="825" y2="400"/>
-        <line x1="975" y1="0" x2="975" y2="400"/>
-        <line x1="1125" y1="0" x2="1125" y2="400"/>
-    </svg>
-    <div class="footer-content reveal">
-        <h2>Get in Touch</h2>
-        <p><a href="mailto:matthewgreenbaum@gmail.com" class="email">matthewgreenbaum@gmail.com</a></p>
-        <a href="https://www.linkedin.com/in/mattgreenbaum" target="_blank" class="footer-btn">Connect on LinkedIn</a>
-    </div>
+<!-- ========== FOOTER ========== -->
+<footer class="footer-slim">
+    <p>&copy; 2026 Matt Greenbaum</p>
 </footer>
 
 <script>
