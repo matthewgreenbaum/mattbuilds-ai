@@ -3226,7 +3226,7 @@
       toast.className = "usage-toast";
       toast.innerHTML = `<p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF9C7E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>You've hit a usage limit. Just wait a moment and try again — everything will work just fine.</p><div class="usage-toast-bar"></div>`;
       $("#messages").appendChild(toast);
-      scrollChat();
+      requestAnimationFrame(() => { requestAnimationFrame(() => scrollChat()); });
       setTimeout(() => { toast.classList.add("fade-out"); setTimeout(() => toast.remove(), 300); }, 10000);
     }
 
