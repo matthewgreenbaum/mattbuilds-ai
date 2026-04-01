@@ -942,6 +942,15 @@
       border-radius: 8px;
     }
 
+    /* ---------- usage toast ---------- */
+    .usage-toast{position:fixed;top:24px;left:50%;transform:translateX(-50%);background:#2F1664;color:#fff;padding:20px 28px;border-radius:14px;z-index:9999;text-align:center;max-width:420px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,0.3);animation:toast-in 0.3s ease}
+    .usage-toast p{font-family:Helvetica,Arial,sans-serif;font-size:0.9rem;line-height:1.6;margin:0 0 16px}
+    .usage-toast-btn{background:linear-gradient(90deg,#FF8096,#FF9C7E,#43D5B5,#FF9C7E,#FF8096);background-size:400% 100%;animation:gradient-shift 12s ease infinite;color:#fff;border:none;border-radius:999px;padding:9px 24px;font-family:Helvetica,Arial,sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer;transition:opacity 0.15s,transform 0.15s}
+    .usage-toast-btn:hover{opacity:0.9;transform:scale(1.02)}
+    .usage-toast.fade-out{animation:toast-out 0.3s ease forwards}
+    @keyframes toast-in{from{opacity:0;transform:translateX(-50%) translateY(-12px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+    @keyframes toast-out{from{opacity:1;transform:translateX(-50%) translateY(0)}to{opacity:0;transform:translateX(-50%) translateY(-12px)}}
+
     /* ---------- clickable option buttons ---------- */
     .option-buttons {
       display: flex;
@@ -3205,6 +3214,16 @@
       scrollChat();
     }
 
+    function showUsageToast() {
+      const existing = document.querySelector(".usage-toast");
+      if (existing) existing.remove();
+      const toast = document.createElement("div");
+      toast.className = "usage-toast";
+      toast.innerHTML = `<p>You've hit a usage limit. Try refreshing and slowing down just a bit, and everything will work just fine.</p><button class="usage-toast-btn" onclick="location.reload()">Refresh</button>`;
+      document.body.appendChild(toast);
+      setTimeout(() => { toast.classList.add("fade-out"); setTimeout(() => toast.remove(), 300); }, 5000);
+    }
+
     function setTyping(on) {
       $("#typingIndicator").classList.toggle("visible", on);
       scrollChat();
@@ -3444,7 +3463,11 @@
         // Auto-stream blueprint in the background
         streamBlueprint();
       } catch (err) {
-        addErrorMessage("Something went wrong: " + err.message);
+        if (/429|529|rate|overloaded/i.test(err.message)) {
+          showUsageToast();
+        } else {
+          showUsageToast();
+        }
       } finally {
         chatBusy = false;
         $("#sendBtn").disabled = false;
@@ -3618,7 +3641,7 @@
           bufferEl.innerHTML = "";
           return;
         }
-        // On error, keep existing content
+        // On error, keep existing content and show toast
         bufferEl.innerHTML = "";
         rawBlueprintMarkdown = previousMarkdown;
         bpEl.classList.remove("fading");
@@ -3626,6 +3649,7 @@
         if (previousMarkdown) {
           $("#copyBtn").classList.add("visible"); $("#exportDropdown").classList.add("visible");
         }
+        showUsageToast();
       } finally {
         blueprintBusy = false;
         blueprintAbortController = null;
