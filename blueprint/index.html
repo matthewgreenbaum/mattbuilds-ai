@@ -55,7 +55,7 @@
       white-space: nowrap;
     }
     .gradient-word {
-      background: linear-gradient(90deg, #2F1664, #2F1664, #1c767b, #FF9C7E, #FF8096, #2F1664, #2F1664);
+      background: linear-gradient(90deg, #FF8096, #FF9C7E, #43D5B5, #FF9C7E, #FF8096);
       background-size: 400% 100%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -67,7 +67,7 @@
       white-space: nowrap;
     }
     .msg .gradient-text {
-      background: linear-gradient(90deg, #2F1664, #2F1664, #1c767b, #FF9C7E, #FF8096, #2F1664, #2F1664);
+      background: linear-gradient(90deg, #FF8096, #FF9C7E, #43D5B5, #FF9C7E, #FF8096);
       background-size: 400% 100%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -387,6 +387,10 @@
       border-radius: 4px;
     }
     .sidebar-footer-link:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.06); }
+    .sidebar-logo{display:flex;align-items:center;justify-content:center;gap:4px;padding:12px 16px;text-decoration:none;transition:opacity 0.2s ease}
+    .sidebar-logo:hover{opacity:0.8}
+    .sidebar-logo-blob{width:32px;height:32px;background:#fff;border-radius:60% 40% 55% 45%/50% 60% 40% 50%;display:flex;align-items:center;justify-content:center;font-family:'Figtree',sans-serif;font-size:0.65rem;font-weight:700;color:#2F1664;flex-shrink:0}
+    .sidebar-logo-suffix{font-family:'Figtree',sans-serif;font-size:0.75rem;font-weight:500;color:rgba(255,255,255,0.5)}
 
     /* ---------- about overlay ---------- */
     .about-overlay {
@@ -885,7 +889,7 @@
       margin-top: 2px;
     }
     .msg-row.assistant .msg-avatar {
-      background: #2F1664;
+      background: linear-gradient(135deg, #FF9C7E, #FF8096);
     }
     .msg-row.user .msg-avatar {
       background: #1c767b;
@@ -1019,7 +1023,7 @@
       color: #2F1664;
     }
     .option-submit-btn {
-      background: linear-gradient(90deg, #2F1664, #2F1664, #1c767b, #FF9C7E, #FF8096, #2F1664, #2F1664);
+      background: linear-gradient(90deg, #FF8096, #FF9C7E, #43D5B5, #FF9C7E, #FF8096);
       background-size: 400% 100%;
       animation: gradient-shift 12s ease infinite;
       color: #fff;
@@ -1725,12 +1729,15 @@
         <button class="sidebar-footer-link" onclick="showAboutPage('suggestions')">Notes</button>
       </div>
     </div>
+    <a href="/" class="sidebar-logo" title="Back to mattbuilds.ai">
+      <span class="sidebar-logo-blob">mb</span>
+      <span class="sidebar-logo-suffix">.ai</span>
+    </a>
   </aside>
   <button class="sidebar-toggle-btn" id="sidebarToggleBtn" onclick="toggleSidebar()" title="Toggle sidebar">&#xAB;</button>
 
   <div class="app-body">
   <header class="app-header">
-    <a href="/" class="back-home-link">&larr; mattbuilds.ai</a>
     <h1>Campaign Blueprint</h1>
     <span class="gradient-word">AI-powered campaign strategy builder</span>
     <button class="btn-new-blueprint" onclick="newCampaign()">+ New Campaign</button>
