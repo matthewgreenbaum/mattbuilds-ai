@@ -351,7 +351,7 @@
 
     /* ---------- sidebar footer ---------- */
     .sidebar-footer {
-      padding: 0 16px 14px;
+      padding: 0 16px 6px;
       flex-shrink: 0;
     }
     .sidebar-footer hr {
@@ -387,12 +387,12 @@
       border-radius: 4px;
     }
     .sidebar-footer-link:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.06); }
-    .sidebar-brand{padding:16px 16px 12px;margin-top:12px;border-top:1px solid rgba(255,255,255,0.1);text-decoration:none;display:flex;flex-direction:column;gap:6px;flex-shrink:0}
-    .sidebar-brand-label{font-family:Helvetica,Arial,sans-serif;font-size:0.6rem;font-weight:600;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em}
-    .sidebar-logo{display:flex;align-items:center;gap:4px;text-decoration:none;transition:opacity 0.2s ease}
+    .sidebar-brand{padding:14px 16px 12px;margin-top:10px;border-top:1px solid rgba(255,255,255,0.1);flex-shrink:0}
+    .sidebar-logo{display:flex;align-items:center;gap:5px;text-decoration:none;transition:opacity 0.2s ease}
     .sidebar-logo:hover{opacity:0.8}
-    .sidebar-logo-blob{width:32px;height:24px;background:#fff;border-radius:60% 40% 55% 45%/50% 60% 40% 50%;display:flex;align-items:center;justify-content:center;font-family:'Figtree',sans-serif;font-size:0.7rem;font-weight:900;color:#2F1664;flex-shrink:0}
-    .sidebar-logo-suffix{font-family:'Figtree',sans-serif;font-size:0.75rem;font-weight:700;color:#fff}
+    .sidebar-logo-label{font-family:Helvetica,Arial,sans-serif;font-size:0.65rem;font-weight:500;color:rgba(255,255,255,0.4)}
+    .sidebar-logo-blob{width:28px;height:20px;background:#fff;border-radius:60% 40% 55% 45%/50% 60% 40% 50%;display:flex;align-items:center;justify-content:center;font-family:'Figtree',sans-serif;font-size:0.6rem;font-weight:900;color:#2F1664;flex-shrink:0}
+    .sidebar-logo-suffix{font-family:'Figtree',sans-serif;font-size:0.7rem;font-weight:700;color:#fff}
 
     /* ---------- about overlay ---------- */
     .about-overlay {
@@ -1730,8 +1730,8 @@
         <button class="sidebar-footer-link" onclick="showAboutPage('suggestions')">Notes</button>
       </div>
       <div class="sidebar-brand">
-        <span class="sidebar-brand-label">Powered by</span>
         <a href="/" class="sidebar-logo" title="Back to mattbuilds.ai">
+          <span class="sidebar-logo-label">Powered by</span>
           <span class="sidebar-logo-blob">mb</span>
           <span class="sidebar-logo-suffix">.ai</span>
         </a>
