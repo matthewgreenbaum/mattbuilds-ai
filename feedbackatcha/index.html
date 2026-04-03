@@ -5,41 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FeedbackAtcha</title>
   <!-- v6.2 -->
-  <script>
-  // API key loaded from localStorage — prompted on first visit
-  let ANTHROPIC_API_KEY = localStorage.getItem("mattbuilds_api_key") || "";
-
-  function promptForApiKey() {
-    const overlay = document.createElement("div");
-    overlay.id = "api-key-overlay";
-    overlay.innerHTML = `
-      <div style="position:fixed;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:99999;font-family:'Inter',sans-serif">
-        <div style="background:#fff;border-radius:16px;padding:2.5rem;max-width:440px;width:90%;box-shadow:0 16px 50px rgba(0,0,0,0.15)">
-          <h2 style="font-family:'DM Serif Display',serif;font-size:1.5rem;margin-bottom:0.5rem;color:#1A1A1A">Enter API Key</h2>
-          <p style="color:#6B6B6B;font-size:0.9rem;line-height:1.6;margin-bottom:1.25rem">This app is powered by Claude. Paste an <a href="https://console.anthropic.com/settings/keys" target="_blank" style="color:#6B3FA0;text-decoration:none;font-weight:500">Anthropic API key</a> to get started. Your key is stored locally in your browser and never sent to any server besides Anthropic.</p>
-          <input id="api-key-input" type="password" placeholder="sk-ant-..." style="width:100%;padding:0.75rem 1rem;border:1.5px solid #E0E0E0;border-radius:10px;font-size:0.95rem;font-family:'Inter',sans-serif;outline:none;margin-bottom:1rem" />
-          <button id="api-key-submit" style="width:100%;padding:0.75rem;background:#6B3FA0;color:#fff;border:none;border-radius:10px;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif">Start Using FeedbackAtcha</button>
-        </div>
-      </div>`;
-    document.body.appendChild(overlay);
-    document.getElementById("api-key-input").focus();
-    document.getElementById("api-key-submit").addEventListener("click", function() {
-      const key = document.getElementById("api-key-input").value.trim();
-      if (key) {
-        ANTHROPIC_API_KEY = key;
-        localStorage.setItem("mattbuilds_api_key", key);
-        overlay.remove();
-      }
-    });
-    document.getElementById("api-key-input").addEventListener("keydown", function(e) {
-      if (e.key === "Enter") document.getElementById("api-key-submit").click();
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", function() {
-    if (!ANTHROPIC_API_KEY) promptForApiKey();
-  });
-  </script>
   <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -760,7 +725,7 @@ async function submitMessage(){const input=document.getElementById('main-input')
 
 function addUserMessage(text){const thread=document.getElementById('thread');thread.classList.add('active');const wrap=document.createElement('div');wrap.className='msg-user-wrap';const msg=document.createElement('div');msg.className='msg msg-user';msg.innerHTML=`<div class="msg-body">${escapeHtml(text)}</div>`;const avatar=document.createElement('div');avatar.className='user-avatar-chat';avatar.innerHTML=getUserAvatarHTML();wrap.appendChild(msg);wrap.appendChild(avatar);thread.appendChild(wrap);scrollThread()}
 
-async function streamToThread(messages){const thread=document.getElementById('thread');const msgId='ai-msg-'+Date.now();const wrap=document.createElement('div');wrap.className='msg-ai-wrap';const orb=document.createElement('div');orb.className='orb-chat';const msg=document.createElement('div');msg.className='msg msg-ai';msg.id=msgId;msg.innerHTML=`<div class="msg-header" id="${msgId}-header" style="display:none"><button class="expand-msg-btn" onclick="expandMessage('${msgId}')" title="Expand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button><button class="copy-msg-btn" onclick="copyMessage('${msgId}')" title="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></div><div class="msg-body" id="${msgId}-body"></div>`;wrap.appendChild(orb);wrap.appendChild(msg);thread.appendChild(wrap);scrollThread();const bodyEl=document.getElementById(`${msgId}-body`);const response=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':ANTHROPIC_API_KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:4096,system:SYSTEM_PROMPT,messages:messages,stream:true})});if(!response.ok){const errBody=await response.text();throw new Error(`API returned ${response.status}: ${errBody}`)}const reader=response.body.getReader();const decoder=new TextDecoder();let fullText='';let buffer='';while(true){const{done,value}=await reader.read();if(done)break;buffer+=decoder.decode(value,{stream:true});const lines=buffer.split('\n');buffer=lines.pop()||'';for(const line of lines){if(line.startsWith('data: ')){const data=line.slice(6);if(data==='[DONE]')continue;try{const parsed=JSON.parse(data);if(parsed.type==='content_block_delta'&&parsed.delta?.text){fullText+=parsed.delta.text;bodyEl.innerHTML=renderMarkdown(fullText);scrollThread()}}catch(e){}}}}state.lastAiText=fullText;state.conversationHistory.push({role:'assistant',content:fullText});if(fullText.length>150){const hdr=document.getElementById(`${msgId}-header`);if(hdr)hdr.style.display='flex'}setLoading(false);scrollThread()}
+async function streamToThread(messages){const thread=document.getElementById('thread');const msgId='ai-msg-'+Date.now();const wrap=document.createElement('div');wrap.className='msg-ai-wrap';const orb=document.createElement('div');orb.className='orb-chat';const msg=document.createElement('div');msg.className='msg msg-ai';msg.id=msgId;msg.innerHTML=`<div class="msg-header" id="${msgId}-header" style="display:none"><button class="expand-msg-btn" onclick="expandMessage('${msgId}')" title="Expand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button><button class="copy-msg-btn" onclick="copyMessage('${msgId}')" title="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></div><div class="msg-body" id="${msgId}-body"></div>`;wrap.appendChild(orb);wrap.appendChild(msg);thread.appendChild(wrap);scrollThread();const bodyEl=document.getElementById(`${msgId}-body`);const response=await fetch('/.netlify/functions/api',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:4096,system:SYSTEM_PROMPT,messages:messages,stream:true})});if(!response.ok){const errBody=await response.text();throw new Error(`API returned ${response.status}: ${errBody}`)}const reader=response.body.getReader();const decoder=new TextDecoder();let fullText='';let buffer='';while(true){const{done,value}=await reader.read();if(done)break;buffer+=decoder.decode(value,{stream:true});const lines=buffer.split('\n');buffer=lines.pop()||'';for(const line of lines){if(line.startsWith('data: ')){const data=line.slice(6);if(data==='[DONE]')continue;try{const parsed=JSON.parse(data);if(parsed.type==='content_block_delta'&&parsed.delta?.text){fullText+=parsed.delta.text;bodyEl.innerHTML=renderMarkdown(fullText);scrollThread()}}catch(e){}}}}state.lastAiText=fullText;state.conversationHistory.push({role:'assistant',content:fullText});if(fullText.length>150){const hdr=document.getElementById(`${msgId}-header`);if(hdr)hdr.style.display='flex'}setLoading(false);scrollThread()}
 
 function scrollThread(){const thread=document.getElementById('thread');thread.scrollTop=thread.scrollHeight}
 
