@@ -2402,8 +2402,8 @@
     function renderAvatarInto(el, avatar) {
       if (!avatar || avatar.type === "default" || avatar.type === "initials") {
         const initials = getInitials();
-        el.innerHTML = `<span style="font-size:${initials.length > 1 ? '0.75em' : '0.9em'};font-weight:600;letter-spacing:0.5px">${initials}</span>`;
-        el.style.background = "#1c767b";
+        el.innerHTML = `<span style="font-size:${initials.length > 1 ? '0.75em' : '0.9em'};font-weight:700;letter-spacing:0.5px;color:#2e7d32">${initials}</span>`;
+        el.style.background = "#c8e6c9";
       } else if (avatar.type === "emoji") {
         el.innerHTML = `<span class="emoji-avatar">${avatar.value}</span>`;
         el.style.background = "#1c767b";
