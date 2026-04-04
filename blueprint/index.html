@@ -3770,8 +3770,46 @@
       }
     }
 
+    // Convert scorecard divs to a styled table for clean clipboard paste
+    function scorecardsToTable(html) {
+      const scorecardMatch = html.match(/<div class="sq-scorecard">([\s\S]*?)<\/div>\s*(?=<|$)/);
+      if (!scorecardMatch) return html;
+
+      const cardRegex = /<div class="sq-card sq-(\w+)">[\s\S]*?<div class="sq-tier">(.*?)<\/div>\s*<div class="sq-dimension">(.*?)<\/div>\s*<div class="sq-rationale">(.*?)<\/div>[\s\S]*?<\/div>\s*<\/div>/g;
+      const tierColors = {
+        green: { bg: "#E8F5E9", text: "#2E7D32" },
+        amber: { bg: "#FFF3E0", text: "#E65100" },
+        red: { bg: "#FFEBEE", text: "#C62828" },
+      };
+
+      const rows = [];
+      let m;
+      while ((m = cardRegex.exec(scorecardMatch[1])) !== null) {
+        const [, color, tier, dimension, rationale] = m;
+        const c = tierColors[color] || tierColors.green;
+        rows.push(`<tr>
+          <td style="font-family: Helvetica, Arial, sans-serif; padding: 10px 12px; border: 1px solid #EAE7EF; vertical-align: top; font-weight: 600; color: #1A1A1A; width: 30%;">${dimension}</td>
+          <td style="font-family: Helvetica, Arial, sans-serif; padding: 10px 12px; border: 1px solid #EAE7EF; vertical-align: top; background: ${c.bg}; color: ${c.text}; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-size: 9pt; width: 20%;">${tier}</td>
+          <td style="font-family: Helvetica, Arial, sans-serif; padding: 10px 12px; border: 1px solid #EAE7EF; vertical-align: top; color: #1A1A2E; font-size: 10pt; line-height: 1.5;">${rationale}</td>
+        </tr>`);
+      }
+
+      const table = `<table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 10pt;">
+        <thead><tr>
+          <th style="font-family: Helvetica, Arial, sans-serif; padding: 8px 12px; border: 1px solid #EAE7EF; background: #EAE7EF; font-weight: 600; text-align: left; color: #2F1664; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.04em;">Dimension</th>
+          <th style="font-family: Helvetica, Arial, sans-serif; padding: 8px 12px; border: 1px solid #EAE7EF; background: #EAE7EF; font-weight: 600; text-align: left; color: #2F1664; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.04em;">Rating</th>
+          <th style="font-family: Helvetica, Arial, sans-serif; padding: 8px 12px; border: 1px solid #EAE7EF; background: #EAE7EF; font-weight: 600; text-align: left; color: #2F1664; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.04em;">Rationale</th>
+        </tr></thead>
+        <tbody>${rows.join("")}</tbody>
+      </table>`;
+
+      return html.replace(scorecardMatch[0], table);
+    }
+
     // Apply inline styles to rendered HTML for clipboard paste (Google Docs, Word)
     function styledSection(html) {
+      // First convert scorecards to a proper table
+      html = scorecardsToTable(html);
       return html
         .replace(/<h2>/g, '<h2 style="font-family: Helvetica, Arial, sans-serif; font-size: 13pt; font-weight: 700; color: #2F1664; margin: 20px 0 6px;">')
         .replace(/<h3>/g, '<h3 style="font-family: Helvetica, Arial, sans-serif; font-size: 11pt; font-weight: 600; color: #2F1664; margin: 14px 0 4px;">')
