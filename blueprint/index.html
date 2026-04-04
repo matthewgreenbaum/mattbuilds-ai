@@ -2345,6 +2345,36 @@
       { emoji: "🎯", name: "Bullseye" },
       { emoji: "🐻", name: "Bear" },
       { emoji: "💎", name: "Gem" },
+      { emoji: "🔥", name: "Fire" },
+      { emoji: "⚡", name: "Lightning" },
+      { emoji: "🎨", name: "Palette" },
+      { emoji: "🧠", name: "Brain" },
+      { emoji: "🦄", name: "Unicorn" },
+      { emoji: "🐝", name: "Bee" },
+      { emoji: "🦋", name: "Butterfly" },
+      { emoji: "🐙", name: "Octopus" },
+      { emoji: "🌵", name: "Cactus" },
+      { emoji: "🍄", name: "Mushroom" },
+      { emoji: "🌸", name: "Blossom" },
+      { emoji: "🍕", name: "Pizza" },
+      { emoji: "☕", name: "Coffee" },
+      { emoji: "🎸", name: "Guitar" },
+      { emoji: "🎲", name: "Dice" },
+      { emoji: "🏔️", name: "Mountain" },
+      { emoji: "🌙", name: "Moon" },
+      { emoji: "⭐", name: "Star" },
+      { emoji: "🐺", name: "Wolf" },
+      { emoji: "🦅", name: "Eagle" },
+      { emoji: "🐢", name: "Turtle" },
+      { emoji: "🦉", name: "Owl" },
+      { emoji: "🐬", name: "Dolphin" },
+      { emoji: "🍋", name: "Lemon" },
+      { emoji: "🫐", name: "Blueberry" },
+      { emoji: "🌶️", name: "Pepper" },
+      { emoji: "🧊", name: "Ice" },
+      { emoji: "💜", name: "Purple Heart" },
+      { emoji: "🪐", name: "Saturn" },
+      { emoji: "🎭", name: "Theater" },
     ];
 
     // Avatar state: { type: "default" | "emoji" | "upload", value: string }
@@ -2360,7 +2390,7 @@
 
     function renderAvatarInto(el, avatar) {
       if (!avatar || avatar.type === "default") {
-        el.innerHTML = "You";
+        el.innerHTML = `<span class="emoji-avatar">🥑</span>`;
         el.style.background = "#1c767b";
       } else if (avatar.type === "emoji") {
         el.innerHTML = `<span class="emoji-avatar">${avatar.value}</span>`;
@@ -2446,7 +2476,7 @@
     const NAME_STORAGE_KEY = "userDisplayName";
 
     function loadDisplayName() {
-      return localStorage.getItem(NAME_STORAGE_KEY) || "Your Avatar";
+      return localStorage.getItem(NAME_STORAGE_KEY) || "Click to Edit Your Name";
     }
 
     function saveDisplayName(name) {
@@ -2464,7 +2494,7 @@
 
       const input = document.createElement("input");
       input.type = "text";
-      input.value = current === "Your Avatar" ? "" : current;
+      input.value = current === "Click to Edit Your Name" ? "" : current;
       input.placeholder = "Enter your name";
       input.style.cssText = "background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:4px;color:#fff;font-family:inherit;font-size:0.88rem;font-weight:600;padding:2px 6px;outline:none;width:100%;";
       nameEl.replaceWith(input);
