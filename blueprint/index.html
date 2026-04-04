@@ -1446,7 +1446,7 @@
       color: #fff;
       font-family: inherit;
       font-size: 0.88rem;
-      font-weight: 600;
+      font-weight: 400;
       cursor: pointer;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -1718,7 +1718,7 @@
       <button class="sidebar-avatar-btn" onclick="openAvatarPicker()" title="Change your avatar">
         <div class="sidebar-avatar-preview" id="sidebarAvatarPreview">You</div>
       </button>
-      <span class="sidebar-avatar-name" id="sidebarAvatarName" onclick="editAvatarName()" title="Click to edit name">Your Avatar</span>
+      <span class="sidebar-avatar-name" id="sidebarAvatarName" onclick="editAvatarName()" title="Click to edit name">Click to Edit Your Name</span>
     </div>
     <div class="campaign-search-wrap">
       <input type="text" class="campaign-search" id="campaignSearch" placeholder="Search campaigns…" oninput="filterCampaigns()">
@@ -2388,9 +2388,18 @@
       localStorage.setItem(AVATAR_STORAGE_KEY, JSON.stringify(avatar));
     }
 
+    function getInitials() {
+      const name = loadDisplayName();
+      if (!name || name === "Click to Edit Your Name") return "U";
+      const parts = name.trim().split(/\s+/);
+      if (parts.length >= 2) return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+      return parts[0][0].toUpperCase();
+    }
+
     function renderAvatarInto(el, avatar) {
-      if (!avatar || avatar.type === "default") {
-        el.innerHTML = `<span class="emoji-avatar">🥑</span>`;
+      if (!avatar || avatar.type === "default" || avatar.type === "initials") {
+        const initials = getInitials();
+        el.innerHTML = `<span style="font-size:${initials.length > 1 ? '0.75em' : '0.9em'};font-weight:600;letter-spacing:0.5px">${initials}</span>`;
         el.style.background = "#1c767b";
       } else if (avatar.type === "emoji") {
         el.innerHTML = `<span class="emoji-avatar">${avatar.value}</span>`;
@@ -2467,7 +2476,8 @@
     }
 
     function removeAvatar() {
-      saveAvatar({ type: "default" });
+      const name = loadDisplayName();
+      saveAvatar(name && name !== "Click to Edit Your Name" ? { type: "initials" } : { type: "default" });
       refreshAllUserAvatars();
       openAvatarPicker(); // refresh modal state
     }
@@ -2503,8 +2513,17 @@
 
       function commit() {
         const val = input.value.trim();
-        const finalName = val || "Your Avatar";
+        const finalName = val || "Click to Edit Your Name";
         saveDisplayName(finalName);
+
+        // Auto-switch to initials avatar when name is entered
+        if (val) {
+          const currentAvatar = loadAvatar();
+          if (!currentAvatar || currentAvatar.type === "default" || currentAvatar.type === "initials") {
+            saveAvatar({ type: "initials" });
+          }
+        }
+        refreshAllUserAvatars();
 
         const span = document.createElement("span");
         span.className = "sidebar-avatar-name";
