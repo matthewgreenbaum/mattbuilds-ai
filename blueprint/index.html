@@ -6,6 +6,7 @@
   <title>Campaign Blueprint</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -4105,30 +4106,40 @@
           @media print { body { margin: 0; } }
         </style></head><body>${content}</body></html>`;
 
-      // Use an iframe to trigger direct PDF download via print-to-PDF
-      const iframe = document.createElement("iframe");
-      iframe.style.position = "fixed";
-      iframe.style.right = "0";
-      iframe.style.bottom = "0";
-      iframe.style.width = "0";
-      iframe.style.height = "0";
-      iframe.style.border = "0";
-      document.body.appendChild(iframe);
-      iframe.contentDocument.open();
-      iframe.contentDocument.write(styledHtml);
-      iframe.contentDocument.close();
+      // Render into a hidden container, then use html2pdf to download directly
+      const container = document.createElement("div");
+      container.style.position = "fixed";
+      container.style.left = "-9999px";
+      container.style.top = "0";
+      container.style.width = "800px";
+      container.innerHTML = styledHtml.match(/<body[^>]*>([\s\S]*)<\/body>/)[1];
+      // Inject styles inline for html2pdf rendering
+      const styleTag = document.createElement("style");
+      styleTag.textContent = styledHtml.match(/<style>([\s\S]*?)<\/style>/)[1];
+      container.prepend(styleTag);
+      document.body.appendChild(container);
 
-      iframe.contentWindow.onafterprint = () => {
-        document.body.removeChild(iframe);
-      };
+      const filename = docTitle.replace(/[^\w\s—-]/g, "").trim() + ".pdf";
 
-      // Wait for fonts to load then print
-      setTimeout(() => {
-        iframe.contentWindow.focus();
-        iframe.contentWindow.print();
-        // Fallback cleanup if onafterprint doesn't fire
-        setTimeout(() => { if (iframe.parentNode) document.body.removeChild(iframe); }, 60000);
-      }, 500);
+      html2pdf()
+        .set({
+          margin: [15, 15, 15, 15],
+          filename,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true },
+          jsPDF: { unit: "mm", format: "letter", orientation: "portrait" },
+          pagebreak: { mode: ["avoid-all", "css", "legacy"] },
+        })
+        .from(container)
+        .save()
+        .then(() => {
+          document.body.removeChild(container);
+        })
+        .catch((err) => {
+          console.error("PDF export error:", err);
+          if (container.parentNode) document.body.removeChild(container);
+          alert("PDF export failed. Please try again.");
+        });
     }
 
     async function exportToGoogleDocs() {
