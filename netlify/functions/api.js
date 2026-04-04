@@ -14,7 +14,7 @@ export default async (req) => {
     return new Response("Method not allowed", { status: 405 });
   }
 
-  const apiKey = Deno.env.get("ANTHROPIC_API_KEY");
+  const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return new Response("API key not configured", { status: 500 });
   }
