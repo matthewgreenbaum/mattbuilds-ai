@@ -4,316 +4,300 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matt Builds AI — Portfolio by Matt Greenbaum</title>
-    <meta name="description" content="AI-powered apps built by Matt Greenbaum, Demand Gen expert. Explore tools for campaign planning, feedback collection, and marketing budget management.">
+    <meta name="description" content="AI-powered apps built by Matt Greenbaum, Demand Gen expert.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:Helvetica,Arial,sans-serif;color:#2F1664;overflow-x:hidden;background:#2F1664}
+        ::-webkit-scrollbar{width:8px}
+        ::-webkit-scrollbar-track{background:#2F1664}
+        ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.25);border-radius:4px}
+        ::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,0.4)}
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .reveal-delay-1{transition-delay:0.12s}
+        .reveal-delay-2{transition-delay:0.24s}
+        .reveal-delay-3{transition-delay:0.36s}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #FFFAF5;
-            color: #2D2A26;
-            min-height: 100vh;
-        }
+        /* ===== HERO ===== */
+        .hero{position:relative;padding:4rem 2rem;min-height:auto;display:flex;align-items:center;justify-content:center;overflow:hidden}
+        .hero-verticals{position:absolute;inset:0;z-index:0;pointer-events:none}
+        .hero-verticals line{stroke:rgba(255,255,255,0.12);stroke-width:1}
+        .hero-blob-wrap{position:relative;z-index:1;width:100%;max-width:960px;margin:0 auto}
+        .hero-blob{position:relative;background:#fff;padding:6rem 5rem 5rem;border-radius:30% 70% 42% 58% / 55% 30% 70% 45%;display:flex;flex-direction:column;align-items:center;text-align:center}
+        .hero-blob h1{font-family:'Figtree',sans-serif;font-size:7rem;font-weight:500;color:#2F1664;letter-spacing:-0.03em;line-height:1;margin-bottom:1.5rem}
+        .hero-blob h1 .dot{color:#EAE7EF;animation:dotpulse 3s ease-in-out infinite}
+        @keyframes dotpulse{0%,100%{color:#EAE7EF}50%{color:#C4BDD2}}
+        .hero-blob h2{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:400;color:#5A5069;line-height:1.7;max-width:580px;margin-bottom:2.5rem}
+        .hero-btns{display:flex;gap:1rem}
+        .hero-btns a{display:inline-block;padding:0.85rem 2.2rem;background:#2F1664;color:#fff;text-decoration:none;font-family:'Figtree',sans-serif;font-size:0.9rem;font-weight:600;border-radius:8px;transition:background 0.2s ease,transform 0.15s ease}
+        .hero-btns a:hover{background:#EAE7EF;color:#2F1664;transform:translateY(-2px)}
 
-        /* Header */
-        .header {
-            padding: 3rem 2rem 1rem;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        /* ===== TOOLS / CARDS ===== */
+        .tools{background:#fff;padding:6rem 2rem;position:relative;overflow:hidden}
+        .tools-inner{max-width:1060px;margin:0 auto;position:relative;z-index:1}
+        .tools-rings{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0}
+        .tools-rings circle{fill:none;stroke:rgba(47,22,100,0.045)}
+        .tools-header{text-align:center;margin-bottom:3.5rem}
+        .tools-header h2{font-family:'Figtree',sans-serif;font-size:4rem;font-weight:500;color:#2F1664;margin-bottom:1rem;letter-spacing:-0.03em;line-height:1.1}
+        .tools-header p{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:400;color:#5A5069;line-height:1.7;max-width:640px;margin:0 auto}
+        .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+        .card{background:#F5F3F8;border:6px solid #2F1664;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.3s ease,transform 0.3s ease,box-shadow 0.3s ease}
+        .card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(47,22,100,0.15)}
+        .card-chrome{background:#2F1664;padding:0.5rem 0.75rem;display:flex;align-items:center;gap:0.35rem}
+        .card-chrome span{width:10px;height:10px;border-radius:50%;display:block}
+        .card-chrome .dot-r{background:#ff5f56}
+        .card-chrome .dot-y{background:#ffbd2e}
+        .card-chrome .dot-g{background:#27c93f}
+        .card-body{padding:2rem;display:flex;flex-direction:column;flex-grow:1}
+        .card-icon{width:64px;height:64px;margin-bottom:1.25rem}
+        .card-icon svg{width:100%;height:100%}
+        .card h3{font-family:'Figtree',sans-serif;font-size:1.3rem;font-weight:800;color:#2F1664;margin-bottom:0.5rem}
+        .card .tag{display:inline-block;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:0.25rem 0.65rem;border-radius:20px;margin-bottom:1rem}
+        .tag.live{background:#2F1664;color:#fff}
+        .tag.coming-soon{background:#EAE7EF;color:#7A6F8A}
+        .card p{font-family:Helvetica,Arial,sans-serif;font-size:1rem;color:#5A5069;line-height:1.7;flex-grow:1;margin-bottom:1.5rem}
+        .card-btn{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.85rem;font-weight:700;color:#fff;text-decoration:none;padding:0.6rem 1.2rem;border-radius:8px;background:#2F1664;border:none;transition:all 0.2s ease;align-self:flex-start;cursor:pointer}
+        .card-btn:hover{background:#EAE7EF;color:#2F1664;transform:translateY(-1px)}
+        .card-btn .arrow{transition:transform 0.2s ease}
+        .card-btn:hover .arrow{transform:translateX(3px)}
+        .card-btn.disabled{background:#EAE7EF;color:#A89DB8;cursor:default;pointer-events:none}
 
-        .header h1 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2.8rem;
-            color: #1A1A1A;
-            margin-bottom: 0.3rem;
-            letter-spacing: -0.02em;
-        }
+        /* ===== MARQUEE ===== */
+        .marquee-wrapper{background:#EAE7EF;border-bottom:1px solid rgba(47,22,100,0.06);padding:1rem 0;overflow:hidden}
+        .marquee{display:flex;width:max-content;animation:marquee 40s linear infinite}
+        .marquee span{font-family:'Figtree',sans-serif;font-size:0.82rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:rgba(47,22,100,0.35);white-space:nowrap;padding:0 0.5rem}
+        .marquee .sep{margin:0 1.2rem;opacity:0.4}
+        @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-        .header h1 span {
-            color: #C2703E;
-        }
+        /* ===== ABOUT ===== */
+        .about{background:#EAE7EF;padding:5rem 2rem 6rem;position:relative;overflow:hidden}
+        @keyframes twinkle{0%,100%{opacity:0.1}50%{opacity:0.3}}
+        @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+        @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+        @keyframes spintwinkle{0%{opacity:0.1;transform:rotate(0deg)}25%{opacity:0.3}50%{opacity:0.1;transform:rotate(180deg)}75%{opacity:0.3}100%{opacity:0.1;transform:rotate(360deg)}}
+        @keyframes lineflash{0%,100%{opacity:1}40%{opacity:0.15}60%{opacity:0.15}}
+        @keyframes dotbounce{0%,100%{transform:translateY(0);opacity:0.3}50%{transform:translateY(-4px);opacity:0.7}}
+        @keyframes calcpress{0%,100%{fill-opacity:0.05}50%{fill-opacity:0.5}}
+        .twinkle-star{position:absolute;pointer-events:none;z-index:0}
+        .twinkle-star path,.twinkle-star polygon{fill:#C8C1D4}
+        .ts1{animation:twinkle 3s ease-in-out infinite}
+        .ts2{animation:spin 12s linear infinite}
+        .ts3{animation:bounce 4s ease-in-out infinite 0.5s}
+        .ts4{animation:spintwinkle 8s ease-in-out infinite}
+        .ts5{animation:twinkle 3.5s ease-in-out infinite 1s}
+        .ts6{animation:spin 15s linear infinite}
+        .ts7{animation:bounce 5s ease-in-out infinite 1.2s}
+        .ts8{animation:spintwinkle 10s ease-in-out infinite 0.8s}
+        .about-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:3rem;position:relative;z-index:1}
+        .about-photo-side{flex:0 0 30%;display:flex;justify-content:center}
+        .about-photo-blob{position:relative;width:280px;height:280px}
+        .about-photo-blob .blob-shape{width:100%;height:100%;background:#2F1664;border-radius:60% 40% 55% 45% / 50% 60% 40% 50%;display:flex;align-items:center;justify-content:center;font-family:'Figtree',sans-serif;font-size:3.5rem;font-weight:800;color:#fff;overflow:hidden;position:relative}
+        .about-photo-blob .blob-shape img{width:100%;height:100%;object-fit:cover;object-position:center 5%;transform:scale(1.4);filter:grayscale(100%) brightness(0.85) contrast(1.1)}
+        .about-photo-blob .blob-shape::after{content:'';position:absolute;inset:0;background:rgba(47,22,100,0.45);mix-blend-mode:color;pointer-events:none}
+        .about-bio{flex:1}
+        .about-bio h2{font-family:'Figtree',sans-serif;font-size:2.2rem;font-weight:500;color:#2F1664;margin-bottom:0.4rem;letter-spacing:-0.02em}
+        .about-bio h3{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:500;color:#5A5069;margin-bottom:1.5rem;line-height:1.7}
+        .about-bio p{font-family:Helvetica,Arial,sans-serif;font-size:1rem;color:#5A5069;line-height:1.7}
 
-        .header .subtitle {
-            font-size: 1.15rem;
-            color: #6B6560;
-            margin-bottom: 0.75rem;
-            font-weight: 400;
-        }
+        /* ===== FOOTER ===== */
+        .about-contact{display:flex;flex-direction:column;gap:0.75rem;margin-top:1.5rem}
+        .about-contact-link{display:inline-flex;align-items:center;gap:0.5rem;font-family:Helvetica,Arial,sans-serif;font-size:0.95rem;color:#2F1664;text-decoration:none;transition:opacity 0.2s ease}
+        .about-contact-link:hover{opacity:0.6}
+        .footer-slim{background:#2F1664;padding:1.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+        .footer-slim svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+        .footer-slim svg line{stroke:rgba(255,255,255,0.12);stroke-width:1}
+        .footer-slim p{font-family:Helvetica,Arial,sans-serif;font-size:0.8rem;color:rgba(255,255,255,0.4);margin:0;position:relative;z-index:1;letter-spacing:0.08em}
+        .footer-logo{display:inline-flex;align-items:baseline;gap:5px;position:relative;z-index:1;margin-bottom:0.5rem}
+        .footer-logo-blob{width:42px;height:28px;background:rgba(255,255,255,0.55);border-radius:60% 40% 55% 45%/50% 60% 40% 50%;display:flex;align-items:center;justify-content:center;font-family:'Figtree',sans-serif;font-size:1.05rem;font-weight:900;color:#2F1664;flex-shrink:0}
+        .footer-logo-suffix{font-family:'Figtree',sans-serif;font-size:1.15rem;font-weight:900;color:rgba(255,255,255,0.55);letter-spacing:0.04em;margin-left:-2px}
 
-        .header .bio {
-            font-size: 0.95rem;
-            color: #8A8580;
-            max-width: 520px;
-            margin: 0 auto 1.5rem;
-            line-height: 1.6;
-        }
-
-        .header .bio a {
-            color: #C2703E;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .header .bio a:hover {
-            text-decoration: underline;
-        }
-
-        /* Divider */
-        .divider {
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, #C2703E, #D4956A);
-            border-radius: 2px;
-            margin: 0 auto 2.5rem;
-        }
-
-        /* Section label */
-        .section-label {
-            text-align: center;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: #B0A9A2;
-            margin-bottom: 2rem;
-        }
-
-        /* App Cards Grid */
-        .cards {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 2rem 4rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card {
-            background: #FFFFFF;
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid #EDE8E3;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-        }
-
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .card-icon.blueprint {
-            background: #E8F0FE;
-        }
-
-        .card-icon.feedback {
-            background: #FFF0E6;
-        }
-
-        .card-icon.budget {
-            background: #E6F5EC;
-        }
-
-        .card h2 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            color: #1A1A1A;
-        }
-
-        .card .tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            padding: 0.25rem 0.6rem;
-            border-radius: 20px;
-            margin-bottom: 1rem;
-        }
-
-        .tag.live {
-            background: #E6F5EC;
-            color: #2D7A4F;
-        }
-
-        .tag.coming-soon {
-            background: #F0ECE8;
-            color: #8A8580;
-        }
-
-        .card p {
-            font-size: 0.92rem;
-            color: #6B6560;
-            line-height: 1.65;
-            flex-grow: 1;
-            margin-bottom: 1.5rem;
-        }
-
-        .card .tech {
-            font-size: 0.78rem;
-            color: #B0A9A2;
-            margin-bottom: 1.25rem;
-        }
-
-        .card-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: #C2703E;
-            text-decoration: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            border: 1.5px solid #C2703E;
-            transition: background 0.2s ease, color 0.2s ease;
-            align-self: flex-start;
-        }
-
-        .card-btn:hover {
-            background: #C2703E;
-            color: #FFFFFF;
-        }
-
-        .card-btn.disabled {
-            color: #B0A9A2;
-            border-color: #DDD8D3;
-            cursor: default;
-            pointer-events: none;
-        }
-
-        .card-btn .arrow {
-            transition: transform 0.2s ease;
-        }
-
-        .card-btn:hover .arrow {
-            transform: translateX(3px);
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid #EDE8E3;
-            color: #B0A9A2;
-            font-size: 0.82rem;
-        }
-
-        .footer a {
-            color: #C2703E;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        .built-with {
-            margin-top: 0.5rem;
-            font-size: 0.75rem;
-            color: #C8C3BE;
-        }
-
-        /* Responsive */
-        @media (max-width: 640px) {
-            .header h1 {
-                font-size: 2.1rem;
-            }
-
-            .header .subtitle {
-                font-size: 1rem;
-            }
-
-            .cards {
-                padding: 0 1.25rem 3rem;
-                grid-template-columns: 1fr;
-            }
-        }
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:900px){.cards{grid-template-columns:1fr;max-width:400px;margin:0 auto}.about-inner{flex-direction:column;text-align:center}}
+        @media(max-width:768px){.hero-blob h1{font-size:3.5rem}.hero-blob{padding:3.5rem 2rem 3rem;border-radius:35% 65% 40% 60%/50% 35% 65% 50%}.hero-blob h2{font-size:0.95rem}.hero-blob-wrap{max-width:92%}.about-bio h2{font-size:1.7rem}.tools-header h2{font-size:1.8rem}}
+        @media(max-width:480px){.hero-blob h1{font-size:2.5rem}.hero-blob{padding:2.5rem 1.5rem 2rem}.hero-btns{flex-direction:column}.cards{gap:1.75rem}.card-body{padding:1.5rem}.hero-blob-wrap{max-width:95%}}
     </style>
 </head>
 <body>
 
-    <header class="header">
-        <h1>matt builds<span>.</span>ai</h1>
-        <p class="subtitle">AI-Powered Tools for Modern Marketers</p>
-        <p class="bio">
-            Built by <strong>Matt Greenbaum</strong> — Demand Gen expert exploring what's possible when marketing strategy meets AI. Every app here was built with
-            <a href="https://www.anthropic.com/claude-code" target="_blank">Claude Code</a>.
-            <br><br>
-            <a href="https://www.linkedin.com/in/mattgreenbaum" target="_blank">LinkedIn &rarr;</a>
-        </p>
-    </header>
-
-    <div class="divider"></div>
-
-    <p class="section-label">The Apps</p>
-
-    <section class="cards">
-
-        <!-- Campaign Blueprint -->
-        <div class="card">
-            <div class="card-icon blueprint">📋</div>
-            <h2>Campaign Blueprint</h2>
-            <span class="tag live">Live</span>
-            <p>An AI-powered campaign planner that turns a brief into a full go-to-market blueprint — channels, messaging, timeline, and budget allocation in seconds.</p>
-            <div class="tech">Claude API &middot; HTML/CSS/JS</div>
-            <a href="/blueprint/" class="card-btn">
-                Try it <span class="arrow">&rarr;</span>
-            </a>
+<!-- ========== SECTION 1: HERO ========== -->
+<section class="hero">
+    <svg class="hero-verticals" viewBox="0 0 1200 800" preserveAspectRatio="none">
+        <line x1="75" y1="0" x2="75" y2="800"/>
+        <line x1="225" y1="0" x2="225" y2="800"/>
+        <line x1="375" y1="0" x2="375" y2="800"/>
+        <line x1="525" y1="0" x2="525" y2="800"/>
+        <line x1="675" y1="0" x2="675" y2="800"/>
+        <line x1="825" y1="0" x2="825" y2="800"/>
+        <line x1="975" y1="0" x2="975" y2="800"/>
+        <line x1="1125" y1="0" x2="1125" y2="800"/>
+    </svg>
+    <div class="hero-blob-wrap">
+        <div class="hero-blob reveal">
+            <h1>matt builds<span class="dot">.</span>ai</h1>
+            <h2>I've spent the past decade-plus in demand gen and know how quality work gets slowed down by the process around it. So I started learning to build with AI and create tools that help marketers do the work faster and better.</h2>
+            <div class="hero-btns">
+                <a href="#tools">Projects</a>
+                <a href="#about">About</a>
+            </div>
         </div>
+    </div>
+</section>
 
-        <!-- FeedbackAtcha -->
-        <div class="card">
-            <div class="card-icon feedback">💬</div>
-            <h2>FeedbackAtcha</h2>
-            <span class="tag live">Live</span>
-            <p>Paste in any piece of content — emails, landing pages, ad copy — and get instant, actionable feedback powered by AI. Like having a senior editor on demand.</p>
-            <div class="tech">Claude API &middot; HTML/CSS/JS</div>
-            <a href="/feedbackatcha/" class="card-btn">
-                Try it <span class="arrow">&rarr;</span>
-            </a>
+<!-- ========== SECTION 2: TOOLS / CARDS ========== -->
+<section id="tools" class="tools">
+    <!-- Concentric rings -->
+    <svg class="tools-rings" width="1800" height="1800" viewBox="0 0 1800 1800">
+        <circle cx="900" cy="900" r="80" stroke-width="1"/>
+        <circle cx="900" cy="900" r="160" stroke-width="1"/>
+        <circle cx="900" cy="900" r="260" stroke-width="1"/>
+        <circle cx="900" cy="900" r="380" stroke-width="1"/>
+        <circle cx="900" cy="900" r="500" stroke-width="1"/>
+        <circle cx="900" cy="900" r="620" stroke-width="1"/>
+        <circle cx="900" cy="900" r="740" stroke-width="0.8"/>
+        <circle cx="900" cy="900" r="860" stroke-width="0.6"/>
+        <circle cx="900" cy="900" r="900" stroke-width="0.5"/>
+    </svg>
+    <div class="tools-inner">
+        <div class="tools-header reveal">
+            <h2>AI-Powered Tools for B2B Marketers</h2>
+            <p>Here's what I've been working on. Try them out and let me know what you think.</p>
         </div>
+        <div class="cards">
+            <!-- Campaign Blueprint -->
+            <div class="card reveal reveal-delay-1">
+                <div class="card-chrome"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+                <div class="card-body">
+                    <div class="card-icon"><svg viewBox="0 0 64 64" fill="none">
+                        <path d="M16 8 C14 8 12 10 12 12 L12 52 C12 54 14 56 16 56 L44 56 C46 56 48 54 48 52 L48 20 L36 8 Z" stroke="#2F1664" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M36 8 L36 20 L48 20" stroke="#2F1664" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="20" y1="30" x2="40" y2="30" stroke="#2F1664" stroke-width="2" stroke-linecap="round" style="animation:lineflash 2.4s ease-in-out infinite"/>
+                        <line x1="20" y1="37" x2="36" y2="37" stroke="#2F1664" stroke-width="2" stroke-linecap="round" style="animation:lineflash 2.4s ease-in-out 0.3s infinite"/>
+                        <line x1="20" y1="44" x2="32" y2="44" stroke="#2F1664" stroke-width="2" stroke-linecap="round" style="animation:lineflash 2.4s ease-in-out 0.6s infinite"/>
+                        <circle cx="40" cy="46" r="3" fill="#EAE7EF" stroke="#2F1664" stroke-width="1.5"/>
+                    </svg></div>
+                    <h3>Campaign Blueprint</h3>
 
-        <!-- Coming Soon -->
-        <div class="card">
-            <div class="card-icon budget">📊</div>
-            <h2>Budget Allocator</h2>
-            <span class="tag coming-soon">Coming Soon</span>
-            <p>An intelligent marketing budget planner for demand gen teams. Input your goals, channels, and constraints — get an optimized spend allocation instantly.</p>
-            <div class="tech">Claude API &middot; HTML/CSS/JS</div>
-            <span class="card-btn disabled">
-                Coming Soon
-            </span>
+                    <p>Transform your campaign ideas into executive-ready strategic briefs. Think of it as having an AI strategic consultant, VP-level marketer, and collaborative partner all rolled into one, helping you draft it from start to finish.</p>
+                    <a href="/blueprint/" class="card-btn" target="_blank">Try it</a>
+                </div>
+            </div>
+            <!-- FeedbackAtcha -->
+            <div class="card reveal reveal-delay-2">
+                <div class="card-chrome"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+                <div class="card-body">
+                    <div class="card-icon"><svg viewBox="0 0 64 64" fill="none">
+                        <path d="M8 16 C8 12 11 9 15 9 L49 9 C53 9 56 12 56 16 L56 38 C56 42 53 45 49 45 L24 45 L14 55 L14 45 L15 45 C11 45 8 42 8 38 Z" stroke="#2F1664" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="23" cy="27" r="2.5" fill="#2F1664" style="animation:dotbounce 1.4s ease-in-out infinite"/>
+                        <circle cx="32" cy="27" r="2.5" fill="#2F1664" style="animation:dotbounce 1.4s ease-in-out 0.2s infinite"/>
+                        <circle cx="41" cy="27" r="2.5" fill="#2F1664" style="animation:dotbounce 1.4s ease-in-out 0.4s infinite"/>
+                    </svg></div>
+                    <h3>FeedbackAtcha</h3>
+
+                    <p>Just received new creative? Upload the assets or paste the copy and get clear, actionable feedback ready to send straight back to your designers. Like having an experienced colleague who always knows exactly what to say during a creative review.</p>
+                    <a href="/feedbackatcha/" class="card-btn" target="_blank">Try it</a>
+                </div>
+            </div>
+            <!-- Budget Allogator -->
+            <div class="card reveal reveal-delay-3">
+                <div class="card-chrome"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+                <div class="card-body">
+                    <div class="card-icon"><svg viewBox="0 0 64 64" fill="none">
+                        <rect x="12" y="8" width="40" height="48" rx="5" stroke="#2F1664" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                        <rect x="18" y="14" width="28" height="10" rx="2" fill="#EAE7EF" stroke="#2F1664" stroke-width="1.5"/>
+                        <circle cx="22" cy="32" r="3" stroke="#2F1664" stroke-width="1.5" fill="#2F1664" style="animation:calcpress 2.2s ease-in-out infinite"/>
+                        <circle cx="32" cy="32" r="3" stroke="#2F1664" stroke-width="1.5" fill="#2F1664" style="animation:calcpress 2.2s ease-in-out 0.3s infinite"/>
+                        <circle cx="42" cy="32" r="3" stroke="#2F1664" stroke-width="1.5" fill="#2F1664" style="animation:calcpress 2.2s ease-in-out 0.6s infinite"/>
+                        <circle cx="22" cy="42" r="3" stroke="#2F1664" stroke-width="1.5" fill="#2F1664" style="animation:calcpress 2.2s ease-in-out 0.9s infinite"/>
+                        <circle cx="32" cy="42" r="3" stroke="#2F1664" stroke-width="1.5" fill="#2F1664" style="animation:calcpress 2.2s ease-in-out 1.2s infinite"/>
+                        <rect x="38" y="39" width="8" height="6" rx="1.5" fill="#2F1664" opacity="0.2" stroke="#2F1664" stroke-width="1.5"/>
+                        <line x1="22" y1="18" x2="35" y2="18" stroke="#2F1664" stroke-width="1.5" stroke-linecap="round" style="animation:lineflash 2.4s ease-in-out infinite"/>
+                    </svg></div>
+                    <h3>Budget Allogator</h3>
+
+                    <p>Feed the Allogator your campaign performance data and talk through your budget strategy with AI. Analyze ROI across channels, pressure-test your assumptions, and figure out where your next dollar should go.</p>
+                    <span class="card-btn disabled">Coming Soon</span>
+                </div>
+            </div>
         </div>
+    </div>
+</section>
 
-    </section>
+<!-- ========== MARQUEE ========== -->
+<div class="marquee-wrapper">
+    <div class="marquee">
+        <span>Many Phish Concerts<span class="sep">✦</span>Pipeline-Focused<span class="sep">✦</span>GTM Strategy<span class="sep">✦</span>Demand Gen Leader<span class="sep">✦</span>Get Shit Done<span class="sep">✦</span>Segmentation Strategy<span class="sep">✦</span>Data-Driven Storytelling<span class="sep">✦</span>Email SME<span class="sep">✦</span>Cross-Channel Orchestration<span class="sep">✦</span>I Will Figure It Out<span class="sep">✦</span>Funnel Strategy &amp; Optimization<span class="sep">✦</span>Vibe Coder<span class="sep">✦</span>Player/Coach<span class="sep">✦</span>Certified Marketo Expert<span class="sep">✦</span>Zero → One<span class="sep">✦</span></span>
+        <span>Many Phish Concerts<span class="sep">✦</span>Pipeline-Focused<span class="sep">✦</span>GTM Strategy<span class="sep">✦</span>Demand Gen Leader<span class="sep">✦</span>Get Shit Done<span class="sep">✦</span>Segmentation Strategy<span class="sep">✦</span>Data-Driven Storytelling<span class="sep">✦</span>Email SME<span class="sep">✦</span>Cross-Channel Orchestration<span class="sep">✦</span>I Will Figure It Out<span class="sep">✦</span>Funnel Strategy &amp; Optimization<span class="sep">✦</span>Vibe Coder<span class="sep">✦</span>Player/Coach<span class="sep">✦</span>Certified Marketo Expert<span class="sep">✦</span>Zero → One<span class="sep">✦</span></span>
+    </div>
+</div>
 
-    <footer class="footer">
-        <p>&copy; 2026 Matt Greenbaum &middot; <a href="https://www.linkedin.com/in/mattgreenbaum" target="_blank">LinkedIn</a></p>
-        <p class="built-with">Built with Claude Code by Anthropic</p>
-    </footer>
+<!-- ========== SECTION 3: ABOUT ========== -->
+<section id="about" class="about">
+    <!-- Twinkling stars background -->
+    <!-- Stars spread evenly across section -->
+    <svg class="twinkle-star ts1" style="top:5%;left:8%;width:24px;height:24px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts2" style="top:8%;left:35%;width:14px;height:14px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts3" style="top:4%;left:65%;width:20px;height:20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts4" style="top:10%;left:88%;width:16px;height:16px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts5" style="top:30%;left:5%;width:16px;height:16px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts6" style="top:35%;left:92%;width:28px;height:28px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts7" style="top:28%;left:78%;width:12px;height:12px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts8" style="top:55%;left:12%;width:20px;height:20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts1" style="top:50%;left:55%;width:11px;height:11px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts3" style="top:58%;left:85%;width:22px;height:22px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts4" style="top:75%;left:6%;width:18px;height:18px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts6" style="top:80%;left:40%;width:13px;height:13px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts2" style="top:72%;left:68%;width:26px;height:26px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts5" style="top:88%;left:20%;width:15px;height:15px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts7" style="top:85%;left:58%;width:19px;height:19px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts8" style="top:92%;left:82%;width:14px;height:14px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts2" style="top:15%;left:22%;width:17px;height:17px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts5" style="top:42%;left:92%;width:22px;height:22px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts3" style="top:65%;left:30%;width:13px;height:13px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
+    <svg class="twinkle-star ts1" style="top:18%;left:75%;width:20px;height:20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#C8C1D4"/></svg>
 
+    <div class="about-inner">
+        <div class="about-photo-side reveal">
+            <div class="about-photo-blob">
+                <div class="blob-shape"><img src="Matt Photo.jpg" alt="Matt Greenbaum"></div>
+            </div>
+        </div>
+        <div class="about-bio reveal reveal-delay-1">
+            <h2>Matt Greenbaum</h2>
+            <h3>Demand Gen &amp; Integrated Marketing Leader <span style="font-size:1.4em;font-weight:300;vertical-align:-0.05em">|</span> ex-Large Reputable Companies</h3>
+            <p>I've spent my career turning ambiguity into pipeline at companies like Google, Iterable, and Yelp. I'm at my best when I'm wearing multiple hats — strategizing, creating, executing — and especially when I'm working alongside a good team. I've always loved making things that solve problems, and building AI tools has been a fun way to keep doing that while learning something new. The possibilities feel wide open.</p>
+            <div class="about-contact">
+                <a href="mailto:matthewgreenbaum@gmail.com" class="about-contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="#2F1664" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4 12 13 2 4"/></svg>matthewgreenbaum@gmail.com</a>
+                <a href="https://www.linkedin.com/in/mattgreenbaum" target="_blank" class="about-contact-link"><svg viewBox="0 0 24 24" fill="#2F1664" width="20" height="20"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>LinkedIn</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer-slim">
+    <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+        <line x1="75" y1="0" x2="75" y2="100"/>
+        <line x1="225" y1="0" x2="225" y2="100"/>
+        <line x1="375" y1="0" x2="375" y2="100"/>
+        <line x1="525" y1="0" x2="525" y2="100"/>
+        <line x1="675" y1="0" x2="675" y2="100"/>
+        <line x1="825" y1="0" x2="825" y2="100"/>
+        <line x1="975" y1="0" x2="975" y2="100"/>
+        <line x1="1125" y1="0" x2="1125" y2="100"/>
+    </svg>
+    <div class="footer-logo">
+        <span class="footer-logo-blob">mb</span>
+        <span class="footer-logo-suffix">.ai</span>
+    </div>
+</footer>
+
+<script>
+const observer=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');observer.unobserve(el.target)}})},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 </body>
 </html>
