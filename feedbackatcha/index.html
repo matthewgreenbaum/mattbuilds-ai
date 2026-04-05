@@ -67,7 +67,9 @@ body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--tex
 /* Header — Blueprint lockup */
 .header{display:flex;align-items:baseline;padding:28px 48px 20px;gap:16px;transition:padding-left 0.25s ease}
 .sidebar.collapsed ~ .main .header{padding-left:64px}
-.header-logo{font-family:'Figtree',sans-serif;font-size:1.9rem;font-weight:800;letter-spacing:-0.02em;color:#1F1F26;line-height:1;white-space:nowrap}
+.header-logo{font-family:'Figtree',sans-serif;font-size:1.9rem;font-weight:800;letter-spacing:-0.02em;color:#1A1A1A;line-height:1;white-space:nowrap}
+.header-orb{width:36px;height:36px;border-radius:50%;flex-shrink:0;align-self:center;overflow:hidden;background:#2F1664}
+.header-orb svg{width:100%;height:100%;display:block}
 .header-tagline{font-family:'Figtree',sans-serif;font-size:1.2rem;font-weight:500;background:linear-gradient(90deg,#FF8096,#FF9C7E,#43D5B5,#FF9C7E,#FF8096);background-size:400% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradient-shift 12s ease infinite;white-space:nowrap}
 @keyframes gradient-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .back-home-link{font-family:Helvetica,Arial,sans-serif;font-size:0.75rem;font-weight:500;color:var(--text-secondary);text-decoration:none;white-space:nowrap;transition:color 0.2s ease}
@@ -412,6 +414,7 @@ body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--tex
 
 <!-- Header — logo lockup -->
 <header class="header">
+  <div class="header-orb"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="headerOrbG" cx="35%" cy="30%" r="65%"><stop offset="0%" stop-color="#4a3280"/><stop offset="100%" stop-color="#2F1664"/></radialGradient></defs><circle cx="50" cy="50" r="50" fill="url(#headerOrbG)"/><g fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M50,50L74,42.2M50,50L64.8,70.4M50,50L35.2,70.4M50,50L26,42.2M50,50L50,24.8M24.8,84.7L50,90.8M24.8,84.7L35.2,70.4M24.8,84.7L11.2,62.6M24.8,84.7L35.2,95.7M24.8,84.7L11.2,78.2M90.8,36.7L74,42.2M90.8,36.7L88.8,62.6M90.8,36.7L74,17M90.8,36.7L98,50M90.8,36.7L88.8,21.8M50,7.1L26,17M50,7.1L50,24.8M50,7.1L74,17M50,7.1L35.2,4.3M50,7.1L64.8,4.3M75.2,84.7L88.8,62.6M75.2,84.7L64.8,70.4M75.2,84.7L50,90.8M75.2,84.7L88.8,78.2M75.2,84.7L64.8,95.7M9.2,36.7L11.2,62.6M9.2,36.7L26,42.2M9.2,36.7L26,17M9.2,36.7L2,50M9.2,36.7L11.2,21.8M74,42.2L88.8,62.6M74,42.2L64.8,70.4M74,42.2L50,24.8M74,42.2L74,17M88.8,62.6L64.8,70.4M88.8,62.6L98,50M88.8,62.6L88.8,78.2M64.8,70.4L50,90.8M64.8,70.4L35.2,70.4M50,90.8L35.2,70.4M50,90.8L64.8,95.7M50,90.8L35.2,95.7M35.2,70.4L11.2,62.6M35.2,70.4L26,42.2M11.2,62.6L26,42.2M11.2,62.6L11.2,78.2M11.2,62.6L2,50M26,42.2L26,17M26,42.2L50,24.8M26,17L50,24.8M26,17L11.2,21.8M26,17L35.2,4.3M50,24.8L74,17M74,17L64.8,4.3M74,17L88.8,21.8M98,50L88.8,78.2M98,50L88.8,21.8M88.8,78.2L64.8,95.7M64.8,95.7L35.2,95.7M35.2,95.7L11.2,78.2M11.2,78.2L2,50M2,50L11.2,21.8M11.2,21.8L35.2,4.3M35.2,4.3L64.8,4.3M64.8,4.3L88.8,21.8"/></g></svg></div>
   <span class="header-logo">FeedbackAtcha</span>
   <span class="header-tagline">AI-powered creative feedback</span>
   <div class="header-actions">
