@@ -10,13 +10,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#FDF6F0;--surface:#FFFFFF;--surface-warm:#F8EDE3;--surface-alt:#FFF5EC;
-  --text-primary:#2F1664;--text-secondary:#5A5069;--text-tertiary:#8B8399;
-  --accent:#2F1664;--accent-light:rgba(47,22,100,0.08);--accent-glow:rgba(47,22,100,0.25);
+  --bg:#FDF6F0;--surface:#FFFFFF;--surface-warm:#FFF5F2;--surface-alt:#FFF5F2;
+  --text-primary:#1F1F26;--text-secondary:#5A5069;--text-tertiary:#8B8399;
+  --accent:#1F1F26;--accent-light:rgba(31,31,38,0.06);--accent-glow:rgba(31,31,38,0.2);
   --signature:#FF9C7E;--signature-light:rgba(255,156,126,0.18);
   --sidebar-bg:#1C767B;--sidebar-border:#166266;
   --asset-color:#2F5EA8;--asset-bg:rgba(47,94,168,0.07);--asset-border:rgba(47,94,168,0.22);
-  --details-color:#2D8F6E;--details-bg:rgba(45,143,110,0.08);--details-border:rgba(45,143,110,0.25);
+  --details-color:#2D8F6E;--details-bg:#F3FCFA;--details-border:rgba(45,143,110,0.25);
   --border:#E4D9CC;--border-light:#F0E6DA;
   --shadow-sm:0 1px 2px rgba(0,0,0,0.04);--shadow:0 2px 8px rgba(0,0,0,0.06);
   --shadow-lg:0 8px 30px rgba(0,0,0,0.08);--shadow-xl:0 16px 50px rgba(0,0,0,0.1);
@@ -35,9 +35,9 @@ body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--tex
 .sidebar-scroll::-webkit-scrollbar{width:4px}
 .sidebar-scroll::-webkit-scrollbar-thumb{background:rgba(47,22,100,0.15);border-radius:4px}
 .sidebar-section-label{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#8B8399;margin:14px 0 10px;padding:0 4px}
-.sidebar .settings-card{background:#FFF5EC;border:1px solid #F3E4D0;border-radius:12px;padding:16px 18px;margin-bottom:14px}
+.sidebar .settings-card{background:#FFF5F2;border:1px solid #F3E4D0;border-radius:12px;padding:16px 18px;margin-bottom:14px}
 .sidebar .settings-card label{color:#5A5069}
-.sidebar .settings-card input[type="text"],.sidebar .settings-card textarea{background:#FFFFFF;border:1px solid #E4D9CC;color:#2F1664}
+.sidebar .settings-card input[type="text"],.sidebar .settings-card textarea{background:#FFFFFF;border:1px solid #E4D9CC;color:#1F1F26}
 .sidebar .settings-card input[type="text"]::placeholder,.sidebar .settings-card textarea::placeholder{color:#8B8399}
 .sidebar .settings-card input:focus,.sidebar .settings-card textarea:focus{border-color:#FF9C7E;box-shadow:0 0 0 3px rgba(255,156,126,0.18)}
 .sidebar .settings-card .helper-text{color:#8B8399}
@@ -53,10 +53,10 @@ body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--tex
 .sidebar-avatar-row .avatar-display{width:32px;height:32px;border-radius:50%;background:#FF9C7E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;cursor:pointer;overflow:hidden;flex-shrink:0;border:none;transition:box-shadow 0.15s}
 .sidebar-avatar-row .avatar-display:hover{box-shadow:0 0 0 2px rgba(255,156,126,0.4)}
 .sidebar-avatar-row .avatar-display img{width:100%;height:100%;object-fit:cover}
-.sidebar-avatar-row .avatar-name-input{border:none;background:transparent;font-family:inherit;font-size:0.88rem;font-weight:400;color:#2F1664;flex:1;min-width:0;outline:none;padding:2px 4px;border-radius:4px}
+.sidebar-avatar-row .avatar-name-input{border:none;background:transparent;font-family:inherit;font-size:0.88rem;font-weight:400;color:#1F1F26;flex:1;min-width:0;outline:none;padding:2px 4px;border-radius:4px}
 .sidebar-avatar-row .avatar-name-input::placeholder{color:#8B8399}
 .sidebar-avatar-row .avatar-name-input:hover,.sidebar-avatar-row .avatar-name-input:focus{background:rgba(47,22,100,0.05)}
-.sidebar-toggle-btn{position:fixed;top:14px;left:352px;z-index:200;background:none;border:none;color:#2F1664;font-size:2rem;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;transition:left 0.25s ease,opacity 0.15s;opacity:0.55}
+.sidebar-toggle-btn{position:fixed;top:14px;left:352px;z-index:200;background:none;border:none;color:#1F1F26;font-size:2rem;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;transition:left 0.25s ease,opacity 0.15s;opacity:0.55}
 .sidebar-toggle-btn:hover{opacity:1}
 .sidebar-toggle-btn.shifted{left:14px}
 .sidebar-footer{padding:14px 20px 18px;border-top:1px solid #EAE0D4;flex-shrink:0;display:flex;flex-direction:column;gap:2px}
@@ -67,7 +67,7 @@ body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--tex
 /* Header — Blueprint lockup */
 .header{display:flex;align-items:baseline;padding:28px 48px 20px;gap:16px;transition:padding-left 0.25s ease}
 .sidebar.collapsed ~ .main .header{padding-left:64px}
-.header-logo{font-family:'Figtree',sans-serif;font-size:1.9rem;font-weight:800;letter-spacing:-0.02em;color:#2F1664;line-height:1;white-space:nowrap}
+.header-logo{font-family:'Figtree',sans-serif;font-size:1.9rem;font-weight:800;letter-spacing:-0.02em;color:#1F1F26;line-height:1;white-space:nowrap}
 .header-tagline{font-family:'Figtree',sans-serif;font-size:1.2rem;font-weight:500;background:linear-gradient(90deg,#FF8096,#FF9C7E,#43D5B5,#FF9C7E,#FF8096);background-size:400% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradient-shift 12s ease infinite;white-space:nowrap}
 @keyframes gradient-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .back-home-link{font-family:Helvetica,Arial,sans-serif;font-size:0.75rem;font-weight:500;color:var(--text-secondary);text-decoration:none;white-space:nowrap;transition:color 0.2s ease}
@@ -81,13 +81,13 @@ body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--tex
 .btn-icon svg{width:20px;height:20px;display:block}
 
 /* Hero — left-aligned, serif */
-.hero{max-width:980px;margin:40px 0 0;padding:0 48px;transition:all 0.5s cubic-bezier(0.16,1,0.3,1)}
+.hero{max-width:1120px;margin:40px 0 0;padding:0 48px;transition:all 0.5s cubic-bezier(0.16,1,0.3,1)}
 .hero.collapsed{margin-top:12px;margin-bottom:-12px}
 .hero.collapsed h2{font-size:0;opacity:0;margin:0;line-height:0}
 .hero h2{font-family:'Figtree',sans-serif;font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;color:var(--text-primary);margin-bottom:0;transition:all 0.5s ease}
 
 /* Card */
-.card-wrap{max-width:980px;margin:44px 0 80px;padding:0 48px}
+.card-wrap{max-width:1120px;margin:44px 0 80px;padding:0 48px}
 .card{background:var(--surface);border-radius:20px;box-shadow:var(--shadow-lg);border:1px solid var(--border-light);overflow:hidden;transition:box-shadow 0.3s ease}
 .card:focus-within{box-shadow:var(--shadow-xl);border-color:var(--border)}
 
@@ -120,7 +120,7 @@ body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--tex
 /* Severity badges */
 .severity-badge{display:inline-flex;align-items:center;gap:5px;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;padding:2px 8px 2px 5px;border-radius:4px;vertical-align:middle;margin-right:4px;white-space:nowrap}
 .severity-badge svg{width:14px;height:14px;flex-shrink:0}
-.severity-critical{background:rgba(255,128,150,0.15);color:#C62848}
+.severity-critical{background:rgba(198,40,72,0.1);color:#C62848}
 .severity-caution{background:rgba(255,156,126,0.2);color:#B44826}
 .severity-good{background:rgba(67,213,181,0.18);color:#1C767B}
 
@@ -258,12 +258,12 @@ body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--tex
 .mode-explainer{font-size:0.62rem;color:var(--text-tertiary);text-align:left;padding-left:2px}
 
 /* CTA — glowing orb gradient */
-.send-btn{height:36px;padding:0 28px;background:linear-gradient(135deg,#FF9C7E,#FF8096);background-size:200% 200%;animation:ctaGlow 5s ease-in-out infinite;color:#2F1664;border:none;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit;transition:transform 0.2s,box-shadow 0.2s;flex-shrink:0;box-shadow:0 4px 20px rgba(255,128,150,0.3),0 2px 8px rgba(255,156,126,0.25);display:flex;align-items:center}
-.send-btn:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(255,128,150,0.4),0 4px 12px rgba(255,156,126,0.35)}
+.send-btn{height:36px;padding:0 28px;background:linear-gradient(135deg,#FF9C7E,#F77F5A);background-size:200% 200%;animation:ctaGlow 5s ease-in-out infinite;color:#FFFFFF;border:none;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit;transition:transform 0.2s,box-shadow 0.2s;flex-shrink:0;box-shadow:0 4px 20px rgba(247,127,90,0.3),0 2px 8px rgba(255,156,126,0.25);display:flex;align-items:center}
+.send-btn:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(247,127,90,0.4),0 4px 12px rgba(255,156,126,0.35)}
 .send-btn:active{transform:translateY(0)}
 .send-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;animation:ctaPulse 1.5s ease-in-out infinite}
 @keyframes ctaGlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-@keyframes ctaPulse{0%,100%{box-shadow:0 4px 20px rgba(255,128,150,0.3)}50%{box-shadow:0 6px 30px rgba(255,128,150,0.5),0 4px 16px rgba(255,156,126,0.3)}}
+@keyframes ctaPulse{0%,100%{box-shadow:0 4px 20px rgba(247,127,90,0.3)}50%{box-shadow:0 6px 30px rgba(247,127,90,0.5),0 4px 16px rgba(255,156,126,0.3)}}
 
 /* Settings — RIGHT side */
 .settings-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(4px)}
@@ -291,7 +291,7 @@ body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--tex
 .error-msg{background:#FEF2F2;color:#991B1B;padding:12px 28px;font-size:0.85rem;border-top:1px solid #FECACA}
 
 /* Footer — below card, right-aligned */
-.below-card-links{max-width:980px;margin:-60px 0 48px;padding:0 48px;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.below-card-links{max-width:1120px;margin:-60px 0 48px;padding:0 48px;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
 .below-card-links .sidebar-logo{display:flex;align-items:baseline;gap:5px;text-decoration:none;transition:opacity 0.2s ease}
 .below-card-links .sidebar-logo:hover{opacity:0.8}
 .below-card-links .sidebar-logo-label{font-family:Helvetica,Arial,sans-serif;font-size:0.78rem;font-weight:500;color:#8B8399;white-space:nowrap}
@@ -391,7 +391,7 @@ body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--tex
     <div class="settings-card">
       <label>Brand Colors <span style="font-weight:400;text-transform:none;letter-spacing:0">(max 10)</span></label>
       <div style="display:flex;gap:8px;">
-        <input type="text" id="brand-color-input" placeholder="#2F1664" style="flex:1;">
+        <input type="text" id="brand-color-input" placeholder="#1F1F26" style="flex:1;">
         <button class="pill" id="add-color-btn" style="white-space:nowrap;">Add</button>
       </div>
       <div id="color-swatches" class="color-swatches"></div>
@@ -401,7 +401,7 @@ body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--tex
   </div>
 
   <div class="sidebar-footer">
-    <button class="sidebar-footer-link" onclick="showAboutPage('faq')">FAQ &amp; How It Works</button>
+    <button class="sidebar-footer-link" onclick="showAboutPage('faq')" style="color:#FF9C7E">FAQ &amp; How It Works</button>
     <button class="sidebar-footer-link" onclick="showAboutPage('notes')">Notes</button>
   </div>
 </aside>
@@ -410,8 +410,9 @@ body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--tex
 
 <main class="main">
 
-<!-- Header — tagline only -->
+<!-- Header — logo lockup -->
 <header class="header">
+  <span class="header-logo">FeedbackAtcha</span>
   <span class="header-tagline">AI-powered creative feedback</span>
   <div class="header-actions">
     <button class="btn-icon" id="new-session-btn" title="Start fresh" style="display:none">
@@ -421,11 +422,6 @@ body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--tex
     </button>
   </div>
 </header>
-
-<!-- Hero — left-aligned, serif, no subtitle -->
-<section class="hero">
-  <h2>Craft feedback that<br>moves work forward.</h2>
-</section>
 
 <!-- Unified Card -->
 <div class="card-wrap">
@@ -791,7 +787,7 @@ function loadBrandSettings(){const saved=localStorage.getItem('feedbackatcha_bra
 
 function initCTA(){document.getElementById('cta-btn').addEventListener('click',submitMessage);document.getElementById('chat-send-btn').addEventListener('click',submitMessage);document.getElementById('new-session-btn').addEventListener('click',resetSession)}
 
-function resetSession(){state.assetTypes=[];state.creativeStage=null;state.audience=[];state.goal=null;state.notes='';state.mode='full-read';state.framework=null;state.uploadedFile=null;state.uploadedFileBase64=null;state.uploadedFileType=null;state.conversationHistory=[];state.lastAiText='';document.getElementById('thread').innerHTML='';document.getElementById('thread').classList.remove('active');document.querySelector('.hero').classList.remove('collapsed');document.querySelectorAll('.tile').forEach(t=>t.classList.remove('selected'));document.querySelectorAll('.stage-segmented button').forEach(b=>b.classList.remove('selected'));document.querySelectorAll('.audience-pills .pill').forEach(p=>p.classList.remove('selected'));document.querySelectorAll('.goal-pills .pill').forEach(p=>p.classList.remove('selected'));document.getElementById('notes-input').value='';document.getElementById('upload-preview').innerHTML='';document.getElementById('file-input').value='';document.getElementById('main-input').value='';document.getElementById('main-input').style.height='auto';document.getElementById('context-panel').classList.remove('open');document.getElementById('context-bar-toggle').classList.remove('active');document.getElementById('context-tags').innerHTML='';document.getElementById('new-session-btn').style.display='none';updateContextSummary();const modeSlider=document.querySelectorAll('.mode-slider button');modeSlider.forEach(b=>b.classList.remove('selected'));if(modeSlider[0])modeSlider[0].classList.add('selected')}
+function resetSession(){state.assetTypes=[];state.creativeStage=null;state.audience=[];state.goal=null;state.notes='';state.mode='full-read';state.framework=null;state.uploadedFile=null;state.uploadedFileBase64=null;state.uploadedFileType=null;state.conversationHistory=[];state.lastAiText='';document.getElementById('thread').innerHTML='';document.getElementById('thread').classList.remove('active');document.querySelector('.hero')?.classList.remove('collapsed');document.querySelectorAll('.tile').forEach(t=>t.classList.remove('selected'));document.querySelectorAll('.stage-segmented button').forEach(b=>b.classList.remove('selected'));document.querySelectorAll('.audience-pills .pill').forEach(p=>p.classList.remove('selected'));document.querySelectorAll('.goal-pills .pill').forEach(p=>p.classList.remove('selected'));document.getElementById('notes-input').value='';document.getElementById('upload-preview').innerHTML='';document.getElementById('file-input').value='';document.getElementById('main-input').value='';document.getElementById('main-input').style.height='auto';document.getElementById('context-panel').classList.remove('open');document.getElementById('context-bar-toggle').classList.remove('active');document.getElementById('context-tags').innerHTML='';document.getElementById('new-session-btn').style.display='none';updateContextSummary();const modeSlider=document.querySelectorAll('.mode-slider button');modeSlider.forEach(b=>b.classList.remove('selected'));if(modeSlider[0])modeSlider[0].classList.add('selected')}
 
 function toggleSidebar(){const sidebar=document.getElementById('sidebar');sidebar.classList.toggle('collapsed');const btn=document.getElementById('sidebarToggleBtn');const isCollapsed=sidebar.classList.contains('collapsed');btn.classList.toggle('shifted',isCollapsed);btn.innerHTML=isCollapsed?'\u00BB':'\u00AB'}
 
@@ -799,7 +795,7 @@ function showAboutPage(page){const titles={faq:'FAQ & How It Works',notes:'Notes
 
 function initAbout(){const overlay=document.getElementById('about-overlay');const modal=document.getElementById('about-modal');const close=()=>{overlay.classList.remove('open');modal.classList.remove('open')};document.getElementById('about-close').addEventListener('click',close);overlay.addEventListener('click',close);document.getElementById('expand-close').addEventListener('click',closeExpand);document.getElementById('expand-overlay').addEventListener('click',closeExpand);document.getElementById('expand-copy-btn').addEventListener('click',()=>{const body=document.getElementById('expand-body');navigator.clipboard.writeText(body.innerText).then(()=>{const span=document.querySelector('#expand-copy-btn span');if(span){span.textContent='Copied!';setTimeout(()=>span.textContent='Copy feedback',2000)}})})}
 
-async function submitMessage(){const input=document.getElementById('main-input');const text=input.value.trim();if(!text&&!state.uploadedFileBase64)return showError('Give me something to work with — paste copy, upload a file, or tell me what you need.');clearError();const MODE_LABELS={'full-read':'Full Read','quick-take':'Quick Take','just-draft':'Just Draft It'};let contextParts=[];if(state.assetTypes.length)contextParts.push(`Asset Type(s): ${state.assetTypes.join(', ')}`);if(state.creativeStage)contextParts.push(`Creative Stage: ${state.creativeStage}`);if(state.audience.length)contextParts.push(`Feedback Audience: ${state.audience.join(', ')}`);if(state.goal)contextParts.push(`Goal: ${state.goal}`);if(state.notes)contextParts.push(`Additional Context: ${state.notes}`);let brandContext='';if(state.brandSettings.enabled&&hasBrandData()){const b=state.brandSettings;brandContext=`\n\nBRAND PROFILE (active — CRITICALLY IMPORTANT: compare the uploaded asset against these guidelines and explicitly flag ANY deviations in colors, logo usage, typography, voice/tone, or other brand standards):`;if(b.colors.length)brandContext+=`\nBrand Colors: ${b.colors.join(', ')}`;if(b.websiteUrl)brandContext+=`\nWebsite: ${b.websiteUrl}`;if(b.guidelines)brandContext+=`\nGuidelines: ${b.guidelines}`;if(b.guidelinesUrl)brandContext+=`\nGuidelines Link: ${b.guidelinesUrl}`}let modeInstruction='';const fwName=state.framework||'the most appropriate framework';const fwInstruction=state.framework?`Use the ${state.framework} feedback framework.`:`Choose the most appropriate feedback framework (COIN, I Like / I Wish / What If, or Plus/Delta).`;if(state.conversationHistory.length===0||contextParts.length){if(state.mode==='full-read'){modeInstruction=`\n\nMODE: Full Read — ${fwInstruction} Start with "### TL;DR" (1-2 sentence overall take), then "### What's Working" (numbered points), then "### Improvements" (numbered points with bolded labels). If brand guidelines are provided, include "### Brand Compliance" section flagging any deviations. End with "### Framework" — one line citing which feedback model you used.`}else if(state.mode==='quick-take'){modeInstruction=`\n\nMODE: Quick Take — ${fwInstruction} Start with "### TL;DR" (1 sharp sentence), then "### Feedback" (numbered points with bolded labels, concise). If brand guidelines are provided, flag deviations inline. End with "### Framework" — one line citing which feedback model you used.`}else{modeInstruction=`\n\nMODE: Just Draft It — ${fwInstruction} Start with "### TL;DR" (1-2 sentences), then "### Feedback Draft" (the polished feedback copy, ready to send). If brand guidelines are provided, weave compliance notes in. End with "### Framework" — one line citing which feedback model you used.`}}let userMessage=text;if(contextParts.length)userMessage+=`\n\nCONTEXT:\n- ${contextParts.join('\n- ')}`;userMessage+=modeInstruction+brandContext;const displayText=text||MODE_LABELS[state.mode]||'Generate Feedback';addUserMessage(displayText);input.value='';input.style.height='auto';document.querySelector('.hero').classList.add('collapsed');document.getElementById('new-session-btn').style.display='flex';document.getElementById('context-panel').classList.remove('open');document.getElementById('context-bar-toggle').classList.remove('active');updateContextSummary();const content=[];const isFirstMsg=state.conversationHistory.length===0;if(isFirstMsg&&state.brandSettings.enabled&&state.brandSettings.guidelinesFileBase64){const gt=state.brandSettings.guidelinesFileType;content.push({type:'text',text:'[BRAND GUIDELINES REFERENCE DOCUMENT — Do NOT review this. Use it ONLY as a reference to check brand compliance of any assets the user shares below.]'});if(gt&&gt.startsWith('image/')){content.push({type:'image',source:{type:'base64',media_type:gt,data:state.brandSettings.guidelinesFileBase64}})}else if(gt==='application/pdf'){content.push({type:'document',source:{type:'base64',media_type:'application/pdf',data:state.brandSettings.guidelinesFileBase64}})}content.push({type:'text',text:'[END OF BRAND GUIDELINES REFERENCE]'})}if(state.uploadedFileBase64){content.push({type:'text',text:'[ASSET TO REVIEW — This is the creative asset the user wants feedback on. Review THIS:]'});if(state.uploadedFileType&&state.uploadedFileType.startsWith('image/')){content.push({type:'image',source:{type:'base64',media_type:state.uploadedFileType,data:state.uploadedFileBase64}})}else if(state.uploadedFileType==='application/pdf'){content.push({type:'document',source:{type:'base64',media_type:'application/pdf',data:state.uploadedFileBase64}})}content.push({type:'text',text:'[END OF ASSET TO REVIEW]'})}content.push({type:'text',text:userMessage});state.conversationHistory.push({role:'user',content});setLoading(true);try{await streamToThread(state.conversationHistory)}catch(err){showError('Something went wrong: '+err.message);setLoading(false)}}
+async function submitMessage(){const input=document.getElementById('main-input');const text=input.value.trim();if(!text&&!state.uploadedFileBase64)return showError('Give me something to work with — paste copy, upload a file, or tell me what you need.');clearError();const MODE_LABELS={'full-read':'Full Read','quick-take':'Quick Take','just-draft':'Just Draft It'};let contextParts=[];if(state.assetTypes.length)contextParts.push(`Asset Type(s): ${state.assetTypes.join(', ')}`);if(state.creativeStage)contextParts.push(`Creative Stage: ${state.creativeStage}`);if(state.audience.length)contextParts.push(`Feedback Audience: ${state.audience.join(', ')}`);if(state.goal)contextParts.push(`Goal: ${state.goal}`);if(state.notes)contextParts.push(`Additional Context: ${state.notes}`);let brandContext='';if(state.brandSettings.enabled&&hasBrandData()){const b=state.brandSettings;brandContext=`\n\nBRAND PROFILE (active — CRITICALLY IMPORTANT: compare the uploaded asset against these guidelines and explicitly flag ANY deviations in colors, logo usage, typography, voice/tone, or other brand standards):`;if(b.colors.length)brandContext+=`\nBrand Colors: ${b.colors.join(', ')}`;if(b.websiteUrl)brandContext+=`\nWebsite: ${b.websiteUrl}`;if(b.guidelines)brandContext+=`\nGuidelines: ${b.guidelines}`;if(b.guidelinesUrl)brandContext+=`\nGuidelines Link: ${b.guidelinesUrl}`}let modeInstruction='';const fwName=state.framework||'the most appropriate framework';const fwInstruction=state.framework?`Use the ${state.framework} feedback framework.`:`Choose the most appropriate feedback framework (COIN, I Like / I Wish / What If, or Plus/Delta).`;if(state.conversationHistory.length===0||contextParts.length){if(state.mode==='full-read'){modeInstruction=`\n\nMODE: Full Read — ${fwInstruction} Start with "### TL;DR" (1-2 sentence overall take), then "### What's Working" (numbered points), then "### Improvements" (numbered points with bolded labels). If brand guidelines are provided, include "### Brand Compliance" section flagging any deviations. End with "### Framework" — one line citing which feedback model you used.`}else if(state.mode==='quick-take'){modeInstruction=`\n\nMODE: Quick Take — ${fwInstruction} Start with "### TL;DR" (1 sharp sentence), then "### Feedback" (numbered points with bolded labels, concise). If brand guidelines are provided, flag deviations inline. End with "### Framework" — one line citing which feedback model you used.`}else{modeInstruction=`\n\nMODE: Just Draft It — ${fwInstruction} Start with "### TL;DR" (1-2 sentences), then "### Feedback Draft" (the polished feedback copy, ready to send). If brand guidelines are provided, weave compliance notes in. End with "### Framework" — one line citing which feedback model you used.`}}let userMessage=text;if(contextParts.length)userMessage+=`\n\nCONTEXT:\n- ${contextParts.join('\n- ')}`;userMessage+=modeInstruction+brandContext;const displayText=text||MODE_LABELS[state.mode]||'Generate Feedback';addUserMessage(displayText);input.value='';input.style.height='auto';document.querySelector('.hero')?.classList.add('collapsed');document.getElementById('new-session-btn').style.display='flex';document.getElementById('context-panel').classList.remove('open');document.getElementById('context-bar-toggle').classList.remove('active');updateContextSummary();const content=[];const isFirstMsg=state.conversationHistory.length===0;if(isFirstMsg&&state.brandSettings.enabled&&state.brandSettings.guidelinesFileBase64){const gt=state.brandSettings.guidelinesFileType;content.push({type:'text',text:'[BRAND GUIDELINES REFERENCE DOCUMENT — Do NOT review this. Use it ONLY as a reference to check brand compliance of any assets the user shares below.]'});if(gt&&gt.startsWith('image/')){content.push({type:'image',source:{type:'base64',media_type:gt,data:state.brandSettings.guidelinesFileBase64}})}else if(gt==='application/pdf'){content.push({type:'document',source:{type:'base64',media_type:'application/pdf',data:state.brandSettings.guidelinesFileBase64}})}content.push({type:'text',text:'[END OF BRAND GUIDELINES REFERENCE]'})}if(state.uploadedFileBase64){content.push({type:'text',text:'[ASSET TO REVIEW — This is the creative asset the user wants feedback on. Review THIS:]'});if(state.uploadedFileType&&state.uploadedFileType.startsWith('image/')){content.push({type:'image',source:{type:'base64',media_type:state.uploadedFileType,data:state.uploadedFileBase64}})}else if(state.uploadedFileType==='application/pdf'){content.push({type:'document',source:{type:'base64',media_type:'application/pdf',data:state.uploadedFileBase64}})}content.push({type:'text',text:'[END OF ASSET TO REVIEW]'})}content.push({type:'text',text:userMessage});state.conversationHistory.push({role:'user',content});setLoading(true);try{await streamToThread(state.conversationHistory)}catch(err){showError('Something went wrong: '+err.message);setLoading(false)}}
 
 function addUserMessage(text){const thread=document.getElementById('thread');thread.classList.add('active');const wrap=document.createElement('div');wrap.className='msg-user-wrap';const msg=document.createElement('div');msg.className='msg msg-user';msg.innerHTML=`<div class="msg-body">${escapeHtml(text)}</div>`;const avatar=document.createElement('div');avatar.className='user-avatar-chat';avatar.innerHTML=getUserAvatarHTML();wrap.appendChild(msg);wrap.appendChild(avatar);thread.appendChild(wrap);scrollThread()}
 
