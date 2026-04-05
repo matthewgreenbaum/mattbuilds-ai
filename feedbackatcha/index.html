@@ -61,7 +61,7 @@ body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--tex
 .sidebar-toggle-btn.shifted{left:14px}
 .sidebar-footer{padding:14px 20px 18px;border-top:1px solid #EAE0D4;flex-shrink:0;display:flex;flex-direction:column;gap:2px}
 .sidebar-footer-link{background:none;border:none;color:#5A5069;font-family:Helvetica,Arial,sans-serif;font-size:0.82rem;cursor:pointer;padding:6px 4px;text-align:left;transition:color 0.15s;border-radius:4px}
-.sidebar-footer-link:hover{color:#2A9D8F}
+.sidebar-footer-link:hover{color:#C27155}
 .main{flex:1;min-width:0;display:flex;flex-direction:column}
 
 /* Header — Blueprint lockup */
@@ -401,8 +401,8 @@ body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--tex
   </div>
 
   <div class="sidebar-footer">
-    <button class="sidebar-footer-link" onclick="showAboutPage('faq')" style="color:#43D5B5">FAQ &amp; How It Works</button>
-    <button class="sidebar-footer-link" onclick="showAboutPage('notes')">Notes</button>
+    <button class="sidebar-footer-link" onclick="showAboutPage('faq')" style="color:#FF9C7E">About FeedbackAtcha</button>
+    <button class="sidebar-footer-link" onclick="showAboutPage('notes')" style="color:#FF9C7E">Notes</button>
   </div>
 </aside>
 
@@ -791,7 +791,7 @@ function resetSession(){state.assetTypes=[];state.creativeStage=null;state.audie
 
 function toggleSidebar(){const sidebar=document.getElementById('sidebar');sidebar.classList.toggle('collapsed');const btn=document.getElementById('sidebarToggleBtn');const isCollapsed=sidebar.classList.contains('collapsed');btn.classList.toggle('shifted',isCollapsed);btn.innerHTML=isCollapsed?'\u00BB':'\u00AB'}
 
-function showAboutPage(page){const titles={faq:'FAQ & How It Works',notes:'Notes'};document.querySelectorAll('.about-page').forEach(p=>p.style.display='none');const target=document.getElementById('aboutPage'+page.charAt(0).toUpperCase()+page.slice(1));if(target)target.style.display='block';document.getElementById('about-title').textContent=titles[page]||'About';document.getElementById('about-overlay').classList.add('open');document.getElementById('about-modal').classList.add('open')}
+function showAboutPage(page){const titles={faq:'About FeedbackAtcha',notes:'Notes'};document.querySelectorAll('.about-page').forEach(p=>p.style.display='none');const target=document.getElementById('aboutPage'+page.charAt(0).toUpperCase()+page.slice(1));if(target)target.style.display='block';document.getElementById('about-title').textContent=titles[page]||'About';document.getElementById('about-overlay').classList.add('open');document.getElementById('about-modal').classList.add('open')}
 
 function initAbout(){const overlay=document.getElementById('about-overlay');const modal=document.getElementById('about-modal');const close=()=>{overlay.classList.remove('open');modal.classList.remove('open')};document.getElementById('about-close').addEventListener('click',close);overlay.addEventListener('click',close);document.getElementById('expand-close').addEventListener('click',closeExpand);document.getElementById('expand-overlay').addEventListener('click',closeExpand);document.getElementById('expand-copy-btn').addEventListener('click',()=>{const body=document.getElementById('expand-body');navigator.clipboard.writeText(body.innerText).then(()=>{const span=document.querySelector('#expand-copy-btn span');if(span){span.textContent='Copied!';setTimeout(()=>span.textContent='Copy feedback',2000)}})})}
 
