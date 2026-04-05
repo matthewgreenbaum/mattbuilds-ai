@@ -45,6 +45,22 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
 .sb-footer-blob{width:42px;height:28px;background:var(--coral);border-radius:60% 40% 55% 45%/50% 60% 40% 50%;display:flex;align-items:center;justify-content:center;font-family:'Figtree',sans-serif;font-size:0.95rem;font-weight:900;color:#fff;flex-shrink:0}
 .sb-footer-suffix{font-family:'Figtree',sans-serif;font-size:1.05rem;font-weight:900;color:var(--coral);letter-spacing:0.04em;margin-left:-2px}
 .workspace{flex:1;display:flex;flex-direction:column;min-width:0}
+.app-header{display:flex;align-items:center;padding:16px 28px;border-bottom:1px solid var(--border);background:var(--white);flex-shrink:0;gap:12px}
+.app-logo{font-family:'Figtree',sans-serif;font-size:1.35rem;font-weight:800;letter-spacing:-0.01em;color:var(--indigo);line-height:1}
+.app-header-actions{margin-left:auto;display:flex;align-items:center;gap:6px}
+.hdr-btn{background:none;border:1px solid transparent;color:var(--text-2);font-family:Helvetica,Arial,sans-serif;font-size:0.78rem;font-weight:500;cursor:pointer;padding:7px 12px;border-radius:8px;transition:background 0.15s,color 0.15s,border-color 0.15s;display:flex;align-items:center;gap:6px}
+.hdr-btn:hover{background:var(--lavender-pale);color:var(--indigo);border-color:var(--border)}
+.hdr-btn svg{width:15px;height:15px;flex-shrink:0}
+.phase-stepper{display:flex;align-items:center;gap:0;padding:14px 28px 16px;background:var(--lavender-pale);border-bottom:1px solid var(--border);flex-shrink:0;overflow-x:auto;scrollbar-width:none}
+.phase-stepper::-webkit-scrollbar{display:none}
+.phase-step{display:flex;align-items:center;gap:8px;white-space:nowrap;font-family:'Figtree',sans-serif;font-size:0.75rem;font-weight:600;color:var(--indigo);transition:color 0.3s,opacity 0.3s;cursor:default}
+.phase-step.pending{color:var(--text-3);opacity:0.65}
+.phase-step.completed{color:var(--teal-mid)}
+.phase-step-icon{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.62rem;font-weight:700;flex-shrink:0;border:2px solid var(--border);background:var(--white);color:var(--indigo);transition:all 0.3s}
+.phase-step.active .phase-step-icon{background:var(--indigo);border-color:var(--indigo);color:#fff;box-shadow:0 0 0 3px rgba(47,22,100,0.15)}
+.phase-step.completed .phase-step-icon{background:var(--teal-mid);border-color:var(--teal-mid);color:#fff}
+.phase-step-connector{width:28px;height:2px;background:var(--border);flex-shrink:0;margin:0 6px;transition:background 0.3s}
+.phase-step-connector.completed{background:var(--teal-mid)}
 .panels{flex:1;display:flex;min-height:0}
 .chat-panel{flex:60;background:var(--white);min-width:0;display:flex;flex-direction:column}
 .preview-panel{flex:40;background:var(--mint-wash);min-width:280px;display:flex;flex-direction:column;border-left:1px solid var(--border)}
@@ -80,6 +96,27 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
     </div>
   </aside>
   <main class="workspace">
+    <header class="app-header">
+      <span class="app-logo">FeedbackAtcha</span>
+      <div class="app-header-actions">
+        <button class="hdr-btn" title="Brand profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2a10 10 0 1 0 0 20c1 0 2-.7 2-1.5 0-1.5-1.5-1.5-1.5-3s1-2.5 2.5-2.5H18a4 4 0 0 0 4-4 10 10 0 0 0-10-9z"/></svg>
+          Brand
+        </button>
+        <button class="hdr-btn" title="Settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+      </div>
+    </header>
+    <div class="phase-stepper">
+      <div class="phase-step active"><div class="phase-step-icon">1</div>Assets</div>
+      <div class="phase-step-connector"></div>
+      <div class="phase-step pending"><div class="phase-step-icon">2</div>Goal</div>
+      <div class="phase-step-connector"></div>
+      <div class="phase-step pending"><div class="phase-step-icon">3</div>Audience &amp; Stage</div>
+      <div class="phase-step-connector"></div>
+      <div class="phase-step pending"><div class="phase-step-icon">4</div>Review</div>
+    </div>
     <div class="panels">
       <section class="chat-panel"></section>
       <section class="preview-panel"></section>
