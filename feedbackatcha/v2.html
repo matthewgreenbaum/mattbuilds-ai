@@ -63,6 +63,25 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
 .phase-step-connector.completed{background:var(--teal-mid)}
 .panels{flex:1;display:flex;min-height:0}
 .chat-panel{flex:60;background:var(--white);min-width:0;display:flex;flex-direction:column}
+.chat-thread{flex:1;overflow-y:auto;padding:24px 28px}
+.chat-thread::-webkit-scrollbar{width:6px}
+.chat-thread::-webkit-scrollbar-thumb{background:var(--lavender);border-radius:4px}
+.msg-row{display:flex;gap:12px;margin-bottom:18px;align-items:flex-start}
+.msg-row.user{flex-direction:row-reverse}
+.orb{width:36px;height:36px;border-radius:50%;flex-shrink:0;overflow:hidden;box-shadow:0 0 0 2px rgba(47,22,100,0.08)}
+.orb svg{width:100%;height:100%;display:block}
+.user-avatar{width:36px;height:36px;border-radius:50%;flex-shrink:0;background:var(--mint);color:var(--indigo);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.82rem}
+.msg-bubble{max-width:85%;padding:14px 18px;border-radius:14px;font-family:'Figtree',sans-serif;font-size:0.92rem;line-height:1.65;color:var(--ink)}
+.msg-row.bot .msg-bubble{background:var(--lavender-pale);border:1px solid var(--border);border-top-left-radius:4px}
+.msg-row.user .msg-bubble{background:var(--indigo);color:#fff;border-top-right-radius:4px}
+.msg-bubble p{margin-bottom:10px}
+.msg-bubble p:last-child{margin-bottom:0}
+.msg-bubble strong{font-weight:700;color:var(--indigo)}
+.msg-row.user .msg-bubble strong{color:#fff}
+.msg-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chip{padding:7px 13px;border-radius:9999px;background:var(--white);border:1px solid var(--border);color:var(--indigo);font-family:Helvetica,Arial,sans-serif;font-size:0.78rem;font-weight:500;cursor:pointer;transition:all 0.15s}
+.chip:hover{border-color:var(--indigo);background:var(--lavender-pale)}
+.chip.selected{background:var(--indigo);color:#fff;border-color:var(--indigo)}
 .preview-panel{flex:40;background:var(--mint-wash);min-width:280px;display:flex;flex-direction:column;border-left:1px solid var(--border)}
 </style>
 </head>
@@ -118,7 +137,33 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
       <div class="phase-step pending"><div class="phase-step-icon">4</div>Review</div>
     </div>
     <div class="panels">
-      <section class="chat-panel"></section>
+      <section class="chat-panel">
+        <div class="chat-thread">
+          <div class="msg-row bot">
+            <div class="orb"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="orb-g" cx="35%" cy="30%" r="65%"><stop offset="0%" stop-color="#4a3280"/><stop offset="100%" stop-color="#2F1664"/></radialGradient></defs><circle cx="50" cy="50" r="50" fill="url(#orb-g)"/><g fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M50,50L74,42.2M50,50L64.8,70.4M50,50L35.2,70.4M50,50L26,42.2M50,50L50,24.8M24.8,84.7L50,90.8M24.8,84.7L35.2,70.4M24.8,84.7L11.2,62.6M24.8,84.7L35.2,95.7M24.8,84.7L11.2,78.2M90.8,36.7L74,42.2M90.8,36.7L88.8,62.6M90.8,36.7L74,17M90.8,36.7L98,50M90.8,36.7L88.8,21.8M50,7.1L26,17M50,7.1L50,24.8M50,7.1L74,17M50,7.1L35.2,4.3M50,7.1L64.8,4.3M75.2,84.7L88.8,62.6M75.2,84.7L64.8,70.4M75.2,84.7L50,90.8M75.2,84.7L88.8,78.2M75.2,84.7L64.8,95.7M9.2,36.7L11.2,62.6M9.2,36.7L26,42.2M9.2,36.7L26,17M9.2,36.7L2,50M9.2,36.7L11.2,21.8M74,42.2L88.8,62.6M74,42.2L64.8,70.4M74,42.2L50,24.8M74,42.2L74,17M88.8,62.6L64.8,70.4M88.8,62.6L98,50M88.8,62.6L88.8,78.2M64.8,70.4L50,90.8M64.8,70.4L35.2,70.4M50,90.8L35.2,70.4M50,90.8L64.8,95.7M50,90.8L35.2,95.7M35.2,70.4L11.2,62.6M35.2,70.4L26,42.2M11.2,62.6L26,42.2M11.2,62.6L11.2,78.2M11.2,62.6L2,50M26,42.2L26,17M26,42.2L50,24.8M26,17L50,24.8M26,17L11.2,21.8M26,17L35.2,4.3M50,24.8L74,17M74,17L64.8,4.3M74,17L88.8,21.8M98,50L88.8,78.2M98,50L88.8,21.8M88.8,78.2L64.8,95.7M64.8,95.7L35.2,95.7M35.2,95.7L11.2,78.2M11.2,78.2L2,50M2,50L11.2,21.8M11.2,21.8L35.2,4.3M35.2,4.3L64.8,4.3M64.8,4.3L88.8,21.8"/></g></svg></div>
+            <div class="msg-bubble">
+              <p>Hey! 👋 I'm <strong>FeedbackAtcha</strong> — your creative feedback coach. Think of me as the senior marketer sitting next to you when a deck lands in your inbox and you need to respond in 20 minutes without sounding like you're piling on or dodging.</p>
+              <p>I take the work your team sent and help you write feedback that actually moves it forward. No more "looks great!" and no more vague "this is off."</p>
+              <p><strong>First things first — show me what landed on your desk.</strong> Upload the creative, paste a link, or just describe what you got. While you're at it, tell me your gut reaction. Even a half-formed thought. I'll weave it in.</p>
+            </div>
+          </div>
+          <div class="msg-row bot">
+            <div class="orb"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="url(#orb-g)"/><g fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M50,50L74,42.2M50,50L64.8,70.4M50,50L35.2,70.4M50,50L26,42.2M50,50L50,24.8M74,42.2L88.8,62.6M64.8,70.4L50,90.8M50,90.8L35.2,70.4M35.2,70.4L11.2,62.6M11.2,62.6L26,42.2M26,42.2L50,24.8M50,24.8L74,42.2"/></g></svg></div>
+            <div class="msg-bubble">
+              <p>What kind of creative did you receive?</p>
+              <div class="msg-chips">
+                <button class="chip">Ad</button>
+                <button class="chip">Content (eBook, blog)</button>
+                <button class="chip">Copy</button>
+                <button class="chip">Video</button>
+                <button class="chip">Landing page</button>
+                <button class="chip">Email</button>
+                <button class="chip">Deck</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section class="preview-panel"></section>
     </div>
   </main>
