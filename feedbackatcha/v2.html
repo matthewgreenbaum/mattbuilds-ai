@@ -82,6 +82,21 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
 .chip{padding:7px 13px;border-radius:9999px;background:var(--white);border:1px solid var(--border);color:var(--indigo);font-family:Helvetica,Arial,sans-serif;font-size:0.78rem;font-weight:500;cursor:pointer;transition:all 0.15s}
 .chip:hover{border-color:var(--indigo);background:var(--lavender-pale)}
 .chip.selected{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+.composer{border-top:1px solid var(--border);padding:16px 24px 20px;background:var(--white);flex-shrink:0}
+.composer-input-wrap{border:1px solid var(--border);border-radius:14px;background:var(--white);padding:10px 14px;transition:border-color 0.15s,box-shadow 0.15s}
+.composer-input-wrap:focus-within{border-color:var(--indigo);box-shadow:0 0 0 3px rgba(47,22,100,0.08)}
+.composer-input{width:100%;border:none;outline:none;resize:none;font-family:inherit;font-size:0.92rem;line-height:1.55;color:var(--ink);background:transparent;min-height:48px;max-height:160px}
+.composer-input::placeholder{color:var(--text-3)}
+.composer-row{display:flex;align-items:center;justify-content:space-between;margin-top:10px;gap:10px}
+.composer-left{display:flex;align-items:center;gap:6px}
+.composer-icon-btn{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--white);color:var(--text-2);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;flex-shrink:0}
+.composer-icon-btn:hover{border-color:var(--indigo);color:var(--indigo);background:var(--lavender-pale)}
+.composer-icon-btn svg{width:16px;height:16px}
+.skip-ahead{background:none;border:none;color:var(--text-2);font-family:Helvetica,Arial,sans-serif;font-size:0.78rem;font-weight:500;cursor:pointer;padding:6px 8px;border-radius:6px;transition:color 0.15s,background 0.15s;display:flex;align-items:center;gap:4px}
+.skip-ahead:hover{color:var(--indigo);background:var(--lavender-pale)}
+.generate-btn{padding:0 20px;height:38px;border-radius:9999px;border:none;background:var(--indigo);color:#fff;font-family:'Figtree',sans-serif;font-size:0.88rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background 0.15s,transform 0.15s,box-shadow 0.15s;box-shadow:0 1px 3px rgba(47,22,100,0.2)}
+.generate-btn:hover{background:var(--indigo-light);transform:translateY(-1px);box-shadow:0 4px 12px rgba(47,22,100,0.25)}
+.generate-btn svg{width:15px;height:15px}
 .preview-panel{flex:40;background:var(--mint-wash);min-width:280px;display:flex;flex-direction:column;border-left:1px solid var(--border)}
 </style>
 </head>
@@ -161,6 +176,26 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
                 <button class="chip">Deck</button>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="composer">
+          <div class="composer-input-wrap">
+            <textarea class="composer-input" rows="2" placeholder="Type your answer, upload the creative, or describe what you received…"></textarea>
+          </div>
+          <div class="composer-row">
+            <div class="composer-left">
+              <button class="composer-icon-btn" title="Attach file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+              </button>
+              <button class="skip-ahead" title="Skip ahead with defaults">
+                Skip ahead
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+              </button>
+            </div>
+            <button class="generate-btn">
+              Generate Feedback
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
           </div>
         </div>
       </section>
