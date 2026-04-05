@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FeedbackAtcha — v2</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --indigo:#2F1664;--indigo-light:#4a3280;
+  --mint:#43D5B5;--mint-wash:#E8F7F3;
+  --teal:#1c767b;--teal-mid:#2a9da4;
+  --coral:#FF9C7E;
+  --lavender:#EAE7EF;--lavender-pale:#F5F3F8;
+  --ink:#1A1A1A;--text-2:#5A5069;--text-3:#8B8399;
+  --white:#FFFFFF;--border:#EAE7EF;
+  --danger:#B33A3A;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;line-height:1.55}
+.app{display:flex;height:100vh;overflow:hidden}
+.sidebar{width:260px;background:var(--indigo);color:#fff;flex-shrink:0}
+.workspace{flex:1;display:flex;flex-direction:column;min-width:0}
+.panels{flex:1;display:flex;min-height:0}
+.chat-panel{flex:60;background:var(--white);min-width:0;display:flex;flex-direction:column}
+.preview-panel{flex:40;background:var(--mint-wash);min-width:280px;display:flex;flex-direction:column;border-left:1px solid var(--border)}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar"></aside>
+  <main class="workspace">
+    <div class="panels">
+      <section class="chat-panel"></section>
+      <section class="preview-panel"></section>
+    </div>
+  </main>
+</div>
+</body>
+</html>
