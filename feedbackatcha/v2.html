@@ -21,7 +21,8 @@
 html,body{height:100%}
 body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;line-height:1.55}
 .app{display:flex;height:100vh;overflow:hidden}
-.sidebar{width:260px;background:var(--indigo);color:#fff;flex-shrink:0;display:flex;flex-direction:column;height:100vh}
+.sidebar{width:260px;background:var(--indigo);color:#fff;flex-shrink:0;display:flex;flex-direction:column;height:100vh;transition:width 0.25s ease}
+.sidebar.collapsed{width:0;overflow:hidden}
 .sb-top{padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.08)}
 .sb-avatar{width:32px;height:32px;border-radius:50%;background:var(--mint);color:var(--indigo);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.82rem;flex-shrink:0}
 .sb-name{font-family:'Figtree',sans-serif;font-size:0.9rem;font-weight:500;color:#fff;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -277,5 +278,28 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
     </div>
   </main>
 </div>
+<script>
+// Chip multi-select toggle
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>c.classList.toggle('selected')));
+// Segmented control (single-select per group)
+document.querySelectorAll('.segmented').forEach(g=>{
+  g.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+    g.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+  }));
+});
+// Sidebar active review
+document.querySelectorAll('.sb-item').forEach(it=>it.addEventListener('click',()=>{
+  document.querySelectorAll('.sb-item').forEach(x=>x.classList.remove('active'));
+  it.classList.add('active');
+}));
+// Sidebar collapse toggle
+document.querySelector('.sb-collapse').addEventListener('click',()=>{
+  document.querySelector('.sidebar').classList.toggle('collapsed');
+});
+// Autosize textarea
+const ta=document.querySelector('.composer-input');
+if(ta){ta.addEventListener('input',()=>{ta.style.height='auto';ta.style.height=Math.min(ta.scrollHeight,160)+'px';});}
+</script>
 </body>
 </html>
