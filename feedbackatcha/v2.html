@@ -21,7 +21,29 @@
 html,body{height:100%}
 body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;line-height:1.55}
 .app{display:flex;height:100vh;overflow:hidden}
-.sidebar{width:260px;background:var(--indigo);color:#fff;flex-shrink:0}
+.sidebar{width:260px;background:var(--indigo);color:#fff;flex-shrink:0;display:flex;flex-direction:column;height:100vh}
+.sb-top{padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.sb-avatar{width:32px;height:32px;border-radius:50%;background:var(--mint);color:var(--indigo);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.82rem;flex-shrink:0}
+.sb-name{font-family:'Figtree',sans-serif;font-size:0.9rem;font-weight:500;color:#fff;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sb-collapse{background:none;border:none;color:rgba(255,255,255,0.55);font-size:1.1rem;cursor:pointer;padding:4px 6px;border-radius:6px;transition:color 0.15s,background 0.15s}
+.sb-collapse:hover{color:#fff;background:rgba(255,255,255,0.08)}
+.sb-body{flex:1;display:flex;flex-direction:column;padding:14px 12px 10px;overflow:hidden}
+.sb-new{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.06);border:none;color:#fff;font-family:'Figtree',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;transition:background 0.15s;margin-bottom:10px}
+.sb-new:hover{background:rgba(255,255,255,0.12)}
+.sb-new svg{width:16px;height:16px;flex-shrink:0}
+.sb-search{width:100%;padding:9px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:#fff;font-family:Helvetica,Arial,sans-serif;font-size:0.82rem;outline:none;margin-bottom:14px;transition:border-color 0.15s,background 0.15s}
+.sb-search::placeholder{color:rgba(255,255,255,0.45)}
+.sb-search:focus{border-color:var(--mint);background:rgba(255,255,255,0.1)}
+.sb-list{flex:1;overflow-y:auto;margin:0 -4px;padding:0 4px}
+.sb-list::-webkit-scrollbar{width:4px}
+.sb-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:4px}
+.sb-item{display:block;width:100%;text-align:left;padding:9px 12px;border-radius:8px;background:none;border:none;color:rgba(255,255,255,0.78);font-family:Helvetica,Arial,sans-serif;font-size:0.82rem;cursor:pointer;transition:background 0.15s,color 0.15s;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sb-item:hover{background:rgba(255,255,255,0.08);color:#fff}
+.sb-item.active{background:rgba(255,255,255,0.14);color:#fff;font-weight:600}
+.sb-footer{padding:14px 16px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:8px}
+.sb-footer-label{font-size:0.72rem;font-weight:500;color:rgba(255,255,255,0.45)}
+.sb-footer-blob{width:42px;height:28px;background:var(--coral);border-radius:60% 40% 55% 45%/50% 60% 40% 50%;display:flex;align-items:center;justify-content:center;font-family:'Figtree',sans-serif;font-size:0.95rem;font-weight:900;color:#fff;flex-shrink:0}
+.sb-footer-suffix{font-family:'Figtree',sans-serif;font-size:1.05rem;font-weight:900;color:var(--coral);letter-spacing:0.04em;margin-left:-2px}
 .workspace{flex:1;display:flex;flex-direction:column;min-width:0}
 .panels{flex:1;display:flex;min-height:0}
 .chat-panel{flex:60;background:var(--white);min-width:0;display:flex;flex-direction:column}
@@ -30,7 +52,33 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
 </head>
 <body>
 <div class="app">
-  <aside class="sidebar"></aside>
+  <aside class="sidebar">
+    <div class="sb-top">
+      <div class="sb-avatar">MG</div>
+      <div class="sb-name">Matty G.</div>
+      <button class="sb-collapse" title="Collapse sidebar">&#xAB;</button>
+    </div>
+    <div class="sb-body">
+      <button class="sb-new">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        New review
+      </button>
+      <input class="sb-search" type="text" placeholder="Search reviews…">
+      <div class="sb-list">
+        <button class="sb-item active">Acme Q4 Landing Page</button>
+        <button class="sb-item">Sarah's LinkedIn carousel</button>
+        <button class="sb-item">Product launch video v2</button>
+        <button class="sb-item">Email nurture sequence</button>
+        <button class="sb-item">Webinar landing copy</button>
+        <button class="sb-item">Pricing page refresh</button>
+      </div>
+    </div>
+    <div class="sb-footer">
+      <span class="sb-footer-label">Powered by</span>
+      <div class="sb-footer-blob">mb</div>
+      <span class="sb-footer-suffix">.ai</span>
+    </div>
+  </aside>
   <main class="workspace">
     <div class="panels">
       <section class="chat-panel"></section>
