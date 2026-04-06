@@ -312,10 +312,7 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
               <button class="attach-btn" title="Attach file">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
               </button>
-              <button class="send-btn">
-                Send
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-              </button>
+              <button class="send-btn" id="sendBtn">Send</button>
             </div>
           </div>
         </div>
@@ -384,127 +381,232 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
   </div>
 </div>
 <script>
-// Chip multi-select toggle
-document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>c.classList.toggle('selected')));
-// Preview tabs (single-select)
-document.querySelectorAll('.preview-tab').forEach(t=>t.addEventListener('click',()=>{
-  document.querySelectorAll('.preview-tab').forEach(x=>x.classList.remove('active'));
+const $=s=>document.querySelector(s);
+const $$=s=>document.querySelectorAll(s);
+
+// ─── Bot intro message HTML ───
+const BOT_INTRO=`<div class="msg-row bot">
+  <div class="orb"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="url(#orb-g)"/><g fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M50,50L74,42.2M50,50L64.8,70.4M50,50L35.2,70.4M50,50L26,42.2M50,50L50,24.8M74,42.2L88.8,62.6M64.8,70.4L50,90.8M50,90.8L35.2,70.4M35.2,70.4L11.2,62.6M11.2,62.6L26,42.2M26,42.2L50,24.8M50,24.8L74,42.2"/></g></svg></div>
+  <div class="msg-content">
+    <p>Hey! \u{1F44B} I'm <strong>FeedbackAtcha</strong> \u2014 your creative feedback coach. Think of me as the senior marketer sitting next to you when a deck lands in your inbox and you need to respond in 20 minutes without sounding like you're piling on or dodging.</p>
+    <p>I take the work your team sent and help you write feedback that actually moves it forward. No more "looks great!" and no more vague "this is off."</p>
+    <p><strong>First things first \u2014 show me what landed on your desk.</strong> Upload the creative, paste a link, or just describe what you got. While you're at it, tell me your gut reaction. Even a half-formed thought. I'll weave it in.</p>
+    <div class="msg-chips">
+      <button class="chip">I have assets \u2014 let me upload</button>
+      <button class="chip">I'll describe what I got</button>
+    </div>
+  </div>
+</div>`;
+
+let nextId=100;
+let pendingDeleteId=null;
+
+// ─── Chips: toggle selected ───
+function initChips(){
+  $$('.chip').forEach(c=>c.addEventListener('click',()=>{
+    c.classList.toggle('selected');
+    // Also send chip text as a message
+    if(c.classList.contains('selected')){
+      addUserMessage(c.textContent);
+    }
+  }));
+}
+initChips();
+
+// ─── Preview tabs ───
+$$('.preview-tab').forEach(t=>t.addEventListener('click',()=>{
+  $$('.preview-tab').forEach(x=>x.classList.remove('active'));
   t.classList.add('active');
 }));
-// Sidebar: active review, kebab menu, rename, delete
-let pendingDeleteId=null;
-function closeAllDropdowns(){document.querySelectorAll('.sb-item-dropdown.open').forEach(d=>d.classList.remove('open'));}
-document.addEventListener('click',closeAllDropdowns);
-function initSidebarItems(){
-  document.querySelectorAll('.sb-item').forEach(item=>{
-    item.querySelector('.sb-item-info').addEventListener('click',()=>{
-      document.querySelectorAll('.sb-item').forEach(x=>x.classList.remove('active'));
-      item.classList.add('active');
-    });
-    item.querySelector('.sb-item-dots').addEventListener('click',e=>{
-      e.stopPropagation();closeAllDropdowns();
-      item.querySelector('.sb-item-dropdown').classList.toggle('open');
-    });
-    const renameBtn=item.querySelector('[data-action="rename"]');
-    if(renameBtn) renameBtn.addEventListener('click',e=>{
-      e.stopPropagation();closeAllDropdowns();
-      const titleEl=item.querySelector('.sb-item-title');
-      const oldName=titleEl.textContent;
-      const input=document.createElement('input');
-      input.type='text';input.value=oldName;
-      input.style.cssText='width:100%;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:4px;color:#fff;font-family:inherit;font-size:0.82rem;font-weight:600;padding:2px 6px;outline:none;';
-      titleEl.replaceWith(input);input.focus();input.select();
-      function commit(){const v=input.value.trim()||oldName;const span=document.createElement('div');span.className='sb-item-title';span.textContent=v;input.replaceWith(span);}
-      input.addEventListener('blur',commit);
-      input.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();input.blur();}if(ev.key==='Escape'){input.value=oldName;input.blur();}});
-    });
-    const deleteBtn=item.querySelector('[data-action="delete"]');
-    if(deleteBtn) deleteBtn.addEventListener('click',e=>{
-      e.stopPropagation();closeAllDropdowns();
-      pendingDeleteId=item.dataset.id;
-      const name=item.querySelector('.sb-item-title')?.textContent||'this review';
-      document.getElementById('deleteConfirmText').textContent='Are you sure you want to delete "'+name+'"? This action cannot be undone.';
-      document.getElementById('deleteConfirmBackdrop').classList.add('visible');
-    });
+
+// ─── Send message ───
+function addUserMessage(text){
+  if(!text.trim())return;
+  const thread=$('#chatThread');
+  const row=document.createElement('div');
+  row.className='msg-row user';
+  row.innerHTML='<div class="user-avatar">MG</div><div class="msg-bubble">'+escapeHTML(text)+'</div>';
+  thread.appendChild(row);
+  thread.scrollTop=thread.scrollHeight;
+}
+function escapeHTML(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+
+$('#sendBtn').addEventListener('click',()=>{
+  const ta=$('.composer-input');
+  const text=ta.value.trim();
+  if(!text)return;
+  addUserMessage(text);
+  ta.value='';ta.style.height='auto';
+});
+// Enter to send (Shift+Enter for newline)
+$('.composer-input').addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();$('#sendBtn').click();}
+});
+
+// ─── Attach button ───
+(function(){
+  const fileInput=document.createElement('input');
+  fileInput.type='file';fileInput.multiple=true;fileInput.style.display='none';
+  document.body.appendChild(fileInput);
+  $('.attach-btn').addEventListener('click',()=>fileInput.click());
+  fileInput.addEventListener('change',()=>{
+    if(fileInput.files.length){
+      const names=Array.from(fileInput.files).map(f=>f.name).join(', ');
+      addUserMessage('\u{1F4CE} Attached: '+names);
+      fileInput.value='';
+    }
+  });
+})();
+
+// ─── New review (+) button ───
+$('.sb-add-btn').addEventListener('click',()=>{
+  const id=++nextId;
+  const now=new Date();
+  const dateStr=now.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  const div=document.createElement('div');
+  div.className='sb-item active';
+  div.dataset.id=id;
+  div.innerHTML=`<div class="sb-item-info"><div class="sb-item-title">New Review</div><div class="sb-item-date">${dateStr}</div></div><div class="sb-item-menu"><button class="sb-item-dots" title="Options">&#8942;</button><div class="sb-item-dropdown"><button data-action="rename">Edit Title</button><button data-action="delete" class="danger">Delete</button></div></div>`;
+  // Deactivate others
+  $$('.sb-item').forEach(x=>x.classList.remove('active'));
+  const list=$('#sbList');
+  list.prepend(div);
+  bindSidebarItem(div);
+  resetChat();
+});
+
+// ─── Reset chat to intro state ───
+function resetChat(){
+  const thread=$('#chatThread');
+  // Keep the dropzone, remove everything else
+  const dropzone=$('#chatDropzone');
+  thread.innerHTML='';
+  thread.appendChild(dropzone);
+  thread.insertAdjacentHTML('beforeend',BOT_INTRO);
+  initChips();
+  // Reset stepper
+  $$('.phase-step').forEach((s,i)=>{
+    s.classList.remove('active','completed');
+    if(i===0)s.classList.add('active');
+    else s.classList.add('pending');
   });
 }
+
+// ─── Sidebar item binding ───
+function bindSidebarItem(item){
+  item.querySelector('.sb-item-info').addEventListener('click',()=>{
+    $$('.sb-item').forEach(x=>x.classList.remove('active'));
+    item.classList.add('active');
+  });
+  item.querySelector('.sb-item-dots').addEventListener('click',e=>{
+    e.stopPropagation();closeAllDropdowns();
+    item.querySelector('.sb-item-dropdown').classList.toggle('open');
+  });
+  const renameBtn=item.querySelector('[data-action="rename"]');
+  if(renameBtn) renameBtn.addEventListener('click',e=>{
+    e.stopPropagation();closeAllDropdowns();
+    const titleEl=item.querySelector('.sb-item-title');
+    const oldName=titleEl.textContent;
+    const input=document.createElement('input');
+    input.type='text';input.value=oldName;
+    input.style.cssText='width:100%;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:4px;color:#fff;font-family:inherit;font-size:0.82rem;font-weight:600;padding:2px 6px;outline:none;';
+    titleEl.replaceWith(input);input.focus();input.select();
+    function commit(){const v=input.value.trim()||oldName;const span=document.createElement('div');span.className='sb-item-title';span.textContent=v;input.replaceWith(span);}
+    input.addEventListener('blur',commit);
+    input.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();input.blur();}if(ev.key==='Escape'){input.value=oldName;input.blur();}});
+  });
+  const deleteBtn=item.querySelector('[data-action="delete"]');
+  if(deleteBtn) deleteBtn.addEventListener('click',e=>{
+    e.stopPropagation();closeAllDropdowns();
+    pendingDeleteId=item.dataset.id;
+    const name=item.querySelector('.sb-item-title')?.textContent||'this review';
+    $('#deleteConfirmText').textContent='Are you sure you want to delete "'+name+'"? This action cannot be undone.';
+    $('#deleteConfirmBackdrop').classList.add('visible');
+  });
+}
+function closeAllDropdowns(){$$('.sb-item-dropdown.open').forEach(d=>d.classList.remove('open'));}
+document.addEventListener('click',closeAllDropdowns);
+
+// Init existing sidebar items
+$$('.sb-item').forEach(bindSidebarItem);
+
+// ─── Delete confirm ───
 function confirmDelete(){
   if(!pendingDeleteId)return;
-  const item=document.querySelector('.sb-item[data-id="'+pendingDeleteId+'"]');
+  const item=$('.sb-item[data-id="'+pendingDeleteId+'"]');
   const wasActive=item&&item.classList.contains('active');
   if(item)item.remove();
-  document.getElementById('deleteConfirmBackdrop').classList.remove('visible');
-  if(wasActive){const first=document.querySelector('.sb-item');if(first)first.classList.add('active');}
+  $('#deleteConfirmBackdrop').classList.remove('visible');
   pendingDeleteId=null;
+  if(wasActive){
+    const first=$('.sb-item');
+    if(first){first.classList.add('active');}
+    else{resetChat();}
+  }
 }
 function cancelDelete(e){
-  if(e&&e.target&&e.target!==document.getElementById('deleteConfirmBackdrop'))return;
+  if(e&&e.target&&e.target!==$('#deleteConfirmBackdrop'))return;
   pendingDeleteId=null;
-  document.getElementById('deleteConfirmBackdrop').classList.remove('visible');
+  $('#deleteConfirmBackdrop').classList.remove('visible');
 }
-initSidebarItems();
-// Sidebar toggle (Blueprint-style)
+
+// ─── Brand Profile button ───
+$('.brand-btn').addEventListener('click',()=>{
+  alert('Brand Profile drawer coming soon! This will let you set your brand voice, tone preferences, and style guidelines.');
+});
+
+// ─── Sidebar toggle ───
 function toggleSidebar(){
-  const sb=document.getElementById('sidebar');
-  const btn=document.getElementById('sidebarToggleBtn');
+  const sb=$('#sidebar');
+  const btn=$('#sidebarToggleBtn');
   sb.classList.toggle('collapsed');
   const isCollapsed=sb.classList.contains('collapsed');
   btn.innerHTML=isCollapsed?'\u00BB':'\u00AB';
   btn.classList.toggle('shifted',isCollapsed);
 }
-document.getElementById('sidebarToggleBtn').addEventListener('click',toggleSidebar);
-// Drag handle for panel resize
+$('#sidebarToggleBtn').addEventListener('click',toggleSidebar);
+
+// ─── Drag handle for panel resize ───
 (function(){
-  const handle=document.getElementById('dragHandle');
+  const handle=$('#dragHandle');
   if(!handle)return;
   const panels=handle.closest('.panels');
   const chat=panels.querySelector('.chat-panel');
   const preview=panels.querySelector('.preview-panel');
   let startX,chatW,previewW;
   handle.addEventListener('mousedown',e=>{
-    e.preventDefault();
-    startX=e.clientX;
-    chatW=chat.offsetWidth;
-    previewW=preview.offsetWidth;
+    e.preventDefault();startX=e.clientX;chatW=chat.offsetWidth;previewW=preview.offsetWidth;
     handle.classList.add('dragging');
-    document.addEventListener('mousemove',onDrag);
-    document.addEventListener('mouseup',stopDrag);
+    document.addEventListener('mousemove',onDrag);document.addEventListener('mouseup',stopDrag);
   });
   function onDrag(e){
-    const dx=e.clientX-startX;
-    const total=chatW+previewW;
+    const dx=e.clientX-startX;const total=chatW+previewW;
     const newChat=Math.max(200,Math.min(total-200,chatW+dx));
-    chat.style.flex='0 0 '+newChat+'px';
-    preview.style.flex='0 0 '+(total-newChat)+'px';
+    chat.style.flex='0 0 '+newChat+'px';preview.style.flex='0 0 '+(total-newChat)+'px';
   }
-  function stopDrag(){
-    handle.classList.remove('dragging');
-    document.removeEventListener('mousemove',onDrag);
-    document.removeEventListener('mouseup',stopDrag);
-  }
+  function stopDrag(){handle.classList.remove('dragging');document.removeEventListener('mousemove',onDrag);document.removeEventListener('mouseup',stopDrag);}
 })();
-// Model picker dropdown
+
+// ─── Model picker dropdown ───
 (function(){
-  const btn=document.getElementById('modelPickerBtn');
-  const dd=document.getElementById('modelDropdown');
-  const val=document.getElementById('modelPickerValue');
+  const btn=$('#modelPickerBtn');const dd=$('#modelDropdown');const val=$('#modelPickerValue');
   if(!btn||!dd)return;
   btn.addEventListener('click',()=>{dd.classList.toggle('open');btn.classList.toggle('open');});
   dd.querySelectorAll('.model-option').forEach(opt=>opt.addEventListener('click',()=>{
     dd.querySelectorAll('.model-option').forEach(o=>o.classList.remove('selected'));
-    opt.classList.add('selected');
-    val.textContent=opt.dataset.short;
+    opt.classList.add('selected');val.textContent=opt.dataset.short;
     dd.classList.remove('open');btn.classList.remove('open');
   }));
-  document.addEventListener('click',e=>{if(!document.getElementById('modelPicker').contains(e.target)){dd.classList.remove('open');btn.classList.remove('open');}});
+  document.addEventListener('click',e=>{if(!$('#modelPicker').contains(e.target)){dd.classList.remove('open');btn.classList.remove('open');}});
 })();
-// Autosize textarea
-const ta=document.querySelector('.composer-input');
+
+// ─── Autosize textarea ───
+const ta=$('.composer-input');
 if(ta){ta.addEventListener('input',()=>{ta.style.height='auto';ta.style.height=Math.min(ta.scrollHeight,160)+'px';});}
-// Drag-and-drop on chat panel
+
+// ─── Drag-and-drop on chat panel ───
 (function(){
-  const thread=document.getElementById('chatThread');
-  const dropzone=document.getElementById('chatDropzone');
+  const thread=$('#chatThread');const dropzone=$('#chatDropzone');
   if(!thread||!dropzone)return;
   let dragCounter=0;
   thread.addEventListener('dragenter',e=>{e.preventDefault();dragCounter++;dropzone.classList.add('visible');});
@@ -512,17 +614,24 @@ if(ta){ta.addEventListener('input',()=>{ta.style.height='auto';ta.style.height=M
   thread.addEventListener('dragover',e=>e.preventDefault());
   thread.addEventListener('drop',e=>{e.preventDefault();dragCounter=0;dropzone.classList.remove('visible');
     const files=e.dataTransfer.files;
-    if(files.length){alert('Attached: '+Array.from(files).map(f=>f.name).join(', '));}
+    if(files.length){addUserMessage('\u{1F4CE} Attached: '+Array.from(files).map(f=>f.name).join(', '));}
   });
 })();
-// Copy feedback
+
+// ─── Sidebar search ───
+$('.sb-search').addEventListener('input',function(){
+  const q=this.value.toLowerCase();
+  $$('.sb-item').forEach(item=>{
+    const title=item.querySelector('.sb-item-title')?.textContent.toLowerCase()||'';
+    item.style.display=title.includes(q)?'':'none';
+  });
+});
+
+// ─── Copy feedback ───
 function copyFeedback(){
-  const body=document.querySelector('.preview-body');
-  if(!body)return;
-  const text=body.innerText;
-  navigator.clipboard.writeText(text).then(()=>{
-    const btn=document.getElementById('copyBtn');
-    btn.classList.add('copied');
+  const body=$('.preview-body');if(!body)return;
+  navigator.clipboard.writeText(body.innerText).then(()=>{
+    const btn=$('#copyBtn');btn.classList.add('copied');
     setTimeout(()=>btn.classList.remove('copied'),2000);
   });
 }
