@@ -45,9 +45,30 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
 .sb-list{flex:1;overflow-y:auto;padding:4px 8px 8px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.2) transparent}
 .sb-list::-webkit-scrollbar{width:6px}
 .sb-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.18);border-radius:3px}
-.sb-item{display:flex;flex-direction:column;width:100%;text-align:left;padding:10px 12px 10px 14px;border-radius:10px;background:none;border:none;border-left:3px solid transparent;color:#fff;font-family:Helvetica,Arial,sans-serif;cursor:pointer;transition:background 0.15s;margin-bottom:0;position:relative}
+.sb-item{display:flex;align-items:center;justify-content:space-between;width:100%;text-align:left;padding:10px 12px 10px 14px;border-radius:10px;background:none;border:none;border-left:3px solid transparent;color:#fff;font-family:Helvetica,Arial,sans-serif;cursor:pointer;transition:background 0.15s;margin-bottom:0;position:relative}
+.sb-item-info{flex:1;min-width:0}
 .sb-item-title{font-size:0.82rem;font-weight:600;color:#FFFFFF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sb-item-date{font-size:0.7rem;color:rgba(255,255,255,0.55);margin-top:2px}
+.sb-item-menu{position:relative;flex-shrink:0}
+.sb-item-dots{background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:1.4rem;padding:2px 6px;line-height:1;transition:color 0.15s}
+.sb-item-dots:hover{color:rgba(255,255,255,0.85)}
+.sb-item-dropdown{display:none;position:absolute;right:0;top:100%;background:#1a6b70;border:1px solid rgba(255,255,255,0.15);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,0.25);min-width:130px;z-index:200;overflow:hidden}
+.sb-item-dropdown.open{display:block}
+.sb-item-dropdown button{display:block;width:100%;background:none;border:none;padding:9px 14px;text-align:left;font-family:Helvetica,Arial,sans-serif;font-size:0.78rem;color:rgba(255,255,255,0.85);cursor:pointer;transition:background 0.12s}
+.sb-item-dropdown button:hover{background:rgba(255,255,255,0.1)}
+.sb-item-dropdown button.danger{color:#FF8A80}
+.sb-item-dropdown button.danger:hover{background:rgba(255,80,80,0.12)}
+.delete-confirm-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center}
+.delete-confirm-backdrop.visible{display:flex}
+.delete-confirm{background:#fff;border-radius:12px;padding:24px;max-width:360px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
+.delete-confirm h3{margin:0 0 12px;font-family:'Figtree',sans-serif;font-size:1rem;font-weight:700;color:#2F1664}
+.delete-confirm p{margin:0 0 20px;font-size:0.85rem;color:#5A5069;line-height:1.5}
+.delete-confirm-actions{display:flex;gap:10px;justify-content:flex-end}
+.delete-confirm-actions button{padding:8px 18px;border-radius:8px;border:none;font-family:Helvetica,Arial,sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer}
+.btn-cancel{background:#EAE7EF;color:#2F1664}
+.btn-cancel:hover{background:#ddd8e6}
+.btn-delete{background:#B33A3A;color:#fff}
+.btn-delete:hover{background:#922e2e}
 .sb-item+.sb-item::before{content:'';position:absolute;top:0;left:12px;right:12px;height:1px;background:rgba(255,255,255,0.12);pointer-events:none;z-index:1}
 .sb-item:hover::before,.sb-item:hover+.sb-item::before,.sb-item.active::before,.sb-item.active+.sb-item::before{display:none!important}
 .sb-item:hover{background:rgba(255,255,255,0.10)}
@@ -149,9 +170,6 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
 .btn-copy-icon .copy-check{display:none}
 .btn-copy-icon.copied .copy-icon{display:none}
 .btn-copy-icon.copied .copy-check{display:block;color:#16a34a}
-.btn-export{display:flex;align-items:center;gap:4px;background:transparent;border:none;border-radius:6px;padding:4px 8px;cursor:pointer;color:#2F1664;transition:color 0.15s,background 0.15s;line-height:1}
-.btn-export:hover{color:#2F1664;background:#EAE7EF}
-.btn-export svg{width:18px;height:18px;flex-shrink:0}
 .preview-tab-bar{display:flex;align-items:center;padding:0;background:#F5F3F8;border-bottom:1px solid #EAE7EF;flex-shrink:0;height:48px;box-shadow:0 2px 6px rgba(0,0,0,0.04)}
 .preview-tab{padding:0 16px;height:100%;font-family:'Figtree',sans-serif;font-size:0.82rem;font-weight:600;color:#5A5069;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s;white-space:nowrap;display:flex;align-items:center}
 .preview-tab:hover{color:#2F1664}
@@ -180,13 +198,31 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
         <span class="sb-section-label">Reviews</span>
         <button class="sb-add-btn" title="New review">+</button>
       </div>
-      <div class="sb-list">
-        <button class="sb-item active"><span class="sb-item-title">Acme Q4 Landing Page</span><span class="sb-item-date">Apr 6, 2026</span></button>
-        <button class="sb-item"><span class="sb-item-title">Sarah's LinkedIn carousel</span><span class="sb-item-date">Apr 4, 2026</span></button>
-        <button class="sb-item"><span class="sb-item-title">Product launch video v2</span><span class="sb-item-date">Apr 2, 2026</span></button>
-        <button class="sb-item"><span class="sb-item-title">Email nurture sequence</span><span class="sb-item-date">Mar 28, 2026</span></button>
-        <button class="sb-item"><span class="sb-item-title">Webinar landing copy</span><span class="sb-item-date">Mar 25, 2026</span></button>
-        <button class="sb-item"><span class="sb-item-title">Pricing page refresh</span><span class="sb-item-date">Mar 20, 2026</span></button>
+      <div class="sb-list" id="sbList">
+        <div class="sb-item active" data-id="1">
+          <div class="sb-item-info"><div class="sb-item-title">Acme Q4 Landing Page</div><div class="sb-item-date">Apr 6, 2026</div></div>
+          <div class="sb-item-menu"><button class="sb-item-dots" title="Options">&#8942;</button><div class="sb-item-dropdown"><button data-action="rename">Edit Title</button><button data-action="delete" class="danger">Delete</button></div></div>
+        </div>
+        <div class="sb-item" data-id="2">
+          <div class="sb-item-info"><div class="sb-item-title">Sarah's LinkedIn carousel</div><div class="sb-item-date">Apr 4, 2026</div></div>
+          <div class="sb-item-menu"><button class="sb-item-dots" title="Options">&#8942;</button><div class="sb-item-dropdown"><button data-action="rename">Edit Title</button><button data-action="delete" class="danger">Delete</button></div></div>
+        </div>
+        <div class="sb-item" data-id="3">
+          <div class="sb-item-info"><div class="sb-item-title">Product launch video v2</div><div class="sb-item-date">Apr 2, 2026</div></div>
+          <div class="sb-item-menu"><button class="sb-item-dots" title="Options">&#8942;</button><div class="sb-item-dropdown"><button data-action="rename">Edit Title</button><button data-action="delete" class="danger">Delete</button></div></div>
+        </div>
+        <div class="sb-item" data-id="4">
+          <div class="sb-item-info"><div class="sb-item-title">Email nurture sequence</div><div class="sb-item-date">Mar 28, 2026</div></div>
+          <div class="sb-item-menu"><button class="sb-item-dots" title="Options">&#8942;</button><div class="sb-item-dropdown"><button data-action="rename">Edit Title</button><button data-action="delete" class="danger">Delete</button></div></div>
+        </div>
+        <div class="sb-item" data-id="5">
+          <div class="sb-item-info"><div class="sb-item-title">Webinar landing copy</div><div class="sb-item-date">Mar 25, 2026</div></div>
+          <div class="sb-item-menu"><button class="sb-item-dots" title="Options">&#8942;</button><div class="sb-item-dropdown"><button data-action="rename">Edit Title</button><button data-action="delete" class="danger">Delete</button></div></div>
+        </div>
+        <div class="sb-item" data-id="6">
+          <div class="sb-item-info"><div class="sb-item-title">Pricing page refresh</div><div class="sb-item-date">Mar 20, 2026</div></div>
+          <div class="sb-item-menu"><button class="sb-item-dots" title="Options">&#8942;</button><div class="sb-item-dropdown"><button data-action="rename">Edit Title</button><button data-action="delete" class="danger">Delete</button></div></div>
+        </div>
       </div>
     </div>
     <div class="sb-footer">
@@ -293,9 +329,6 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
               <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               <svg class="copy-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
-            <button class="btn-export" id="exportBtn" onclick="exportToPDF()" title="Export PDF">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            </button>
           </div>
         </div>
         <div class="preview-tab-bar">
@@ -340,6 +373,16 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
     </div>
   </main>
 </div>
+<div class="delete-confirm-backdrop" id="deleteConfirmBackdrop" onclick="cancelDelete(event)">
+  <div class="delete-confirm" onclick="event.stopPropagation()">
+    <h3>Delete Review</h3>
+    <p id="deleteConfirmText">Are you sure you want to delete this review? This action cannot be undone.</p>
+    <div class="delete-confirm-actions">
+      <button class="btn-cancel" onclick="cancelDelete()">Cancel</button>
+      <button class="btn-delete" onclick="confirmDelete()">Delete</button>
+    </div>
+  </div>
+</div>
 <script>
 // Chip multi-select toggle
 document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>c.classList.toggle('selected')));
@@ -348,11 +391,58 @@ document.querySelectorAll('.preview-tab').forEach(t=>t.addEventListener('click',
   document.querySelectorAll('.preview-tab').forEach(x=>x.classList.remove('active'));
   t.classList.add('active');
 }));
-// Sidebar active review
-document.querySelectorAll('.sb-item').forEach(it=>it.addEventListener('click',()=>{
-  document.querySelectorAll('.sb-item').forEach(x=>x.classList.remove('active'));
-  it.classList.add('active');
-}));
+// Sidebar: active review, kebab menu, rename, delete
+let pendingDeleteId=null;
+function closeAllDropdowns(){document.querySelectorAll('.sb-item-dropdown.open').forEach(d=>d.classList.remove('open'));}
+document.addEventListener('click',closeAllDropdowns);
+function initSidebarItems(){
+  document.querySelectorAll('.sb-item').forEach(item=>{
+    item.querySelector('.sb-item-info').addEventListener('click',()=>{
+      document.querySelectorAll('.sb-item').forEach(x=>x.classList.remove('active'));
+      item.classList.add('active');
+    });
+    item.querySelector('.sb-item-dots').addEventListener('click',e=>{
+      e.stopPropagation();closeAllDropdowns();
+      item.querySelector('.sb-item-dropdown').classList.toggle('open');
+    });
+    const renameBtn=item.querySelector('[data-action="rename"]');
+    if(renameBtn) renameBtn.addEventListener('click',e=>{
+      e.stopPropagation();closeAllDropdowns();
+      const titleEl=item.querySelector('.sb-item-title');
+      const oldName=titleEl.textContent;
+      const input=document.createElement('input');
+      input.type='text';input.value=oldName;
+      input.style.cssText='width:100%;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:4px;color:#fff;font-family:inherit;font-size:0.82rem;font-weight:600;padding:2px 6px;outline:none;';
+      titleEl.replaceWith(input);input.focus();input.select();
+      function commit(){const v=input.value.trim()||oldName;const span=document.createElement('div');span.className='sb-item-title';span.textContent=v;input.replaceWith(span);}
+      input.addEventListener('blur',commit);
+      input.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();input.blur();}if(ev.key==='Escape'){input.value=oldName;input.blur();}});
+    });
+    const deleteBtn=item.querySelector('[data-action="delete"]');
+    if(deleteBtn) deleteBtn.addEventListener('click',e=>{
+      e.stopPropagation();closeAllDropdowns();
+      pendingDeleteId=item.dataset.id;
+      const name=item.querySelector('.sb-item-title')?.textContent||'this review';
+      document.getElementById('deleteConfirmText').textContent='Are you sure you want to delete "'+name+'"? This action cannot be undone.';
+      document.getElementById('deleteConfirmBackdrop').classList.add('visible');
+    });
+  });
+}
+function confirmDelete(){
+  if(!pendingDeleteId)return;
+  const item=document.querySelector('.sb-item[data-id="'+pendingDeleteId+'"]');
+  const wasActive=item&&item.classList.contains('active');
+  if(item)item.remove();
+  document.getElementById('deleteConfirmBackdrop').classList.remove('visible');
+  if(wasActive){const first=document.querySelector('.sb-item');if(first)first.classList.add('active');}
+  pendingDeleteId=null;
+}
+function cancelDelete(e){
+  if(e&&e.target&&e.target!==document.getElementById('deleteConfirmBackdrop'))return;
+  pendingDeleteId=null;
+  document.getElementById('deleteConfirmBackdrop').classList.remove('visible');
+}
+initSidebarItems();
 // Sidebar toggle (Blueprint-style)
 function toggleSidebar(){
   const sb=document.getElementById('sidebar');
@@ -435,19 +525,6 @@ function copyFeedback(){
     btn.classList.add('copied');
     setTimeout(()=>btn.classList.remove('copied'),2000);
   });
-}
-// Export to PDF
-function exportToPDF(){
-  const body=document.querySelector('.preview-body');
-  if(!body){alert('No feedback to export yet.');return;}
-  const win=window.open('','_blank');
-  if(!win){alert('Please allow pop-ups to export the PDF.');return;}
-  win.document.write('<html><head><title>FeedbackAtcha Export</title><style>body{font-family:Helvetica,Arial,sans-serif;padding:40px;color:#1A1A1A;max-width:700px;margin:0 auto}h3{color:#2F1664;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;margin:24px 0 8px;border-top:1px solid #EAE7EF;padding-top:16px}p{font-size:0.9rem;line-height:1.6}</style></head><body>');
-  win.document.write('<h1 style="color:#2F1664;font-size:1.3rem">FeedbackAtcha Review</h1>');
-  win.document.write(body.innerHTML);
-  win.document.write('</body></html>');
-  win.document.close();
-  setTimeout(()=>{win.print();},400);
 }
 </script>
 </body>
