@@ -313,13 +313,11 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
 <script>
 // Chip multi-select toggle
 document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>c.classList.toggle('selected')));
-// Segmented control (single-select per group)
-document.querySelectorAll('.segmented').forEach(g=>{
-  g.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
-    g.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-  }));
-});
+// Preview tabs (single-select)
+document.querySelectorAll('.preview-tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.preview-tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+}));
 // Sidebar active review
 document.querySelectorAll('.sb-item').forEach(it=>it.addEventListener('click',()=>{
   document.querySelectorAll('.sb-item').forEach(x=>x.classList.remove('active'));
@@ -368,6 +366,20 @@ document.getElementById('sidebarToggleBtn').addEventListener('click',toggleSideb
 // Autosize textarea
 const ta=document.querySelector('.composer-input');
 if(ta){ta.addEventListener('input',()=>{ta.style.height='auto';ta.style.height=Math.min(ta.scrollHeight,160)+'px';});}
+// Drag-and-drop on chat panel
+(function(){
+  const thread=document.getElementById('chatThread');
+  const dropzone=document.getElementById('chatDropzone');
+  if(!thread||!dropzone)return;
+  let dragCounter=0;
+  thread.addEventListener('dragenter',e=>{e.preventDefault();dragCounter++;dropzone.classList.add('visible');});
+  thread.addEventListener('dragleave',()=>{dragCounter--;if(dragCounter<=0){dragCounter=0;dropzone.classList.remove('visible');}});
+  thread.addEventListener('dragover',e=>e.preventDefault());
+  thread.addEventListener('drop',e=>{e.preventDefault();dragCounter=0;dropzone.classList.remove('visible');
+    const files=e.dataTransfer.files;
+    if(files.length){alert('Attached: '+Array.from(files).map(f=>f.name).join(', '));}
+  });
+})();
 </script>
 </body>
 </html>
