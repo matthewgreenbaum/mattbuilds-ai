@@ -3309,11 +3309,13 @@
     }
 
     function addErrorMessage(text) {
-      const div = document.createElement("div");
-      div.className = "msg error";
-      div.textContent = text;
-      $("#messages").appendChild(div);
-      scrollChat();
+      // Show a friendly popup instead of an inline error in the chat
+      const isRateLimit = text.includes("429") || text.includes("rate_limit");
+      if (isRateLimit) {
+        showUsageToast();
+      } else {
+        alert("Oops! Something went wrong. Please try again in a moment.");
+      }
     }
 
     function showUsageToast() {
