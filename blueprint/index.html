@@ -1147,6 +1147,7 @@
     .bp-campaign-bar {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       padding: 0 20px;
       height: 48px;
       background: #F5F3F8;
@@ -1162,6 +1163,16 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      min-width: 0;
+    }
+    .bp-campaign-bar-date {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: #5A5069;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-left: 16px;
     }
 
     .btn-copy-icon {
@@ -1870,6 +1881,7 @@
       </div>
       <div class="bp-campaign-bar">
         <span class="bp-campaign-bar-title" id="blueprintPanelTitle"></span>
+        <span class="bp-campaign-bar-date" id="blueprintPanelDate"></span>
       </div>
       <div class="blueprint-body">
         <div class="bp-placeholder" id="bpPlaceholder">Your blueprint will appear here.<br />Start chatting to build your campaign.</div>
@@ -2595,10 +2607,15 @@
 
     function updateBlueprintPanelTitle() {
       const el = $("#blueprintPanelTitle");
-      if (!currentCampaignId) { el.textContent = ""; return; }
+      const dateEl = $("#blueprintPanelDate");
+      if (!currentCampaignId) { el.textContent = ""; if(dateEl) dateEl.textContent = ""; return; }
       const campaigns = loadAllCampaigns();
       const c = campaigns.find(c => c.id === currentCampaignId);
       el.textContent = c ? c.title : "";
+      if (dateEl && c) {
+        const d = new Date(c.updatedAt || c.createdAt || Date.now());
+        dateEl.textContent = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      } else if (dateEl) { dateEl.textContent = ""; }
     }
 
     // Extract hidden directives from assistant reply (title + section progress + inline blueprint)
