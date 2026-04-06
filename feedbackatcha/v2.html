@@ -131,16 +131,16 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
 .preview-panel{flex:40;min-width:200px;background:#EAE7EF}
 .preview-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 20px;height:64px;flex-shrink:0;box-sizing:border-box}
 .preview-top-title{font-family:'Figtree',sans-serif;font-size:1.15rem;font-weight:700;color:#2F1664}
-.preview-top-actions{display:flex;align-items:center;gap:8px}
-.preview-copy-all{background:#fff;border:1px solid #EAE7EF;border-radius:8px;padding:6px 12px;font-family:Helvetica,Arial,sans-serif;font-size:0.74rem;font-weight:600;color:#2F1664;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.15s}
-.preview-copy-all:hover{background:#2F1664;color:#fff;border-color:#2F1664}
-.preview-copy-all svg{width:13px;height:13px}
-.style-select{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%232F1664'/%3E%3C/svg%3E") no-repeat right 10px center;border:1px solid #EAE7EF;border-radius:8px;padding:6px 28px 6px 12px;font-family:Helvetica,Arial,sans-serif;font-size:0.74rem;font-weight:600;color:#2F1664;cursor:pointer;transition:border-color 0.15s}
-.style-select:hover,.style-select:focus{border-color:#2F1664;outline:none}
-.preview-tabs{display:flex;border-bottom:1px solid #EAE7EF;flex-shrink:0;background:#EAE7EF;padding:0 20px}
-.preview-tab{padding:10px 16px;font-family:'Figtree',sans-serif;font-size:0.78rem;font-weight:600;color:#5A5069;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s;white-space:nowrap}
+.preview-top-right{display:flex;align-items:center;gap:12px}
+.feedback-model-label{font-family:Helvetica,Arial,sans-serif;font-size:0.72rem;font-weight:600;color:#5A5069;white-space:nowrap}
+.feedback-model-select{appearance:none;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%232F1664'/%3E%3C/svg%3E") no-repeat right 0 center;border:none;padding:0 16px 0 0;font-family:Helvetica,Arial,sans-serif;font-size:0.72rem;font-weight:700;color:#2F1664;cursor:pointer;outline:none}
+.preview-copy-all{background:none;border:none;color:#5A5069;cursor:pointer;padding:4px;border-radius:6px;transition:color 0.15s;display:flex;align-items:center}
+.preview-copy-all:hover{color:#2F1664}
+.preview-copy-all svg{width:16px;height:16px}
+.preview-tab-bar{display:flex;align-items:center;padding:0 20px;background:#FFFFFF;border-bottom:1px solid #EAE7EF;flex-shrink:0;height:48px;box-shadow:0 2px 6px rgba(0,0,0,0.04)}
+.preview-tab{padding:0 16px;height:100%;font-family:'Figtree',sans-serif;font-size:0.72rem;font-weight:600;color:#5A5069;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s;white-space:nowrap;display:flex;align-items:center}
 .preview-tab:hover{color:#2F1664}
-.preview-tab.active{color:#2F1664;border-bottom-color:#2F1664;background:rgba(255,255,255,0.5)}
+.preview-tab.active{color:#2F1664;border-bottom-color:#2F1664}
 .preview-body{flex:1;overflow-y:auto;padding:24px 20px;position:relative;background:#EAE7EF}
 .preview-body::-webkit-scrollbar{width:6px}
 .preview-body::-webkit-scrollbar-thumb{background:rgba(47,22,100,0.15);border-radius:4px}
@@ -273,19 +273,19 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
       <section class="preview-panel panel">
         <div class="preview-top">
           <span class="preview-top-title">Preview</span>
-          <div class="preview-top-actions">
-            <select class="style-select" title="Feedback style">
-              <option>COIN Framework</option>
-              <option>SBI Framework</option>
-              <option>Direct Prose</option>
+          <div class="preview-top-right">
+            <span class="feedback-model-label">Feedback Model</span>
+            <select class="feedback-model-select">
+              <option>COIN</option>
+              <option>SBI</option>
+              <option>Direct</option>
             </select>
             <button class="preview-copy-all" title="Copy all">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-              Copy all
             </button>
           </div>
         </div>
-        <div class="preview-tabs">
+        <div class="preview-tab-bar">
           <button class="preview-tab active">Full Review</button>
           <button class="preview-tab">Summary</button>
           <button class="preview-tab">Key Points</button>
