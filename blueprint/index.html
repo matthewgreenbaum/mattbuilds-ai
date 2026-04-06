@@ -3464,10 +3464,7 @@
       const activePhase = getActiveBlueprintPhase();
       let html = "";
 
-      // Campaign title
-      if (parsed.title) {
-        html += `<h1>${parsed.title}</h1>`;
-      }
+      // Campaign title — shown in the campaign bar, not in the body
 
       // Executive Summary (section 1) at top — synthesis section, populated last
       if (parsed.sections[1]) {
