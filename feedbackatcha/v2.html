@@ -142,9 +142,10 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
 .model-option{display:block;width:100%;text-align:left;padding:10px 16px;background:none;border:none;font-family:Helvetica,Arial,sans-serif;font-size:0.82rem;color:#1A1A1A;cursor:pointer;transition:background 0.12s}
 .model-option:hover{background:#F5F3F8}
 .model-option.selected{color:#2F1664;font-weight:700;background:#F5F3F8}
-.preview-copy-all{background:none;border:none;color:#5A5069;cursor:pointer;padding:4px;border-radius:6px;transition:color 0.15s;display:flex;align-items:center}
+.preview-copy-row{display:flex;justify-content:flex-end;padding:8px 18px 0}
+.preview-copy-all{background:none;border:none;color:#5A5069;cursor:pointer;padding:6px;border-radius:6px;transition:color 0.15s;display:flex;align-items:center}
 .preview-copy-all:hover{color:#2F1664}
-.preview-copy-all svg{width:16px;height:16px}
+.preview-copy-all svg{width:22px;height:22px}
 .preview-tab-bar{display:flex;align-items:center;padding:0;background:#F5F3F8;border-bottom:1px solid #EAE7EF;flex-shrink:0;height:48px;box-shadow:0 2px 6px rgba(0,0,0,0.04)}
 .preview-tab{flex:1;justify-content:center;padding:0 16px;height:100%;font-family:'Figtree',sans-serif;font-size:0.82rem;font-weight:600;color:#5A5069;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s;white-space:nowrap;display:flex;align-items:center}
 .preview-tab:hover{color:#2F1664}
@@ -294,15 +295,17 @@ body{font-family:Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wh
                 <button class="model-option" data-short="Coaching">Coaching — Question-led, developmental tone</button>
               </div>
             </div>
-            <button class="preview-copy-all" title="Copy all">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            </button>
           </div>
         </div>
         <div class="preview-tab-bar">
           <button class="preview-tab active">Full Review</button>
           <button class="preview-tab">Summary</button>
           <button class="preview-tab">Key Points</button>
+        </div>
+        <div class="preview-copy-row">
+          <button class="preview-copy-all" title="Copy all">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
         </div>
         <div class="preview-body">
           <div class="empty-state">
