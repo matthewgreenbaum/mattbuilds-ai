@@ -946,10 +946,12 @@
     }
 
     /* ---------- usage toast ---------- */
-    .usage-toast{background:rgba(255,156,126,0.15);color:#2F1664;padding:12px 16px;border-radius:14px;border:none;max-width:420px;font-family:Helvetica,Arial,sans-serif;font-size:0.875rem;line-height:1.55;position:fixed;bottom:180px;left:50%;transform:translateX(-50%);z-index:999;overflow:hidden;animation:toast-fade-in 0.3s ease;box-shadow:0 4px 16px rgba(0,0,0,0.1)}
+    .usage-toast{background:#FFF0EB;color:#B34A1E;padding:14px 20px;font-family:Helvetica,Arial,sans-serif;font-size:0.85rem;line-height:1.5;position:absolute;bottom:0;left:0;right:0;z-index:99;overflow:hidden;animation:toast-slide-up 0.3s ease;box-shadow:0 -2px 8px rgba(0,0,0,0.06)}
     .usage-toast p{margin:0}
     .usage-toast-bar{position:absolute;bottom:0;left:0;height:3px;background:#FF9C7E;width:0%;animation:toast-progress 10s linear forwards}
-    .usage-toast.fade-out{animation:toast-fade-out 0.3s ease forwards}
+    .usage-toast.fade-out{animation:toast-slide-down 0.3s ease forwards}
+    @keyframes toast-slide-up{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+    @keyframes toast-slide-down{from{transform:translateY(0);opacity:1}to{transform:translateY(100%);opacity:0}}
     @keyframes toast-fade-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
     @keyframes toast-fade-out{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
     @keyframes toast-progress{from{width:0%}to{width:100%}}
@@ -3309,22 +3311,23 @@
     }
 
     function addErrorMessage(text) {
-      // Show a friendly popup instead of an inline error in the chat
       const isRateLimit = text.includes("429") || text.includes("rate_limit");
-      if (isRateLimit) {
-        showUsageToast();
-      } else {
-        alert("Oops! Something went wrong. Please try again in a moment.");
-      }
+      const msg = isRateLimit
+        ? "You've hit a usage limit. Just wait a moment and try again — everything will work just fine."
+        : "Something went wrong. Please try again in a moment.";
+      showUsageToast(msg);
     }
 
-    function showUsageToast() {
+    function showUsageToast(msg) {
       const existing = document.querySelector(".usage-toast");
       if (existing) existing.remove();
+      const message = msg || "You've hit a usage limit. Just wait a moment and try again — everything will work just fine.";
       const toast = document.createElement("div");
       toast.className = "usage-toast";
-      toast.innerHTML = `<p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF9C7E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>You've hit a usage limit. Just wait a moment and try again — everything will work just fine.</p><div class="usage-toast-bar"></div>`;
-      document.body.appendChild(toast);
+      toast.innerHTML = `<p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B34A1E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>${message}</p><div class="usage-toast-bar"></div>`;
+      const chatPanel = document.querySelector(".chat-panel");
+      if (chatPanel) { chatPanel.style.position = "relative"; chatPanel.appendChild(toast); }
+      else { document.body.appendChild(toast); }
       setTimeout(() => { toast.classList.add("fade-out"); setTimeout(() => toast.remove(), 300); }, 10000);
     }
 
