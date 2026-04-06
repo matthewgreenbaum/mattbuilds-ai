@@ -3271,6 +3271,21 @@
       });
     }
 
+    function reEnableLastOptionButtons() {
+      const allContainers = document.querySelectorAll(".option-buttons");
+      const last = allContainers[allContainers.length - 1];
+      if (!last) return;
+      last.querySelectorAll(".option-btn").forEach(b => {
+        b.style.pointerEvents = "";
+        b.style.opacity = "";
+      });
+      const submitBtn = last.parentElement.querySelector(".option-submit-btn");
+      if (submitBtn && last.querySelectorAll(".option-btn.selected").length > 0) {
+        submitBtn.style.display = "";
+        submitBtn.classList.add("visible");
+      }
+    }
+
     function sendOptionResponse(text) {
       if (chatBusy) return;
 
@@ -3300,6 +3315,11 @@
         streamBlueprint();
       }).catch(err => {
         addErrorMessage("Something went wrong: " + err.message);
+        // Remove the failed user message so it doesn't duplicate on retry
+        if (conversationHistory.length && conversationHistory[conversationHistory.length - 1].role === "user") {
+          conversationHistory.pop();
+        }
+        reEnableLastOptionButtons();
       }).finally(() => {
         chatBusy = false;
         $("#sendBtn").disabled = false;
@@ -3561,11 +3581,13 @@
         // Auto-stream blueprint in the background
         streamBlueprint();
       } catch (err) {
-        if (/429|529|rate|overloaded/i.test(err.message)) {
-          showUsageToast();
-        } else {
-          showUsageToast();
+        addErrorMessage("Something went wrong: " + err.message);
+        // Remove the failed user message so it doesn't duplicate on retry
+        if (conversationHistory.length && conversationHistory[conversationHistory.length - 1].role === "user") {
+          conversationHistory.pop();
         }
+        // Put the text back in the input so user can retry
+        input.value = text;
       } finally {
         chatBusy = false;
         $("#sendBtn").disabled = false;
