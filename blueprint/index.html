@@ -3489,7 +3489,10 @@
         for (const sec of group.sections) {
           if (parsed.sections[sec.num]) {
             // Render populated section — strip chat-style blue spans + canonical numbers
-            let sectionHtml = renderMarkdown(stripChatSpans(parsed.sections[sec.num]));
+            let sectionMd = stripChatSpans(parsed.sections[sec.num]);
+            // Fix Scope & Size and similar sections where bold labels run together without line breaks
+            sectionMd = sectionMd.replace(/([.!?:,])\s*(\*\*[A-Z])/g, "$1\n\n$2");
+            let sectionHtml = renderMarkdown(sectionMd);
             sectionHtml = sectionHtml.replace(/<h2>\d+\.\s*/g, "<h2>");
             html += sectionHtml;
           } else {
