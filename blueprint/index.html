@@ -2642,11 +2642,8 @@
       for (const m of sectionMatches) {
         const sec = parseInt(m[1]);
         completedSections.add(sec);
-        if (sec === 21) {
-          const lastUserMsg = [...conversationHistory].reverse().find(m => m.role === "user");
-          if (lastUserMsg && /agree|looks right|spot on/i.test(lastUserMsg.content)) {
-            setTimeout(launchConfetti, 500);
-          }
+        if (sec === 22) {
+          setTimeout(launchConfetti, 500);
         }
       }
       updateProgress();
