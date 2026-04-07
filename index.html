@@ -34,7 +34,7 @@
         @keyframes dotpulse{0%,100%{color:#98cbed}50%{color:#3498db}}
         .hero-blob h2{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:400;color:#666666;line-height:1.7;max-width:580px;margin-bottom:2.5rem}
         .hero-btns{display:flex;gap:1rem}
-        .hero-btns a{display:inline-block;padding:0.85rem 2.2rem;background:#fff;color:#151515;text-decoration:none;font-family:'Figtree',sans-serif;font-size:1rem;font-weight:600;border-radius:50px;border:3px solid #3498db;transition:all 0.2s ease}
+        .hero-btns a{display:inline-block;padding:0.85rem 2.2rem;background:#cae4f6;color:#151515;text-decoration:none;font-family:'Figtree',sans-serif;font-size:1rem;font-weight:600;border-radius:50px;border:4px solid #3498db;transition:all 0.2s ease}
         .hero-btns a:hover{background:#98cbed;transform:translateY(-2px)}
 
         /* ===== TOOLS / CARDS ===== */
@@ -46,9 +46,9 @@
         .tools-header h2{font-family:'Figtree',sans-serif;font-size:4rem;font-weight:500;color:#151515;margin-bottom:1rem;letter-spacing:-0.03em;line-height:1.1}
         .tools-header p{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:500;color:#666666;line-height:1.7;max-width:640px;margin:0 auto}
         .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
-        .card{background:#fefeff;border:2px solid #666666;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:transform 0.3s ease,box-shadow 0.3s ease}
+        .card{background:#fefeff;border:3px solid #666666;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:transform 0.3s ease,box-shadow 0.3s ease}
         .card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(21,21,21,0.1)}
-        .card-chrome{background:#f5f5f5;padding:0.5rem 0.75rem;display:flex;align-items:center;gap:0.35rem;border-bottom:2px solid #666666}
+        .card-chrome{background:#f5f5f5;padding:0.5rem 0.75rem;display:flex;align-items:center;gap:0.35rem;border-bottom:3px solid #666666}
         .card-chrome span{width:10px;height:10px;border-radius:50%;display:block}
         .card-chrome .dot-r{background:#ed7b7e}
         .card-chrome .dot-y{background:#fbbf0b}
@@ -61,15 +61,15 @@
         .tag.live{background:#dff3eb;color:#2a7053}
         .tag.coming-soon{background:#f0f0f0;color:#999}
         .card p{font-family:Helvetica,Arial,sans-serif;font-size:1rem;color:#666666;line-height:1.7;flex-grow:1;margin-bottom:1.5rem}
-        .card-btn{display:inline-flex;align-items:center;gap:0.4rem;font-size:1rem;font-weight:700;color:#151515;text-decoration:none;padding:0.6rem 1.6rem;border-radius:50px;border:3px solid;background:#fff;transition:all 0.2s ease;align-self:flex-start;cursor:pointer}
+        .card-btn{display:inline-flex;align-items:center;gap:0.4rem;font-size:1rem;font-weight:700;color:#151515;text-decoration:none;padding:0.6rem 1.6rem;border-radius:50px;border:4px solid;transition:all 0.2s ease;align-self:flex-start;cursor:pointer}
         .card-btn:hover{transform:translateY(-1px)}
         .card-btn .arrow{transition:transform 0.2s ease}
         .card-btn:hover .arrow{transform:translateX(3px)}
-        .card-blue .card-btn{border-color:#3498db}
+        .card-blue .card-btn{background:#cae4f6;border-color:#3498db}
         .card-blue .card-btn:hover{background:#98cbed}
-        .card-purple .card-btn{border-color:#b994e0}
+        .card-purple .card-btn{background:#f5effa;border-color:#b994e0}
         .card-purple .card-btn:hover{background:#d7c2ed}
-        .card-green .card-btn{border-color:#5fc39c}
+        .card-green .card-btn{background:#dff3eb;border-color:#5fc39c}
         .card-green .card-btn:hover{background:#b5e3d1}
         .card-btn.disabled{cursor:default;pointer-events:none;opacity:0.5}
 
@@ -81,7 +81,7 @@
         @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
         /* ===== ABOUT ===== */
-        .about{background:#1a6293;padding:5rem 2rem 6rem;position:relative;overflow:hidden}
+        .about{background:#98cbed;padding:5rem 2rem 6rem;position:relative;overflow:hidden}
         @keyframes twinkle{0%,100%{opacity:0.1}50%{opacity:0.3}}
         @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
         @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
@@ -90,7 +90,7 @@
         @keyframes dotbounce{0%,100%{transform:translateY(0);opacity:0.3}50%{transform:translateY(-4px);opacity:0.7}}
         @keyframes calcpress{0%,100%{fill-opacity:0.05}50%{fill-opacity:0.5}}
         .twinkle-star{position:absolute;pointer-events:none;z-index:0}
-        .twinkle-star path,.twinkle-star polygon{fill:#cae4f6}
+        .twinkle-star path,.twinkle-star polygon{fill:#fff}
         .ts1{animation:twinkle 3s ease-in-out infinite}
         .ts2{animation:spin 12s linear infinite}
         .ts3{animation:bounce 4s ease-in-out infinite 0.5s}
@@ -102,17 +102,17 @@
         .about-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:3rem;position:relative;z-index:1}
         .about-photo-side{flex:0 0 30%;display:flex;justify-content:center}
         .about-photo-blob{position:relative;width:280px;height:280px}
-        .about-photo-blob .blob-shape{width:100%;height:100%;background:#fefeff;border-radius:60% 40% 55% 45% / 50% 60% 40% 50%;display:flex;align-items:center;justify-content:center;font-family:'Figtree',sans-serif;font-size:3.5rem;font-weight:800;color:#fff;overflow:hidden;position:relative}
+        .about-photo-blob .blob-shape{width:100%;height:100%;background:#1a6293;border-radius:60% 40% 55% 45% / 50% 60% 40% 50%;display:flex;align-items:center;justify-content:center;font-family:'Figtree',sans-serif;font-size:3.5rem;font-weight:800;color:#fff;overflow:hidden;position:relative}
         .about-photo-blob .blob-shape img{width:100%;height:100%;object-fit:cover;object-position:center 5%;transform:scale(1.4);filter:grayscale(100%) brightness(0.85) contrast(1.1)}
         .about-photo-blob .blob-shape::after{content:'';position:absolute;inset:0;background:rgba(26,98,147,0.35);mix-blend-mode:color;pointer-events:none}
         .about-bio{flex:1}
-        .about-bio h2{font-family:'Figtree',sans-serif;font-size:2.2rem;font-weight:500;color:#fff;margin-bottom:0.4rem;letter-spacing:-0.02em}
-        .about-bio h3{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:500;color:rgba(255,255,255,0.75);margin-bottom:1.5rem;line-height:1.7}
-        .about-bio p{font-family:Helvetica,Arial,sans-serif;font-size:1rem;color:rgba(255,255,255,0.75);line-height:1.7}
+        .about-bio h2{font-family:'Figtree',sans-serif;font-size:2.2rem;font-weight:500;color:#151515;margin-bottom:0.4rem;letter-spacing:-0.02em}
+        .about-bio h3{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:500;color:#1a6293;margin-bottom:1.5rem;line-height:1.7}
+        .about-bio p{font-family:Helvetica,Arial,sans-serif;font-size:1rem;color:#1a6293;line-height:1.7}
 
         /* ===== FOOTER ===== */
         .about-contact{display:flex;flex-direction:column;gap:0.75rem;margin-top:1.5rem}
-        .about-contact-link{display:inline-flex;align-items:center;gap:0.5rem;font-family:Helvetica,Arial,sans-serif;font-size:0.95rem;color:#fff;text-decoration:none;transition:opacity 0.2s ease}
+        .about-contact-link{display:inline-flex;align-items:center;gap:0.5rem;font-family:Helvetica,Arial,sans-serif;font-size:0.95rem;color:#1a6293;text-decoration:none;transition:opacity 0.2s ease}
         .about-contact-link:hover{opacity:0.7}
         .footer-slim{background:#1a6293;padding:1.5rem 2rem;text-align:center;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.1)}
         .footer-slim svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
@@ -277,8 +277,8 @@
             <h3>Integrated Marketing &amp; Demand Gen Leader <span style="font-size:1.4em;font-weight:300;vertical-align:-0.05em">|</span> ex-Large Reputable Companies</h3>
             <p>I've spent my career turning ambiguity into pipeline at companies like Google, Iterable, and Yelp. I'm at my best when I'm wearing multiple hats — strategizing, creating, executing — and especially when I'm working alongside a good team. I've always loved making things that solve problems, and building AI tools has been a fun way to keep doing that while learning something new. The possibilities feel wide open.</p>
             <div class="about-contact">
-                <a href="mailto:matthewgreenbaum@gmail.com" class="about-contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4 12 13 2 4"/></svg>matthewgreenbaum@gmail.com</a>
-                <a href="https://www.linkedin.com/in/mattgreenbaum" target="_blank" class="about-contact-link"><svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>LinkedIn</a>
+                <a href="mailto:matthewgreenbaum@gmail.com" class="about-contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="#1a6293" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4 12 13 2 4"/></svg>matthewgreenbaum@gmail.com</a>
+                <a href="https://www.linkedin.com/in/mattgreenbaum" target="_blank" class="about-contact-link"><svg viewBox="0 0 24 24" fill="#1a6293" width="20" height="20"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>LinkedIn</a>
             </div>
         </div>
     </div>
