@@ -34,8 +34,8 @@
         @keyframes dotpulse{0%,100%{color:#98cbed}50%{color:#3498db}}
         .hero-blob h2{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:400;color:#666666;line-height:1.7;max-width:580px;margin-bottom:2.5rem}
         .hero-btns{display:flex;gap:1rem}
-        .hero-btns a{display:inline-block;padding:0.85rem 2.2rem;background:#3498db;color:#fff;text-decoration:none;font-family:'Figtree',sans-serif;font-size:0.9rem;font-weight:600;border-radius:8px;transition:background 0.2s ease,transform 0.15s ease}
-        .hero-btns a:hover{background:#1a6293;color:#fff;transform:translateY(-2px)}
+        .hero-btns a{display:inline-block;padding:0.85rem 2.2rem;background:#66b1e4;color:#151515;text-decoration:none;font-family:'Figtree',sans-serif;font-size:0.9rem;font-weight:600;border-radius:50px;border:3px solid #1a6293;transition:all 0.2s ease}
+        .hero-btns a:hover{background:#3498db;transform:translateY(-2px)}
 
         /* ===== TOOLS / CARDS ===== */
         .tools{background:#fefeff;padding:6rem 2rem;position:relative;overflow:hidden}
@@ -44,15 +44,24 @@
         .tools-rings circle{fill:none;stroke:rgba(52,152,219,0.06)}
         .tools-header{text-align:center;margin-bottom:3.5rem}
         .tools-header h2{font-family:'Figtree',sans-serif;font-size:4rem;font-weight:500;color:#151515;margin-bottom:1rem;letter-spacing:-0.03em;line-height:1.1}
-        .tools-header p{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:400;color:#666666;line-height:1.7;max-width:640px;margin:0 auto}
+        .tools-header p{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:500;color:#666666;line-height:1.7;max-width:640px;margin:0 auto}
         .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
-        .card{background:#fefeff;border:6px solid #3498db;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.3s ease,transform 0.3s ease,box-shadow 0.3s ease}
-        .card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(52,152,219,0.15)}
-        .card-chrome{background:#3498db;padding:0.5rem 0.75rem;display:flex;align-items:center;gap:0.35rem}
+        .card{background:#fefeff;border:6px solid;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.3s ease,transform 0.3s ease,box-shadow 0.3s ease}
+        .card:hover{transform:translateY(-6px)}
+        .card-blue{border-color:#3498db}
+        .card-blue:hover{box-shadow:0 16px 40px rgba(52,152,219,0.15)}
+        .card-blue .card-chrome{background:#3498db}
+        .card-purple{border-color:#b994e0}
+        .card-purple:hover{box-shadow:0 16px 40px rgba(185,148,224,0.2)}
+        .card-purple .card-chrome{background:#b994e0}
+        .card-green{border-color:#5fc39c}
+        .card-green:hover{box-shadow:0 16px 40px rgba(95,195,156,0.2)}
+        .card-green .card-chrome{background:#5fc39c}
+        .card-chrome{padding:0.5rem 0.75rem;display:flex;align-items:center;gap:0.35rem}
         .card-chrome span{width:10px;height:10px;border-radius:50%;display:block}
-        .card-chrome .dot-r{background:#ff5f56}
-        .card-chrome .dot-y{background:#ffbd2e}
-        .card-chrome .dot-g{background:#27c93f}
+        .card-chrome .dot-r{background:#ed7b7e}
+        .card-chrome .dot-y{background:#fbbf0b}
+        .card-chrome .dot-g{background:#5fc39c}
         .card-body{padding:2rem;display:flex;flex-direction:column;flex-grow:1}
         .card-icon{width:64px;height:64px;margin-bottom:1.25rem}
         .card-icon svg{width:100%;height:100%}
@@ -61,21 +70,27 @@
         .tag.live{background:#5fc39c;color:#fff}
         .tag.coming-soon{background:#feedb9;color:#a17a03}
         .card p{font-family:Helvetica,Arial,sans-serif;font-size:1rem;color:#666666;line-height:1.7;flex-grow:1;margin-bottom:1.5rem}
-        .card-btn{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.85rem;font-weight:700;color:#fff;text-decoration:none;padding:0.6rem 1.2rem;border-radius:8px;background:#3498db;border:none;transition:all 0.2s ease;align-self:flex-start;cursor:pointer}
-        .card-btn:hover{background:#1a6293;color:#fff;transform:translateY(-1px)}
+        .card-btn{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.85rem;font-weight:700;color:#151515;text-decoration:none;padding:0.6rem 1.6rem;border-radius:50px;border:3px solid;transition:all 0.2s ease;align-self:flex-start;cursor:pointer}
+        .card-btn:hover{transform:translateY(-1px)}
         .card-btn .arrow{transition:transform 0.2s ease}
         .card-btn:hover .arrow{transform:translateX(3px)}
-        .card-btn.disabled{background:#cae4f6;color:#1a6293;cursor:default;pointer-events:none}
+        .card-blue .card-btn{background:#66b1e4;border-color:#1a6293}
+        .card-blue .card-btn:hover{background:#3498db}
+        .card-purple .card-btn{background:#c3a3e4;border-color:#6a30a7}
+        .card-purple .card-btn:hover{background:#b994e0}
+        .card-green .card-btn{background:#8ad3b6;border-color:#2a7053}
+        .card-green .card-btn:hover{background:#5fc39c}
+        .card-btn.disabled{cursor:default;pointer-events:none;opacity:0.6}
 
         /* ===== MARQUEE ===== */
-        .marquee-wrapper{background:#cae4f6;border-bottom:1px solid rgba(52,152,219,0.1);padding:1rem 0;overflow:hidden}
+        .marquee-wrapper{background:#feedb9;border-bottom:1px solid rgba(161,122,3,0.1);padding:1rem 0;overflow:hidden}
         .marquee{display:flex;width:max-content;animation:marquee 40s linear infinite}
-        .marquee span{font-family:'Figtree',sans-serif;font-size:0.82rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:rgba(26,98,147,0.45);white-space:nowrap;padding:0 0.5rem}
+        .marquee span{font-family:'Figtree',sans-serif;font-size:0.82rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:rgba(161,122,3,0.45);white-space:nowrap;padding:0 0.5rem}
         .marquee .sep{margin:0 1.2rem;opacity:0.4}
         @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
         /* ===== ABOUT ===== */
-        .about{background:#cae4f6;padding:5rem 2rem 6rem;position:relative;overflow:hidden}
+        .about{background:#f5effa;padding:5rem 2rem 6rem;position:relative;overflow:hidden}
         @keyframes twinkle{0%,100%{opacity:0.1}50%{opacity:0.3}}
         @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
         @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
@@ -84,7 +99,7 @@
         @keyframes dotbounce{0%,100%{transform:translateY(0);opacity:0.3}50%{transform:translateY(-4px);opacity:0.7}}
         @keyframes calcpress{0%,100%{fill-opacity:0.05}50%{fill-opacity:0.5}}
         .twinkle-star{position:absolute;pointer-events:none;z-index:0}
-        .twinkle-star path,.twinkle-star polygon{fill:#fbbf0b}
+        .twinkle-star path,.twinkle-star polygon{fill:#d7c2ed}
         .ts1{animation:twinkle 3s ease-in-out infinite}
         .ts2{animation:spin 12s linear infinite}
         .ts3{animation:bounce 4s ease-in-out infinite 0.5s}
@@ -171,7 +186,7 @@
         </div>
         <div class="cards">
             <!-- Campaign Blueprint -->
-            <div class="card reveal reveal-delay-1">
+            <div class="card card-blue reveal reveal-delay-1">
                 <div class="card-chrome"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
                 <div class="card-body">
                     <div class="card-icon"><svg viewBox="0 0 64 64" fill="none">
@@ -189,14 +204,14 @@
                 </div>
             </div>
             <!-- FeedbackAtcha -->
-            <div class="card reveal reveal-delay-2">
+            <div class="card card-purple reveal reveal-delay-2">
                 <div class="card-chrome"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
                 <div class="card-body">
                     <div class="card-icon"><svg viewBox="0 0 64 64" fill="none">
-                        <path d="M8 16 C8 12 11 9 15 9 L49 9 C53 9 56 12 56 16 L56 38 C56 42 53 45 49 45 L24 45 L14 55 L14 45 L15 45 C11 45 8 42 8 38 Z" stroke="#3498db" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="23" cy="27" r="2.5" fill="#3498db" style="animation:dotbounce 1.4s ease-in-out infinite"/>
-                        <circle cx="32" cy="27" r="2.5" fill="#3498db" style="animation:dotbounce 1.4s ease-in-out 0.2s infinite"/>
-                        <circle cx="41" cy="27" r="2.5" fill="#3498db" style="animation:dotbounce 1.4s ease-in-out 0.4s infinite"/>
+                        <path d="M8 16 C8 12 11 9 15 9 L49 9 C53 9 56 12 56 16 L56 38 C56 42 53 45 49 45 L24 45 L14 55 L14 45 L15 45 C11 45 8 42 8 38 Z" stroke="#b994e0" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="23" cy="27" r="2.5" fill="#b994e0" style="animation:dotbounce 1.4s ease-in-out infinite"/>
+                        <circle cx="32" cy="27" r="2.5" fill="#b994e0" style="animation:dotbounce 1.4s ease-in-out 0.2s infinite"/>
+                        <circle cx="41" cy="27" r="2.5" fill="#b994e0" style="animation:dotbounce 1.4s ease-in-out 0.4s infinite"/>
                     </svg></div>
                     <h3>FeedbackAtcha</h3>
 
@@ -205,19 +220,19 @@
                 </div>
             </div>
             <!-- Budget Allogator -->
-            <div class="card reveal reveal-delay-3">
+            <div class="card card-green reveal reveal-delay-3">
                 <div class="card-chrome"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
                 <div class="card-body">
                     <div class="card-icon"><svg viewBox="0 0 64 64" fill="none">
-                        <rect x="12" y="8" width="40" height="48" rx="5" stroke="#3498db" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
-                        <rect x="18" y="14" width="28" height="10" rx="2" fill="#cae4f6" stroke="#3498db" stroke-width="1.5"/>
-                        <circle cx="22" cy="32" r="3" stroke="#3498db" stroke-width="1.5" fill="#3498db" style="animation:calcpress 2.2s ease-in-out infinite"/>
-                        <circle cx="32" cy="32" r="3" stroke="#3498db" stroke-width="1.5" fill="#3498db" style="animation:calcpress 2.2s ease-in-out 0.3s infinite"/>
-                        <circle cx="42" cy="32" r="3" stroke="#3498db" stroke-width="1.5" fill="#3498db" style="animation:calcpress 2.2s ease-in-out 0.6s infinite"/>
-                        <circle cx="22" cy="42" r="3" stroke="#3498db" stroke-width="1.5" fill="#3498db" style="animation:calcpress 2.2s ease-in-out 0.9s infinite"/>
-                        <circle cx="32" cy="42" r="3" stroke="#3498db" stroke-width="1.5" fill="#3498db" style="animation:calcpress 2.2s ease-in-out 1.2s infinite"/>
-                        <rect x="38" y="39" width="8" height="6" rx="1.5" fill="#3498db" opacity="0.2" stroke="#3498db" stroke-width="1.5"/>
-                        <line x1="22" y1="18" x2="35" y2="18" stroke="#3498db" stroke-width="1.5" stroke-linecap="round" style="animation:lineflash 2.4s ease-in-out infinite"/>
+                        <rect x="12" y="8" width="40" height="48" rx="5" stroke="#5fc39c" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                        <rect x="18" y="14" width="28" height="10" rx="2" fill="#dff3eb" stroke="#5fc39c" stroke-width="1.5"/>
+                        <circle cx="22" cy="32" r="3" stroke="#5fc39c" stroke-width="1.5" fill="#5fc39c" style="animation:calcpress 2.2s ease-in-out infinite"/>
+                        <circle cx="32" cy="32" r="3" stroke="#5fc39c" stroke-width="1.5" fill="#5fc39c" style="animation:calcpress 2.2s ease-in-out 0.3s infinite"/>
+                        <circle cx="42" cy="32" r="3" stroke="#5fc39c" stroke-width="1.5" fill="#5fc39c" style="animation:calcpress 2.2s ease-in-out 0.6s infinite"/>
+                        <circle cx="22" cy="42" r="3" stroke="#5fc39c" stroke-width="1.5" fill="#5fc39c" style="animation:calcpress 2.2s ease-in-out 0.9s infinite"/>
+                        <circle cx="32" cy="42" r="3" stroke="#5fc39c" stroke-width="1.5" fill="#5fc39c" style="animation:calcpress 2.2s ease-in-out 1.2s infinite"/>
+                        <rect x="38" y="39" width="8" height="6" rx="1.5" fill="#5fc39c" opacity="0.2" stroke="#5fc39c" stroke-width="1.5"/>
+                        <line x1="22" y1="18" x2="35" y2="18" stroke="#5fc39c" stroke-width="1.5" stroke-linecap="round" style="animation:lineflash 2.4s ease-in-out infinite"/>
                     </svg></div>
                     <h3>Budget Allogator</h3>
 
@@ -241,26 +256,26 @@
 <section id="about" class="about">
     <!-- Twinkling stars background -->
     <!-- Stars spread evenly across section -->
-    <svg class="twinkle-star ts1" style="top:5%;left:8%;width:24px;height:24px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts2" style="top:8%;left:35%;width:14px;height:14px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts3" style="top:4%;left:65%;width:20px;height:20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts4" style="top:10%;left:88%;width:16px;height:16px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts5" style="top:30%;left:5%;width:16px;height:16px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts6" style="top:35%;left:92%;width:28px;height:28px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts7" style="top:28%;left:78%;width:12px;height:12px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts8" style="top:55%;left:12%;width:20px;height:20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts1" style="top:50%;left:55%;width:11px;height:11px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts3" style="top:58%;left:85%;width:22px;height:22px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts4" style="top:75%;left:6%;width:18px;height:18px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts6" style="top:80%;left:40%;width:13px;height:13px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts2" style="top:72%;left:68%;width:26px;height:26px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts5" style="top:88%;left:20%;width:15px;height:15px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts7" style="top:85%;left:58%;width:19px;height:19px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts8" style="top:92%;left:82%;width:14px;height:14px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts2" style="top:15%;left:22%;width:17px;height:17px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts5" style="top:42%;left:92%;width:22px;height:22px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts3" style="top:65%;left:30%;width:13px;height:13px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
-    <svg class="twinkle-star ts1" style="top:18%;left:75%;width:20px;height:20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#fbbf0b"/></svg>
+    <svg class="twinkle-star ts1" style="top:5%;left:8%;width:24px;height:24px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts2" style="top:8%;left:35%;width:14px;height:14px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts3" style="top:4%;left:65%;width:20px;height:20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts4" style="top:10%;left:88%;width:16px;height:16px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts5" style="top:30%;left:5%;width:16px;height:16px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts6" style="top:35%;left:92%;width:28px;height:28px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts7" style="top:28%;left:78%;width:12px;height:12px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts8" style="top:55%;left:12%;width:20px;height:20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts1" style="top:50%;left:55%;width:11px;height:11px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts3" style="top:58%;left:85%;width:22px;height:22px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts4" style="top:75%;left:6%;width:18px;height:18px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts6" style="top:80%;left:40%;width:13px;height:13px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts2" style="top:72%;left:68%;width:26px;height:26px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts5" style="top:88%;left:20%;width:15px;height:15px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts7" style="top:85%;left:58%;width:19px;height:19px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts8" style="top:92%;left:82%;width:14px;height:14px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts2" style="top:15%;left:22%;width:17px;height:17px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts5" style="top:42%;left:92%;width:22px;height:22px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts3" style="top:65%;left:30%;width:13px;height:13px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
+    <svg class="twinkle-star ts1" style="top:18%;left:75%;width:20px;height:20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 L12 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L8 7 Z" fill="#d7c2ed"/></svg>
 
     <div class="about-inner">
         <div class="about-photo-side reveal">
