@@ -34,8 +34,8 @@
         @keyframes dotpulse{0%,100%{color:#98cbed}50%{color:#3498db}}
         .hero-blob h2{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:400;color:#666666;line-height:1.7;max-width:580px;margin-bottom:2.5rem}
         .hero-btns{display:flex;gap:1rem}
-        .hero-btns a{display:inline-block;padding:0.85rem 2.2rem;background:#cae4f6;color:#151515;text-decoration:none;font-family:'Figtree',sans-serif;font-size:1rem;font-weight:600;border-radius:50px;border:4px solid #3498db;transition:all 0.2s ease}
-        .hero-btns a:hover{background:#98cbed;transform:translateY(-2px)}
+        .hero-btns a{display:inline-block;padding:0.85rem 2.2rem;background:#fff;color:#151515;text-decoration:none;font-family:'Figtree',sans-serif;font-size:1rem;font-weight:600;border-radius:50px;border:4px solid #3498db;transition:all 0.2s ease}
+        .hero-btns a:hover{background:#cae4f6;transform:translateY(-2px)}
 
         /* ===== TOOLS / CARDS ===== */
         .tools{background:#fefeff;padding:6rem 2rem;position:relative;overflow:hidden}
@@ -46,9 +46,9 @@
         .tools-header h2{font-family:'Figtree',sans-serif;font-size:4rem;font-weight:500;color:#151515;margin-bottom:1rem;letter-spacing:-0.03em;line-height:1.1}
         .tools-header p{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:500;color:#666666;line-height:1.7;max-width:640px;margin:0 auto}
         .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
-        .card{background:#fefeff;border:3px solid #666666;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:transform 0.3s ease,box-shadow 0.3s ease}
+        .card{background:#fefeff;border:6px solid #666666;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:transform 0.3s ease,box-shadow 0.3s ease}
         .card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(21,21,21,0.1)}
-        .card-chrome{background:#f5f5f5;padding:0.5rem 0.75rem;display:flex;align-items:center;gap:0.35rem;border-bottom:3px solid #666666}
+        .card-chrome{background:#666666;padding:0.5rem 0.75rem;display:flex;align-items:center;gap:0.35rem}
         .card-chrome span{width:10px;height:10px;border-radius:50%;display:block}
         .card-chrome .dot-r{background:#ed7b7e}
         .card-chrome .dot-y{background:#fbbf0b}
@@ -65,23 +65,23 @@
         .card-btn:hover{transform:translateY(-1px)}
         .card-btn .arrow{transition:transform 0.2s ease}
         .card-btn:hover .arrow{transform:translateX(3px)}
-        .card-blue .card-btn{background:#cae4f6;border-color:#3498db}
-        .card-blue .card-btn:hover{background:#98cbed}
-        .card-purple .card-btn{background:#f5effa;border-color:#b994e0}
-        .card-purple .card-btn:hover{background:#d7c2ed}
-        .card-green .card-btn{background:#dff3eb;border-color:#5fc39c}
-        .card-green .card-btn:hover{background:#b5e3d1}
+        .card-blue .card-btn{background:#fff;border-color:#3498db}
+        .card-blue .card-btn:hover{background:#cae4f6}
+        .card-purple .card-btn{background:#fff;border-color:#b994e0}
+        .card-purple .card-btn:hover{background:#f5effa}
+        .card-green .card-btn{background:#fff;border-color:#5fc39c}
+        .card-green .card-btn:hover{background:#dff3eb}
         .card-btn.disabled{cursor:default;pointer-events:none;opacity:0.5}
 
         /* ===== MARQUEE ===== */
-        .marquee-wrapper{background:#f5f5f5;border-bottom:1px solid #e0e0e0;padding:1rem 0;overflow:hidden}
+        .marquee-wrapper{background:#cae4f6;border-bottom:none;padding:1rem 0;overflow:hidden}
         .marquee{display:flex;width:max-content;animation:marquee 40s linear infinite}
-        .marquee span{font-family:'Figtree',sans-serif;font-size:0.82rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:rgba(21,21,21,0.3);white-space:nowrap;padding:0 0.5rem}
+        .marquee span{font-family:'Figtree',sans-serif;font-size:0.82rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#98cbed;white-space:nowrap;padding:0 0.5rem}
         .marquee .sep{margin:0 1.2rem;opacity:0.4}
         @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
         /* ===== ABOUT ===== */
-        .about{background:#98cbed;padding:5rem 2rem 6rem;position:relative;overflow:hidden}
+        .about{background:#cae4f6;padding:5rem 2rem 6rem;position:relative;overflow:hidden}
         @keyframes twinkle{0%,100%{opacity:0.1}50%{opacity:0.3}}
         @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
         @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
@@ -90,7 +90,7 @@
         @keyframes dotbounce{0%,100%{transform:translateY(0);opacity:0.3}50%{transform:translateY(-4px);opacity:0.7}}
         @keyframes calcpress{0%,100%{fill-opacity:0.05}50%{fill-opacity:0.5}}
         .twinkle-star{position:absolute;pointer-events:none;z-index:0}
-        .twinkle-star path,.twinkle-star polygon{fill:#fff}
+        .twinkle-star path,.twinkle-star polygon{fill:#98cbed}
         .ts1{animation:twinkle 3s ease-in-out infinite}
         .ts2{animation:spin 12s linear infinite}
         .ts3{animation:bounce 4s ease-in-out infinite 0.5s}
