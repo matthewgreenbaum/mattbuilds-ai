@@ -12,9 +12,9 @@
     <style>
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
         html{scroll-behavior:smooth}
-        body{font-family:Helvetica,Arial,sans-serif;color:rgba(255,255,255,0.7);overflow-x:hidden;background:#060912}
+        body{font-family:Helvetica,Arial,sans-serif;color:#8A7BA8;overflow-x:hidden;background:#2B1E78}
         ::-webkit-scrollbar{width:8px}
-        ::-webkit-scrollbar-track{background:#060912}
+        ::-webkit-scrollbar-track{background:#2B1E78}
         ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.25);border-radius:4px}
         ::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,0.4)}
         .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
@@ -24,31 +24,31 @@
         .reveal-delay-3{transition-delay:0.36s}
 
         /* ===== HERO ===== */
-        .hero{position:relative;padding:4rem 2rem;min-height:auto;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(180deg, #060912 0%, #0F1419 100%)}
+        .hero{position:relative;padding:4rem 2rem;min-height:auto;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(180deg, #2B1E78 0%, #1F1864 100%)}
         .hero-verticals{position:absolute;inset:0;z-index:0;pointer-events:none}
         .hero-verticals line{stroke:rgba(255,255,255,0.12);stroke-width:1}
         .hero-blob-wrap{position:relative;z-index:1;width:100%;max-width:960px;margin:0 auto}
         .hero-blob{position:relative;background:#F9F8F6;padding:6rem 5rem 5rem;border-radius:30% 70% 42% 58% / 55% 30% 70% 45%;display:flex;flex-direction:column;align-items:center;text-align:center}
-        .hero-blob h1{font-family:'Figtree',sans-serif;font-size:7rem;font-weight:500;color:#fff;letter-spacing:-0.03em;line-height:1;margin-bottom:1.5rem}
+        .hero-blob h1{font-family:'Figtree',sans-serif;font-size:7rem;font-weight:500;color:#2B1E78;letter-spacing:-0.03em;line-height:1;margin-bottom:1.5rem}
         .hero-blob h1 .dot{color:#E8E6E2;animation:dotpulse 3s ease-in-out infinite}
         @keyframes dotpulse{0%,100%{color:#E8E6E2}50%{color:#B8C4CE}}
-        .hero-blob h2{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.7;max-width:580px;margin-bottom:2.5rem}
+        .hero-blob h2{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:400;color:#5A4D7F;line-height:1.7;max-width:580px;margin-bottom:2.5rem}
         .hero-btns{display:flex;gap:1rem}
-        .hero-btns a{display:inline-block;padding:0.85rem 2.2rem;background:rgba(255,255,255,0.1);color:#fff;text-decoration:none;font-family:'Figtree',sans-serif;font-size:0.9rem;font-weight:600;border-radius:8px;transition:background 0.2s ease,transform 0.15s ease;border:1px solid rgba(255,255,255,0.2)}
-        .hero-btns a:hover{background:rgba(255,255,255,0.15);color:#fff;transform:translateY(-2px);border-color:rgba(255,255,255,0.3)}
+        .hero-btns a{display:inline-block;padding:0.85rem 2.2rem;background:#2B1E78;color:#fff;text-decoration:none;font-family:'Figtree',sans-serif;font-size:0.9rem;font-weight:600;border-radius:8px;transition:background 0.2s ease,transform 0.15s ease}
+        .hero-btns a:hover{background:#4A3D9E;color:#fff;transform:translateY(-2px)}
 
         /* ===== TOOLS / CARDS ===== */
         .tools{background:#F9F8F6;padding:6rem 2rem;position:relative;overflow:hidden}
         .tools-inner{max-width:1060px;margin:0 auto;position:relative;z-index:1}
         .tools-rings{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0}
-        .tools-rings circle{fill:none;stroke:rgba(255,255,255,0.05)}
+        .tools-rings circle{fill:none;stroke:rgba(43,30,120,0.045)}
         .tools-header{text-align:center;margin-bottom:3.5rem}
-        .tools-header h2{font-family:'Figtree',sans-serif;font-size:4rem;font-weight:500;color:#fff;margin-bottom:1rem;letter-spacing:-0.03em;line-height:1.1}
-        .tools-header p{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.7;max-width:640px;margin:0 auto}
+        .tools-header h2{font-family:'Figtree',sans-serif;font-size:4rem;font-weight:500;color:#2B1E78;margin-bottom:1rem;letter-spacing:-0.03em;line-height:1.1}
+        .tools-header p{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:400;color:#8A7BA8;line-height:1.7;max-width:640px;margin:0 auto}
         .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
-        .card{background:#F2F0EC;border:6px solid rgba(255,255,255,0.1);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.3s ease,transform 0.3s ease,box-shadow 0.3s ease}
-        .card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.15)}
-        .card-chrome{background:rgba(255,255,255,0.05);padding:0.5rem 0.75rem;display:flex;align-items:center;gap:0.35rem;border-bottom:1px solid rgba(255,255,255,0.1)}
+        .card{background:#F2F0EC;border:6px solid #2B1E78;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.3s ease,transform 0.3s ease,box-shadow 0.3s ease}
+        .card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(43,30,120,0.15)}
+        .card-chrome{background:#2B1E78;padding:0.5rem 0.75rem;display:flex;align-items:center;gap:0.35rem}
         .card-chrome span{width:10px;height:10px;border-radius:50%;display:block}
         .card-chrome .dot-r{background:#ff5f56}
         .card-chrome .dot-y{background:#ffbd2e}
@@ -56,21 +56,21 @@
         .card-body{padding:2rem;display:flex;flex-direction:column;flex-grow:1}
         .card-icon{width:64px;height:64px;margin-bottom:1.25rem}
         .card-icon svg{width:100%;height:100%}
-        .card h3{font-family:'Figtree',sans-serif;font-size:1.3rem;font-weight:800;color:#060912;margin-bottom:0.5rem}
+        .card h3{font-family:'Figtree',sans-serif;font-size:1.3rem;font-weight:800;color:#2B1E78;margin-bottom:0.5rem}
         .card .tag{display:inline-block;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:0.25rem 0.65rem;border-radius:20px;margin-bottom:1rem}
-        .tag.live{background:rgba(255,255,255,0.15);color:#fff}
+        .tag.live{background:#2B1E78;color:#fff}
         .tag.coming-soon{background:#E8E6E2;color:#8A9BAA}
-        .card p{font-family:Helvetica,Arial,sans-serif;font-size:1rem;color:rgba(6,9,18,0.7);line-height:1.7;flex-grow:1;margin-bottom:1.5rem}
-        .card-btn{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.85rem;font-weight:700;color:#060912;text-decoration:none;padding:0.6rem 1.2rem;border-radius:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);transition:all 0.2s ease;align-self:flex-start;cursor:pointer}
-        .card-btn:hover{background:rgba(255,255,255,0.25);color:#060912;border-color:rgba(255,255,255,0.3);transform:translateY(-1px)}
+        .card p{font-family:Helvetica,Arial,sans-serif;font-size:1rem;color:#8A7BA8;line-height:1.7;flex-grow:1;margin-bottom:1.5rem}
+        .card-btn{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.85rem;font-weight:700;color:#fff;text-decoration:none;padding:0.6rem 1.2rem;border-radius:8px;background:#2B1E78;border:none;transition:all 0.2s ease;align-self:flex-start;cursor:pointer}
+        .card-btn:hover{background:#4A3D9E;color:#fff;transform:translateY(-1px)}
         .card-btn .arrow{transition:transform 0.2s ease}
         .card-btn:hover .arrow{transform:translateX(3px)}
         .card-btn.disabled{background:#E8E6E2;color:#A3B1BE;cursor:default;pointer-events:none}
 
         /* ===== MARQUEE ===== */
-        .marquee-wrapper{background:#E8E6E2;border-bottom:1px solid rgba(6,9,18,0.1);padding:1rem 0;overflow:hidden}
+        .marquee-wrapper{background:#E8E6E2;border-bottom:1px solid rgba(43,30,120,0.06);padding:1rem 0;overflow:hidden}
         .marquee{display:flex;width:max-content;animation:marquee 40s linear infinite}
-        .marquee span{font-family:'Figtree',sans-serif;font-size:0.82rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.3);white-space:nowrap;padding:0 0.5rem}
+        .marquee span{font-family:'Figtree',sans-serif;font-size:0.82rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:rgba(43,30,120,0.35);white-space:nowrap;padding:0 0.5rem}
         .marquee .sep{margin:0 1.2rem;opacity:0.4}
         @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
@@ -96,24 +96,24 @@
         .about-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:3rem;position:relative;z-index:1}
         .about-photo-side{flex:0 0 30%;display:flex;justify-content:center}
         .about-photo-blob{position:relative;width:280px;height:280px}
-        .about-photo-blob .blob-shape{width:100%;height:100%;background:#060912;border-radius:60% 40% 55% 45% / 50% 60% 40% 50%;display:flex;align-items:center;justify-content:center;font-family:'Figtree',sans-serif;font-size:3.5rem;font-weight:800;color:#fff;overflow:hidden;position:relative}
+        .about-photo-blob .blob-shape{width:100%;height:100%;background:#2B1E78;border-radius:60% 40% 55% 45% / 50% 60% 40% 50%;display:flex;align-items:center;justify-content:center;font-family:'Figtree',sans-serif;font-size:3.5rem;font-weight:800;color:#fff;overflow:hidden;position:relative}
         .about-photo-blob .blob-shape img{width:100%;height:100%;object-fit:cover;object-position:center 5%;transform:scale(1.4);filter:grayscale(100%) brightness(0.85) contrast(1.1)}
-        .about-photo-blob .blob-shape::after{content:'';position:absolute;inset:0;background:rgba(6,9,18,0.3);mix-blend-mode:color;pointer-events:none}
+        .about-photo-blob .blob-shape::after{content:'';position:absolute;inset:0;background:rgba(43,30,120,0.45);mix-blend-mode:color;pointer-events:none}
         .about-bio{flex:1}
-        .about-bio h2{font-family:'Figtree',sans-serif;font-size:2.2rem;font-weight:500;color:rgba(255,255,255,0.85);margin-bottom:0.4rem;letter-spacing:-0.02em}
-        .about-bio h3{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:500;color:rgba(255,255,255,0.65);margin-bottom:1.5rem;line-height:1.7}
-        .about-bio p{font-family:Helvetica,Arial,sans-serif;font-size:1rem;color:rgba(255,255,255,0.65);line-height:1.7}
+        .about-bio h2{font-family:'Figtree',sans-serif;font-size:2.2rem;font-weight:500;color:#2B1E78;margin-bottom:0.4rem;letter-spacing:-0.02em}
+        .about-bio h3{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:500;color:#8A7BA8;margin-bottom:1.5rem;line-height:1.7}
+        .about-bio p{font-family:Helvetica,Arial,sans-serif;font-size:1rem;color:#8A7BA8;line-height:1.7}
 
         /* ===== FOOTER ===== */
         .about-contact{display:flex;flex-direction:column;gap:0.75rem;margin-top:1.5rem}
-        .about-contact-link{display:inline-flex;align-items:center;gap:0.5rem;font-family:Helvetica,Arial,sans-serif;font-size:0.95rem;color:rgba(255,255,255,0.7);text-decoration:none;transition:opacity 0.2s ease}
+        .about-contact-link{display:inline-flex;align-items:center;gap:0.5rem;font-family:Helvetica,Arial,sans-serif;font-size:0.95rem;color:#2B1E78;text-decoration:none;transition:opacity 0.2s ease}
         .about-contact-link:hover{opacity:0.6}
-        .footer-slim{background:#060912;padding:1.5rem 2rem;text-align:center;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.1)}
+        .footer-slim{background:#2B1E78;padding:1.5rem 2rem;text-align:center;position:relative;overflow:hidden}
         .footer-slim svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
         .footer-slim svg line{stroke:rgba(255,255,255,0.12);stroke-width:1}
         .footer-slim p{font-family:Helvetica,Arial,sans-serif;font-size:0.8rem;color:rgba(255,255,255,0.4);margin:0;position:relative;z-index:1;letter-spacing:0.08em}
         .footer-logo{display:inline-flex;align-items:baseline;gap:5px;position:relative;z-index:1;margin-bottom:0.5rem}
-        .footer-logo-blob{width:42px;height:28px;background:rgba(255,255,255,0.1);border-radius:60% 40% 55% 45%/50% 60% 40% 50%;display:flex;align-items:center;justify-content:center;font-family:'Figtree',sans-serif;font-size:1.05rem;font-weight:900;color:#fff;flex-shrink:0}
+        .footer-logo-blob{width:42px;height:28px;background:rgba(255,255,255,0.55);border-radius:60% 40% 55% 45%/50% 60% 40% 50%;display:flex;align-items:center;justify-content:center;font-family:'Figtree',sans-serif;font-size:1.05rem;font-weight:900;color:#2B1E78;flex-shrink:0}
         .footer-logo-suffix{font-family:'Figtree',sans-serif;font-size:1.15rem;font-weight:900;color:rgba(255,255,255,0.55);letter-spacing:0.04em;margin-left:-2px}
 
         /* ===== RESPONSIVE ===== */
@@ -173,12 +173,12 @@
                 <div class="card-chrome"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
                 <div class="card-body">
                     <div class="card-icon"><svg viewBox="0 0 64 64" fill="none">
-                        <path d="M16 8 C14 8 12 10 12 12 L12 52 C12 54 14 56 16 56 L44 56 C46 56 48 54 48 52 L48 20 L36 8 Z" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M36 8 L36 20 L48 20" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        <line x1="20" y1="30" x2="40" y2="30" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" style="animation:lineflash 2.4s ease-in-out infinite"/>
-                        <line x1="20" y1="37" x2="36" y2="37" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" style="animation:lineflash 2.4s ease-in-out 0.3s infinite"/>
-                        <line x1="20" y1="44" x2="32" y2="44" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" style="animation:lineflash 2.4s ease-in-out 0.6s infinite"/>
-                        <circle cx="40" cy="46" r="3" fill="#E8E6E2" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+                        <path d="M16 8 C14 8 12 10 12 12 L12 52 C12 54 14 56 16 56 L44 56 C46 56 48 54 48 52 L48 20 L36 8 Z" stroke="#2B1E78" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M36 8 L36 20 L48 20" stroke="#2B1E78" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="20" y1="30" x2="40" y2="30" stroke="#2B1E78" stroke-width="2" stroke-linecap="round" style="animation:lineflash 2.4s ease-in-out infinite"/>
+                        <line x1="20" y1="37" x2="36" y2="37" stroke="#2B1E78" stroke-width="2" stroke-linecap="round" style="animation:lineflash 2.4s ease-in-out 0.3s infinite"/>
+                        <line x1="20" y1="44" x2="32" y2="44" stroke="#2B1E78" stroke-width="2" stroke-linecap="round" style="animation:lineflash 2.4s ease-in-out 0.6s infinite"/>
+                        <circle cx="40" cy="46" r="3" fill="#E8E6E2" stroke="#2B1E78" stroke-width="1.5"/>
                     </svg></div>
                     <h3>Campaign Blueprint</h3>
 
@@ -191,10 +191,10 @@
                 <div class="card-chrome"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
                 <div class="card-body">
                     <div class="card-icon"><svg viewBox="0 0 64 64" fill="none">
-                        <path d="M8 16 C8 12 11 9 15 9 L49 9 C53 9 56 12 56 16 L56 38 C56 42 53 45 49 45 L24 45 L14 55 L14 45 L15 45 C11 45 8 42 8 38 Z" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="23" cy="27" r="2.5" fill="rgba(255,255,255,0.5)" style="animation:dotbounce 1.4s ease-in-out infinite"/>
-                        <circle cx="32" cy="27" r="2.5" fill="rgba(255,255,255,0.5)" style="animation:dotbounce 1.4s ease-in-out 0.2s infinite"/>
-                        <circle cx="41" cy="27" r="2.5" fill="rgba(255,255,255,0.5)" style="animation:dotbounce 1.4s ease-in-out 0.4s infinite"/>
+                        <path d="M8 16 C8 12 11 9 15 9 L49 9 C53 9 56 12 56 16 L56 38 C56 42 53 45 49 45 L24 45 L14 55 L14 45 L15 45 C11 45 8 42 8 38 Z" stroke="#2B1E78" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="23" cy="27" r="2.5" fill="#2B1E78" style="animation:dotbounce 1.4s ease-in-out infinite"/>
+                        <circle cx="32" cy="27" r="2.5" fill="#2B1E78" style="animation:dotbounce 1.4s ease-in-out 0.2s infinite"/>
+                        <circle cx="41" cy="27" r="2.5" fill="#2B1E78" style="animation:dotbounce 1.4s ease-in-out 0.4s infinite"/>
                     </svg></div>
                     <h3>FeedbackAtcha</h3>
 
@@ -207,15 +207,15 @@
                 <div class="card-chrome"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
                 <div class="card-body">
                     <div class="card-icon"><svg viewBox="0 0 64 64" fill="none">
-                        <rect x="12" y="8" width="40" height="48" rx="5" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
-                        <rect x="18" y="14" width="28" height="10" rx="2" fill="#E8E6E2" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-                        <circle cx="22" cy="32" r="3" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="rgba(255,255,255,0.5)" style="animation:calcpress 2.2s ease-in-out infinite"/>
-                        <circle cx="32" cy="32" r="3" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="rgba(255,255,255,0.5)" style="animation:calcpress 2.2s ease-in-out 0.3s infinite"/>
-                        <circle cx="42" cy="32" r="3" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="rgba(255,255,255,0.5)" style="animation:calcpress 2.2s ease-in-out 0.6s infinite"/>
-                        <circle cx="22" cy="42" r="3" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="rgba(255,255,255,0.5)" style="animation:calcpress 2.2s ease-in-out 0.9s infinite"/>
-                        <circle cx="32" cy="42" r="3" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="rgba(255,255,255,0.5)" style="animation:calcpress 2.2s ease-in-out 1.2s infinite"/>
-                        <rect x="38" y="39" width="8" height="6" rx="1.5" fill="rgba(255,255,255,0.5)" opacity="0.2" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-                        <line x1="22" y1="18" x2="35" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round" style="animation:lineflash 2.4s ease-in-out infinite"/>
+                        <rect x="12" y="8" width="40" height="48" rx="5" stroke="#2B1E78" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                        <rect x="18" y="14" width="28" height="10" rx="2" fill="#E8E6E2" stroke="#2B1E78" stroke-width="1.5"/>
+                        <circle cx="22" cy="32" r="3" stroke="#2B1E78" stroke-width="1.5" fill="#2B1E78" style="animation:calcpress 2.2s ease-in-out infinite"/>
+                        <circle cx="32" cy="32" r="3" stroke="#2B1E78" stroke-width="1.5" fill="#2B1E78" style="animation:calcpress 2.2s ease-in-out 0.3s infinite"/>
+                        <circle cx="42" cy="32" r="3" stroke="#2B1E78" stroke-width="1.5" fill="#2B1E78" style="animation:calcpress 2.2s ease-in-out 0.6s infinite"/>
+                        <circle cx="22" cy="42" r="3" stroke="#2B1E78" stroke-width="1.5" fill="#2B1E78" style="animation:calcpress 2.2s ease-in-out 0.9s infinite"/>
+                        <circle cx="32" cy="42" r="3" stroke="#2B1E78" stroke-width="1.5" fill="#2B1E78" style="animation:calcpress 2.2s ease-in-out 1.2s infinite"/>
+                        <rect x="38" y="39" width="8" height="6" rx="1.5" fill="#2B1E78" opacity="0.2" stroke="#2B1E78" stroke-width="1.5"/>
+                        <line x1="22" y1="18" x2="35" y2="18" stroke="#2B1E78" stroke-width="1.5" stroke-linecap="round" style="animation:lineflash 2.4s ease-in-out infinite"/>
                     </svg></div>
                     <h3>Budget Allogator</h3>
 
@@ -271,8 +271,8 @@
             <h3>Integrated Marketing &amp; Demand Gen Leader <span style="font-size:1.4em;font-weight:300;vertical-align:-0.05em">|</span> ex-Large Reputable Companies</h3>
             <p>I've spent my career turning ambiguity into pipeline at companies like Google, Iterable, and Yelp. I'm at my best when I'm wearing multiple hats — strategizing, creating, executing — and especially when I'm working alongside a good team. I've always loved making things that solve problems, and building AI tools has been a fun way to keep doing that while learning something new. The possibilities feel wide open.</p>
             <div class="about-contact">
-                <a href="mailto:matthewgreenbaum@gmail.com" class="about-contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4 12 13 2 4"/></svg>matthewgreenbaum@gmail.com</a>
-                <a href="https://www.linkedin.com/in/mattgreenbaum" target="_blank" class="about-contact-link"><svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)" width="20" height="20"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>LinkedIn</a>
+                <a href="mailto:matthewgreenbaum@gmail.com" class="about-contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="#2B1E78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4 12 13 2 4"/></svg>matthewgreenbaum@gmail.com</a>
+                <a href="https://www.linkedin.com/in/mattgreenbaum" target="_blank" class="about-contact-link"><svg viewBox="0 0 24 24" fill="#2B1E78" width="20" height="20"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>LinkedIn</a>
             </div>
         </div>
     </div>
