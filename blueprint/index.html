@@ -325,8 +325,8 @@
       transition: background 0.12s;
     }
     .campaign-item-dropdown button:hover { background: rgba(255,255,255,0.1); }
-    .campaign-item-dropdown button.danger { color: #FF8A80; }
-    .campaign-item-dropdown button.danger:hover { background: rgba(255,80,80,0.12); }
+    .campaign-item-dropdown button.danger { color: #f4afb1; }
+    .campaign-item-dropdown button.danger:hover { background: rgba(179,24,28,0.08); }
 
     .sidebar-empty {
       text-align: center;
@@ -385,7 +385,7 @@
       position: absolute;
       inset: 0;
       z-index: 500;
-      background: #F8F9FA;
+      background: #fefeff;
     }
     .about-overlay.visible { display: flex; flex-direction: column; }
     .about-close {
@@ -896,7 +896,7 @@
     .msg.assistant {
       align-self: flex-start;
       background: #ffffff;
-      color: #1A1A1A;
+      color: #151515;
       border-bottom-left-radius: 4px;
       white-space: normal;
     }
@@ -926,8 +926,8 @@
     }
     .msg.error {
       align-self: center;
-      background: #FFF0F0;
-      color: #B33A3A;
+      background: #fbe3e3;
+      color: #b3181c;
       font-size: 0.8rem;
       border-radius: 8px;
     }
@@ -1118,13 +1118,17 @@
       min-width: 0;
     }
     .blueprint-panel .panel-header .preview-badge {
-      height: 36px;
-      display: flex; align-items: center; justify-content: center;
+      display: inline-flex; align-items: center; justify-content: center;
       font-family: 'Figtree', sans-serif;
-      font-weight: 600; font-size: 0.85rem;
+      font-weight: 600; font-size: 0.72rem;
       flex-shrink: 0;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       color: #1a6293;
+      background: #e8f2f9;
+      border: 1px solid #cae4f6;
+      border-radius: 50px;
+      padding: 4px 12px;
     }
     .blueprint-panel .panel-header .label {
       font-weight: 600;
@@ -1179,7 +1183,7 @@
     .btn-copy-icon svg { width: 18px; height: 18px; }
     .btn-copy-icon .copy-check { display: none; }
     .btn-copy-icon.copied .copy-icon { display: none; }
-    .btn-copy-icon.copied .copy-check { display: block; color: #16a34a; }
+    .btn-copy-icon.copied .copy-check { display: block; color: #2a7053; }
 
     .bp-streaming-dot {
       width: 8px; height: 8px;
@@ -1253,7 +1257,7 @@
       margin: 0 0 24px;
       padding-bottom: 14px;
       border-bottom: 1px solid #cae4f6;
-      color: #1A1A1A;
+      color: #151515;
       letter-spacing: -0.01em;
       line-height: 1.3;
     }
@@ -1280,7 +1284,7 @@
       font-size: 0.88rem;
       line-height: 1.7;
       margin: 0 0 14px;
-      color: #2C2C2C;
+      color: #151515;
       padding-left: 16px;
     }
     .bp-content ul, .bp-content ol {
@@ -1288,7 +1292,7 @@
       padding: 0;
       font-size: 0.88rem;
       line-height: 1.7;
-      color: #2C2C2C;
+      color: #151515;
     }
     .bp-content ul { list-style-type: disc; }
     .bp-content ul ul { list-style-type: circle; margin-top: 2px; margin-bottom: 2px; }
@@ -1297,7 +1301,7 @@
       padding-left: 2px;
     }
     .bp-content li::marker {
-      color: #1A1A1A;
+      color: #151515;
     }
     .bp-content table {
       width: 100%;
@@ -1309,7 +1313,7 @@
       padding: 10px 14px;
       border: 1px solid #cae4f6;
       text-align: left;
-      color: #1A1A1A;
+      color: #151515;
     }
     .bp-content th {
       background: #e8f2f9;
@@ -1319,7 +1323,7 @@
     .bp-content hr {
       display: none;
     }
-    .bp-content strong { font-weight: 600; color: #1A1A1A; }
+    .bp-content strong { font-weight: 600; color: #151515; }
     .bp-content em { font-style: italic; }
     .bp-content code {
       background: #F5F5F3;
@@ -1362,9 +1366,9 @@
       flex-shrink: 0;
       margin-top: 3px;
     }
-    .sq-green .sq-dot { background: #5dbcb4; }
-    .sq-amber .sq-dot { background: #FF9C7E; }
-    .sq-red   .sq-dot { background: #E53E3E; }
+    .sq-green .sq-dot { background: #5fc39c; }
+    .sq-amber .sq-dot { background: #fbbf0b; }
+    .sq-red   .sq-dot { background: #b3181c; }
     .sq-body {
       flex: 1;
       min-width: 0;
@@ -1377,14 +1381,14 @@
       letter-spacing: 0.06em;
       margin-bottom: 2px;
     }
-    .sq-green .sq-tier { color: #5dbcb4; }
-    .sq-amber .sq-tier { color: #FF9C7E; }
-    .sq-red   .sq-tier { color: #E53E3E; }
+    .sq-green .sq-tier { color: #2a7053; }
+    .sq-amber .sq-tier { color: #a17a03; }
+    .sq-red   .sq-tier { color: #b3181c; }
     .sq-dimension {
       font-family: 'Figtree', sans-serif;
       font-size: 0.88rem;
       font-weight: 700;
-      color: #1A1A1A;
+      color: #151515;
       margin-bottom: 4px;
     }
     .sq-rationale {
@@ -1409,7 +1413,7 @@
     }
     .bp-section-desc {
       font-size: 0.72rem;
-      color: #6F6C84;
+      color: #666666;
       font-style: italic;
       margin: 0 0 8px 0;
       line-height: 1.4;
@@ -1736,11 +1740,11 @@
     }
     .confirm-cancel:hover { background: #E5E5E5; }
     .confirm-delete {
-      background: #E53E3E;
+      background: #b3181c;
       border: none;
       color: #fff;
     }
-    .confirm-delete:hover { background: #C53030; }
+    .confirm-delete:hover { background: #8f1215; }
   </style>
 </head>
 <body>
@@ -1843,7 +1847,7 @@
     <section class="panel blueprint-panel">
       <div class="panel-header">
         <div class="bp-title-group">
-          <div class="preview-badge">&#91;Blueprint Preview&#93;</div>
+          <div class="preview-badge">Blueprint Preview</div>
         </div>
         <div class="bp-actions">
           <div class="bp-streaming-dot" id="bpStreamingDot"></div>
@@ -2137,7 +2141,7 @@
       const container = document.createElement("div");
       container.className = "confetti-container";
       document.body.appendChild(container);
-      const colors = ["#1a6293", "#1a6293", "#FF9C7E", "#FF8096", "#16a34a", "#facc15", "#06b6d4"];
+      const colors = ["#fbbf0b", "#3498db", "#5fc39c", "#ed7b7e", "#b994e0", "#a17a03", "#1a6293", "#2a7053", "#feedb9", "#cae4f6"];
       const shapes = ["square", "circle"];
       for (let i = 0; i < 80; i++) {
         const piece = document.createElement("div");
@@ -3800,7 +3804,7 @@
           }
         }
 
-        const richHtml = `<html><body style="font-family: Helvetica, Arial, sans-serif; color: #1A1A2E; font-size: 10.5pt; line-height: 1.6;">${body}</body></html>`;
+        const richHtml = `<html><body style="font-family: Helvetica, Arial, sans-serif; color: #151515; font-size: 10.5pt; line-height: 1.6;">${body}</body></html>`;
 
         const htmlBlob = new Blob([richHtml], { type: "text/html" });
         const textBlob = new Blob([rawBlueprintMarkdown], { type: "text/plain" });
@@ -3842,9 +3846,9 @@
         const rationale = card.querySelector(".sq-rationale")?.textContent || "";
         const c = tierColors[color];
         rows.push(`<tr>
-          <td style="font-family: Helvetica, Arial, sans-serif; padding: 10px 12px; border: 1px solid #cae4f6; vertical-align: top; font-weight: 600; color: #1A1A1A; width: 30%;">${dimension}</td>
+          <td style="font-family: Helvetica, Arial, sans-serif; padding: 10px 12px; border: 1px solid #cae4f6; vertical-align: top; font-weight: 600; color: #151515; width: 30%;">${dimension}</td>
           <td style="font-family: Helvetica, Arial, sans-serif; padding: 10px 12px; border: 1px solid #cae4f6; vertical-align: top; background: ${c.bg}; color: ${c.text}; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-size: 9pt; width: 20%;">${tier}</td>
-          <td style="font-family: Helvetica, Arial, sans-serif; padding: 10px 12px; border: 1px solid #cae4f6; vertical-align: top; color: #1A1A2E; font-size: 10pt; line-height: 1.5;">${rationale}</td>
+          <td style="font-family: Helvetica, Arial, sans-serif; padding: 10px 12px; border: 1px solid #cae4f6; vertical-align: top; color: #151515; font-size: 10pt; line-height: 1.5;">${rationale}</td>
         </tr>`);
       });
 
@@ -3868,14 +3872,14 @@
       return html
         .replace(/<h2>/g, '<h2 style="font-family: Helvetica, Arial, sans-serif; font-size: 13pt; font-weight: 700; color: #1a6293; margin: 20px 0 6px;">')
         .replace(/<h3>/g, '<h3 style="font-family: Helvetica, Arial, sans-serif; font-size: 11pt; font-weight: 600; color: #1a6293; margin: 14px 0 4px;">')
-        .replace(/<p>/g, '<p style="font-family: Helvetica, Arial, sans-serif; margin: 0 0 8px; color: #1A1A2E;">')
-        .replace(/<ul>/g, '<ul style="margin: 4px 0 12px 18px; padding: 0; color: #1A1A2E;">')
-        .replace(/<ol>/g, '<ol style="margin: 4px 0 12px 18px; padding: 0; color: #1A1A2E;">')
-        .replace(/<li>/g, '<li style="font-family: Helvetica, Arial, sans-serif; margin-bottom: 4px; color: #1A1A2E;">')
+        .replace(/<p>/g, '<p style="font-family: Helvetica, Arial, sans-serif; margin: 0 0 8px; color: #151515;">')
+        .replace(/<ul>/g, '<ul style="margin: 4px 0 12px 18px; padding: 0; color: #151515;">')
+        .replace(/<ol>/g, '<ol style="margin: 4px 0 12px 18px; padding: 0; color: #151515;">')
+        .replace(/<li>/g, '<li style="font-family: Helvetica, Arial, sans-serif; margin-bottom: 4px; color: #151515;">')
         .replace(/<table>/g, '<table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 10pt;">')
-        .replace(/<th>/g, '<th style="font-family: Helvetica, Arial, sans-serif; padding: 8px 12px; border: 1px solid #cae4f6; background: #cae4f6; font-weight: 600; text-align: left; color: #1A1A2E;">')
-        .replace(/<td>/g, '<td style="font-family: Helvetica, Arial, sans-serif; padding: 8px 12px; border: 1px solid #cae4f6; text-align: left; color: #1A1A2E;">')
-        .replace(/<strong>/g, '<strong style="font-weight: 600; color: #1A1A2E;">');
+        .replace(/<th>/g, '<th style="font-family: Helvetica, Arial, sans-serif; padding: 8px 12px; border: 1px solid #cae4f6; background: #cae4f6; font-weight: 600; text-align: left; color: #151515;">')
+        .replace(/<td>/g, '<td style="font-family: Helvetica, Arial, sans-serif; padding: 8px 12px; border: 1px solid #cae4f6; text-align: left; color: #151515;">')
+        .replace(/<strong>/g, '<strong style="font-weight: 600; color: #151515;">');
     }
 
     // ─── Google Docs export ───
@@ -3984,7 +3988,7 @@
         h1: { red: 47/255, green: 22/255, blue: 100/255 },   // #1a6293
         h2: { red: 47/255, green: 22/255, blue: 100/255 },    // #1a6293
         h3: { red: 47/255, green: 22/255, blue: 100/255 },    // #1a6293
-        body: { red: 26/255, green: 26/255, blue: 46/255 },   // #1A1A2E
+        body: { red: 26/255, green: 26/255, blue: 46/255 },   // #151515
       };
 
       for (const line of lines) {
@@ -4197,7 +4201,7 @@
 <style>
   @page { size: letter; margin: 0.6in; }
   html, body { margin: 0; padding: 0; background: #ffffff; }
-  body { font-family: Helvetica, Arial, sans-serif; color: #1A1A2E; font-size: 10.5pt; line-height: 1.6; }
+  body { font-family: Helvetica, Arial, sans-serif; color: #151515; font-size: 10.5pt; line-height: 1.6; }
 </style></head><body>${body}</body></html>`;
 
       const win = window.open("", "_blank", "width=900,height=700");
