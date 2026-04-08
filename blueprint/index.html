@@ -69,7 +69,7 @@
     }
     .btn-new-blueprint {
       margin-left: auto;
-      background: #fefeff;
+      background: #feedb9;
       color: #151515;
       border: 3px solid #fbbf0b;
       border-radius: 50px;
@@ -81,7 +81,7 @@
       transition: all 0.2s ease;
       white-space: nowrap;
     }
-    .btn-new-blueprint:hover { background: #feedb9; transform: translateY(-1px); }
+    .btn-new-blueprint:hover { background: #fbbf0b; transform: translateY(-1px); }
 
     /* ---------- main layout ---------- */
     .main-layout {
@@ -614,7 +614,7 @@
       height: 40px;
       border-radius: 50px;
       border: 3px solid #fbbf0b;
-      background: #fefeff;
+      background: #feedb9;
       color: #151515;
       font-size: 1.4rem;
       font-weight: 300;
@@ -625,7 +625,7 @@
       transition: all 0.2s ease;
       flex-shrink: 0;
     }
-    .notepad-add-btn:hover { background: #feedb9; transform: translateY(-1px); }
+    .notepad-add-btn:hover { background: #fbbf0b; transform: translateY(-1px); }
 
     /* ---------- google docs export ---------- */
     .btn-export-gdocs {
@@ -681,7 +681,7 @@
       overflow: visible;
     }
     .panels > .chat-panel { flex: 60; min-width: 0; }
-    .panels > .blueprint-panel { flex: 40; min-width: 200px; background: #cae4f6; }
+    .panels > .blueprint-panel { flex: 40; min-width: 200px; background: #e8f2f9; }
     @media (max-width: 820px) {
       body { flex-direction: column; }
       .sidebar { width: 100% !important; height: auto !important; max-height: 200px; border-right: none; border-bottom: 2px solid #155a83; }
@@ -806,10 +806,10 @@
       color: #fff;
     }
     .phase-step.active .phase-step-icon {
-      background: #a17a03;
-      border-color: #a17a03;
-      color: #fff;
-      box-shadow: 0 0 0 3px rgba(161,122,3,0.18);
+      background: #fbbf0b;
+      border-color: #fbbf0b;
+      color: #151515;
+      box-shadow: 0 0 0 3px rgba(251,191,11,0.25);
     }
     .phase-step-connector {
       width: 24px;
@@ -911,14 +911,16 @@
     .msg.assistant ul, .msg.assistant ol { margin: 4px 0 4px 16px; }
     .msg.assistant li { margin: 2px 0; }
     .msg.assistant strong { color: #151515; }
+    .msg.assistant a { color: #1a6293; text-decoration: none; font-weight: 600; }
+    .msg.assistant a:hover { text-decoration: underline; }
     .msg.assistant table { border-collapse: collapse; margin: 8px 0; font-size: 0.82rem; }
     .msg.assistant th, .msg.assistant td { border: 1px solid #cae4f6; padding: 4px 8px; }
     .msg.assistant th { background: #e8f2f9; }
     .msg.assistant hr { border: none; border-top: 1px solid #cae4f6; margin: 8px 0; }
     .msg.user {
       align-self: flex-start;
-      background: #e8f2f9;
-      color: #1A1A1A;
+      background: #feedb9;
+      color: #151515;
       border-bottom-left-radius: 4px;
     }
     .msg.error {
@@ -1021,7 +1023,7 @@
       color: #fff;
     }
     .option-submit-btn {
-      background: #fefeff;
+      background: #feedb9;
       color: #151515;
       border: 3px solid #fbbf0b;
       border-radius: 50px;
@@ -1034,7 +1036,7 @@
       display: none;
       margin-top: 8px;
     }
-    .option-submit-btn:hover { background: #feedb9; transform: translateY(-1px); }
+    .option-submit-btn:hover { background: #fbbf0b; transform: translateY(-1px); }
     .option-submit-btn.visible { display: inline-block; }
 
     .typing-indicator {
@@ -1080,7 +1082,7 @@
     }
     .chat-input-bar textarea:focus { border-color: #1a6293; }
     .chat-input-bar button {
-      background: #fefeff;
+      background: #feedb9;
       color: #151515;
       border: 3px solid #fbbf0b;
       border-radius: 50px;
@@ -1093,7 +1095,7 @@
       transition: all 0.2s ease;
       flex-shrink: 0;
     }
-    .chat-input-bar button:hover { background: #feedb9; transform: translateY(-1px); }
+    .chat-input-bar button:hover { background: #fbbf0b; transform: translateY(-1px); }
     .chat-input-bar button:disabled { opacity: 0.5; cursor: default; transform: none; }
 
     /* ---------- RIGHT PANEL — BLUEPRINT ---------- */
@@ -3337,7 +3339,7 @@
 
       // Preserve styled spans (blue bold section transitions) before escaping
       const spanPlaceholders = [];
-      html = html.replace(/<span\s+style="color:#1a6293;font-weight:700">(.*?)<\/span>/gi, (match, inner) => {
+      html = html.replace(/<span\s+style="color:#(?:1a6293|2F1664|2f1664);font-weight:700">(.*?)<\/span>/gi, (match, inner) => {
         const idx = spanPlaceholders.length;
         spanPlaceholders.push(inner);
         return `%%STYLED_SPAN_${idx}%%`;
@@ -3408,7 +3410,7 @@
 
       // Restore styled spans (blue bold section transitions)
       spanPlaceholders.forEach((inner, idx) => {
-        html = html.replace(`%%STYLED_SPAN_${idx}%%`, `<span style="color:#1a6293;font-weight:700">${inner}</span>`);
+        html = html.replace(`%%STYLED_SPAN_${idx}%%`, `<strong>${inner}</strong>`);
       });
 
       // Restore scorecard cards as styled assessment cards
