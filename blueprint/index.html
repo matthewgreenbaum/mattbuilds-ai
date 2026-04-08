@@ -1135,7 +1135,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 20px;
-      height: 56px;
+      height: 48px;
       background: #fefeff;
       border-bottom: 1px solid #cae4f6;
       flex-shrink: 0;
@@ -1255,32 +1255,33 @@
       line-height: 1.3;
     }
     .bp-content h2 {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       font-weight: 700;
-      margin: 28px 0 10px;
+      margin: 24px 0 8px;
       padding-top: 0;
       border-top: none;
-      color: #1a6293;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      color: #151515;
+      padding-left: 16px;
     }
     .bp-content h2:first-child {
       margin-top: 0;
     }
     .bp-content h3 {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      margin: 18px 0 6px;
-      color: #1a6293;
+      margin: 14px 0 4px;
+      color: #151515;
+      padding-left: 16px;
     }
     .bp-content p {
       font-size: 0.88rem;
       line-height: 1.7;
       margin: 0 0 14px;
       color: #2C2C2C;
+      padding-left: 16px;
     }
     .bp-content ul, .bp-content ol {
-      margin: 4px 0 16px 18px;
+      margin: 4px 0 16px 34px;
       padding: 0;
       font-size: 0.88rem;
       line-height: 1.7;
@@ -2592,7 +2593,7 @@
       if (!currentCampaignId) { el.textContent = ""; if(dateEl) dateEl.textContent = ""; return; }
       const campaigns = loadAllCampaigns();
       const c = campaigns.find(c => c.id === currentCampaignId);
-      el.textContent = c ? c.title : "";
+      el.textContent = c ? "Campaign: " + c.title : "";
       if (dateEl && c) {
         const d = new Date(c.updatedAt || c.createdAt || Date.now());
         dateEl.textContent = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -3468,12 +3469,14 @@
       // Campaign title — shown in the campaign bar, not in the body
 
       // Executive Summary (section 1) at top — synthesis section, populated last
+      html += `<div class="bp-phase-header">Executive Summary</div>`;
       if (parsed.sections[1]) {
         let execHtml = renderMarkdown(stripChatSpans(parsed.sections[1]));
         execHtml = execHtml.replace(/<h2>\d+\.\s*/g, "<h2>");
+        execHtml = execHtml.replace(/^\s*<h2>[^<]*executive summary[^<]*<\/h2>/i, "");
         html += execHtml;
       } else {
-        html += `<div class="bp-section-empty"><h2>Executive Summary</h2><p class="bp-section-desc">Auto-generated synthesis once all key sections are complete</p></div>`;
+        html += `<div class="bp-section-empty"><p class="bp-section-desc">Auto-generated synthesis once all key sections are complete</p></div>`;
       }
 
       for (const group of BLUEPRINT_LAYOUT) {
