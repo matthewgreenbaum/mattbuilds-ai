@@ -731,17 +731,6 @@
     }
 
     /* ---------- LEFT PANEL — CHAT ---------- */
-    .chat-panel .panel-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 0 20px;
-      height: 64px;
-      flex-shrink: 0;
-      border-bottom: none;
-      box-sizing: border-box;
-      position: relative;
-    }
 
     /* ---------- PHASE STEPPER ---------- */
     .phase-stepper {
@@ -851,6 +840,22 @@
     }
     .panel-header .label { font-weight: 600; font-size: 0.95rem; }
 
+    .msg-col {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      flex: 1;
+    }
+    .msg-sender-label {
+      font-family: 'Figtree', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #1a6293;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
     .messages {
       flex: 1;
       overflow-y: auto;
@@ -896,6 +901,7 @@
     }
     .msg.assistant {
       align-self: flex-start;
+      max-width: 100%;
       background: #ffffff;
       color: #151515;
       border-bottom-left-radius: 4px;
@@ -1792,10 +1798,6 @@
     <div class="panels">
     <!-- LEFT — Chat -->
     <section class="panel chat-panel">
-      <div class="panel-header">
-        <div class="avatar" id="botAvatar"></div>
-        <span class="label">AI Assistant</span>
-      </div>
       <div class="phase-stepper" id="phaseStepper">
         <div class="phase-step" data-phase="1" id="phaseStep1">
           <div class="phase-step-icon">1</div>
@@ -3235,7 +3237,18 @@
         div.textContent = text;
       }
 
-      row.appendChild(div);
+      if (role === "assistant") {
+        const col = document.createElement("div");
+        col.className = "msg-col";
+        const senderLabel = document.createElement("span");
+        senderLabel.className = "msg-sender-label";
+        senderLabel.textContent = "AI Assistant";
+        col.appendChild(senderLabel);
+        col.appendChild(div);
+        row.appendChild(col);
+      } else {
+        row.appendChild(div);
+      }
       $("#messages").appendChild(row);
       scrollChat();
     }
