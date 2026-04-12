@@ -846,6 +846,12 @@
       min-width: 0;
       flex: 1;
     }
+    .msg-header-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
     .msg-sender-label {
       font-family: 'Figtree', sans-serif;
       font-size: 0.72rem;
@@ -853,7 +859,13 @@
       color: #1a6293;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      margin-bottom: 4px;
+    }
+    .msg-row.assistant {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .msg-row.assistant .msg {
+      margin-left: 42px;
     }
 
     .messages {
@@ -3239,14 +3251,16 @@
       }
 
       if (role === "assistant") {
-        const col = document.createElement("div");
-        col.className = "msg-col";
+        row.removeChild(avatarEl);
+        const headerRow = document.createElement("div");
+        headerRow.className = "msg-header-row";
+        headerRow.appendChild(avatarEl);
         const senderLabel = document.createElement("span");
         senderLabel.className = "msg-sender-label";
         senderLabel.textContent = "AI Assistant";
-        col.appendChild(senderLabel);
-        col.appendChild(div);
-        row.appendChild(col);
+        headerRow.appendChild(senderLabel);
+        row.appendChild(headerRow);
+        row.appendChild(div);
       } else {
         row.appendChild(div);
       }
