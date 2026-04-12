@@ -2444,17 +2444,19 @@
       return name.trim()[0].toUpperCase();
     }
 
-    function renderAvatarInto(el, avatar) {
+    function renderAvatarInto(el, avatar, bgColor) {
+      const bg = bgColor || "#cae4f6";
+      const textColor = bgColor ? "#a17a03" : "#1a6293";
       if (!avatar || avatar.type === "default" || avatar.type === "initials") {
         const initial = getInitial();
-        el.innerHTML = `<span style="font-size:1.25em;font-weight:400;color:#1a6293;line-height:1">${initial}</span>`;
-        el.style.background = "#cae4f6";
+        el.innerHTML = `<span style="font-size:1.25em;font-weight:400;color:${textColor};line-height:1">${initial}</span>`;
+        el.style.background = bg;
       } else if (avatar.type === "emoji") {
         el.innerHTML = `<span class="emoji-avatar">${avatar.value}</span>`;
-        el.style.background = "#cae4f6";
+        el.style.background = bg;
       } else if (avatar.type === "upload") {
         el.innerHTML = `<img src="${avatar.value}" alt="avatar">`;
-        el.style.background = "#cae4f6";
+        el.style.background = bg;
       }
     }
 
@@ -2465,7 +2467,7 @@
       if (sidebarPrev) renderAvatarInto(sidebarPrev, avatar);
       // All chat message avatars for user
       document.querySelectorAll(".msg-row.user .msg-avatar").forEach(el => {
-        renderAvatarInto(el, avatar);
+        renderAvatarInto(el, avatar, "#fffcf3");
       });
     }
 
@@ -3173,7 +3175,7 @@
       if (role === "assistant") {
         avatarEl.innerHTML = getBotAvatarImg();
       } else {
-        renderAvatarInto(avatarEl, loadAvatar());
+        renderAvatarInto(avatarEl, loadAvatar(), "#fffcf3");
       }
       row.appendChild(avatarEl);
 
