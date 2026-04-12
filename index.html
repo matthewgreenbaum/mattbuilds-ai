@@ -41,9 +41,9 @@
         /* ===== TOOLS / CARDS ===== */
         .tools{background:#fefeff;padding:6rem 2rem;position:relative;overflow:hidden}
         .tools-inner{max-width:1060px;margin:0 auto;position:relative;z-index:1}
-        .tools-rings{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0}
+        .tools-rings{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0;-webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,0.4) 25%,rgba(0,0,0,1) 55%);mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,0.4) 25%,rgba(0,0,0,1) 55%)}
         .tools-rings circle{fill:none}
-        .tools-header{text-align:center;margin-bottom:3.5rem;background:#fefeff;position:relative;z-index:1;padding:0 1rem 1.5rem}
+        .tools-header{text-align:center;margin-bottom:3.5rem}
         .tools-header h2{font-family:'Figtree',sans-serif;font-size:4rem;font-weight:500;color:#151515;margin-bottom:1rem;letter-spacing:-0.03em;line-height:1.1}
         .tools-header p{font-family:Helvetica,Arial,sans-serif;font-size:1.1rem;font-weight:500;color:#666666;line-height:1.7;max-width:640px;margin:0 auto}
         .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
@@ -159,10 +159,10 @@
 <section id="tools" class="tools">
     <!-- Concentric rings -->
     <svg class="tools-rings" width="1800" height="1800" viewBox="0 0 1800 1800">
-        <circle cx="900" cy="900" r="80" stroke-width="1" stroke="rgba(21,21,21,0.05)"/>
-        <circle cx="900" cy="900" r="160" stroke-width="1" stroke="rgba(21,21,21,0.06)"/>
-        <circle cx="900" cy="900" r="260" stroke-width="1" stroke="rgba(21,21,21,0.08)"/>
-        <circle cx="900" cy="900" r="380" stroke-width="1" stroke="rgba(21,21,21,0.09)"/>
+        <circle cx="900" cy="900" r="80" stroke-width="1" stroke="rgba(21,21,21,0.03)"/>
+        <circle cx="900" cy="900" r="160" stroke-width="1" stroke="rgba(21,21,21,0.04)"/>
+        <circle cx="900" cy="900" r="260" stroke-width="1" stroke="rgba(21,21,21,0.05)"/>
+        <circle cx="900" cy="900" r="380" stroke-width="1" stroke="rgba(21,21,21,0.07)"/>
         <circle cx="900" cy="900" r="500" stroke-width="1" stroke="rgba(21,21,21,0.11)"/>
         <circle cx="900" cy="900" r="620" stroke-width="1" stroke="rgba(21,21,21,0.12)"/>
         <circle cx="900" cy="900" r="740" stroke-width="1" stroke="rgba(21,21,21,0.14)"/>
