@@ -736,9 +736,9 @@
     .phase-stepper {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       gap: 0;
-      padding: 0 12px;
+      padding: 0 24px;
       height: 48px;
       background: #e8f2f9;
       border-top: 2px solid #cae4f6;
@@ -803,11 +803,11 @@
       box-shadow: 0 0 0 3px rgba(251,191,11,0.25);
     }
     .phase-step-connector {
-      width: 16px;
+      flex: 1;
+      min-width: 20px;
       height: 2px;
       background: #cae4f6;
-      flex-shrink: 0;
-      margin: 0 4px;
+      margin: 0 6px;
       transition: background 0.3s;
     }
     .phase-step-connector.completed { background: #5fc39c; }
